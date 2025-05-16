@@ -1,0 +1,78 @@
+@startuml
+
+class Sentence {
+    -Word[] words
+    -LocalDateTime generationDate
+    ' TODO: valutare come gestire la tossicità
+    -boolean isToxic
+    +String getText()
+    ' TODO: capire dove mettere analyzeSyntax
+    +LocalDateTime getGenerationDate()
+    +void setLocalDateTime(LocalDateTime)
+    +boolean isToxic()
+    +void analyzeToxicity()
+}
+
+enum Tense {
+    PAST
+    PRESENT
+    FUTURE
+}
+
+class Word {
+    -String text
+    +String getText()
+    +void setText(String)
+}
+
+class Noun extends Word {
+}
+
+class Adjective extends Word {
+}
+
+class Verb extends Word {
+    -Tense tense
+    +Tense getTense()
+    +void setTense(Tense)
+}
+
+class Template {
+    -String template
+    +String getTemplate()
+    +void setTemplate(String)
+}
+
+class WordsDictionary {
+    -ArrayList<Noun> nouns
+    -ArrayList<Adjective> adjectives
+    -ArrayList<Verb> verbs
+    -ArrayList<Template> templates
+    +Noun getRandomNoun()
+    +Adjective getRandomAdjective()
+    +Verb getRandomVerb()
+    +Verb getRandomVerb(Tense)
+    +Template getRandomTemplate()
+    +ArrayList<Template> getTemplates()
+}
+
+class SentenceGenerator {
+    -WordsDictionary dictionary
+    +SentenceGenerator(WordsDictionary)
+    +Sentence generateSentence(Template)
+    +Sentence generateRandomSentence()
+}
+
+Sentence "1" o-- "n" Word : contains 
+Verb "1" o-- "1" Tense : has 
+WordsDictionary "1" o-- "n" Noun : contains 
+WordsDictionary "1" o-- "n" Adjective : contains 
+WordsDictionary "1" o-- "n" Verb : contains 
+
+WordsDictionary "1" o-- "n" Template : contains 
+SentenceGenerator "1" --> "1" WordsDictionary : uses 
+SentenceGenerator ..> Template : uses 
+SentenceGenerator ..> Sentence : creates 
+Template ..> Word : references 
+
+@enduml
