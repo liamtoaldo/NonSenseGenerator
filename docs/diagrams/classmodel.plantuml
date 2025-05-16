@@ -60,9 +60,15 @@ class SentenceGenerator {
     -WordsDictionary dictionary
     +SentenceGenerator(WordsDictionary)
     +Sentence generateSentence(Template)
+    +Sentence generateSentence(Template, Tense)
     +Sentence generateRandomSentence()
+    +Sentence generateRandomSentence(Tense)
 }
 
+' TODO: aggiungere un sentence loader per la cronologia
+' TODO: Aggiungere SyntaxAnalyzer e ToxicityAnalyzer che si occupano delle chiamate API
+
+' TODO: finire relazioni
 Sentence "1" o-- "n" Word : contains 
 Verb "1" o-- "1" Tense : has 
 WordsDictionary "1" o-- "n" Noun : contains 
@@ -73,6 +79,7 @@ WordsDictionary "1" o-- "n" Template : contains
 SentenceGenerator "1" --> "1" WordsDictionary : uses 
 SentenceGenerator ..> Template : uses 
 SentenceGenerator ..> Sentence : creates 
+' TODO: togliere(?)
 Template ..> Word : references 
 
 @enduml
