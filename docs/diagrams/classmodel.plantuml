@@ -1,16 +1,11 @@
 @startuml
 
 class Sentence {
-    -Word[] words
+    -ArrayList<Word> words
     -LocalDateTime generationDate
-    ' TODO: valutare come gestire la tossicità
-    -boolean isToxic
     +String getText()
-    ' TODO: capire dove mettere analyzeSyntax
     +LocalDateTime getGenerationDate()
-    +void setLocalDateTime(LocalDateTime)
-    +boolean isToxic()
-    +void analyzeToxicity()
+    +void setGenerationDate(LocalDateTime)
 }
 
 enum Tense {
@@ -43,19 +38,33 @@ class Template {
     +void setTemplate(String)
 }
 
+' WordsDictionary usa Design Pattern: Singleton
 class WordsDictionary {
+    -static WordsDictionary instance
     -ArrayList<Noun> nouns
     -ArrayList<Adjective> adjectives
     -ArrayList<Verb> verbs
     -ArrayList<Template> templates
+    +static WordsDictionary getInstance()
     +Noun getRandomNoun()
     +Adjective getRandomAdjective()
     +Verb getRandomVerb()
     +Verb getRandomVerb(Tense)
     +Template getRandomTemplate()
     +ArrayList<Template> getTemplates()
+    +void saveTerms(ArrayList<Word>)
 }
 
+' SentenceHistory usa Design Pattern: Singleton
+class SentenceHistory {
+    -static SentenceHistory instance
+    -ArrayList<Sentence> savedSentences
+    +static SentenceHistory getInstance()
+    +void save(Sentence)
+    +ArrayList<Sentence> getLastSentences(int)
+}
+
+' SentenceGenerator usa Design Pattern: Factory Method
 class SentenceGenerator {
     -WordsDictionary dictionary
     +SentenceGenerator(WordsDictionary)
@@ -65,10 +74,82 @@ class SentenceGenerator {
     +Sentence generateRandomSentence(Tense)
 }
 
-' TODO: aggiungere un sentence loader per la cronologia
-' TODO: Aggiungere SyntaxAnalyzer e ToxicityAnalyzer che si occupano delle chiamate API
+' StorageManager agisce come un Data Access Object (DAO) / Repository
+class StorageManager {
+    -String nounsFilePath
+    -String adjectivesFilePath
+    -String verbsFilePath
+    -String templatesFilePath
+    -String sentencesFilePath
+    +WordsDictionary loadDictionary()
+    +void saveDictionary(WordsDictionary)
+    +SentenceHistory loadHistory()
+    +void saveHistory(SentenceHistory)
+}
 
-' TODO: finire relazioni
+class APIClient {
+    -String apiKey
+    +JSONObject get(String)
+    +JSONObject post(String, JSONObject)
+}
+
+' SyntaxTree e SyntaxNode formano un pattern Composite
+class SyntaxTree {
+    -SyntaxNode root
+    +SyntaxNode getRoot()
+    +void setRoot(SyntaxNode)
+}
+
+class SyntaxNode {
+    -Word word
+    -ArrayList<SyntaxNode> children
+    +Word getWord()
+    +void setWord(Word)
+    +ArrayList<SyntaxNode> getChildren()
+    +void addChild(SyntaxNode)
+}
+
+class SyntaxAnalyzer {
+    -APIClient apiClient
+    +SyntaxTree analyzeSyntax(Sentence)
+}
+
+class ModerationCategory {
+    -String name
+    -double confidence
+    +String getName()
+    +void setName(String)
+    +double getConfidence()
+    +void setConfidence(double)
+}
+
+class ModerationResult {
+    -ArrayList<ModerationCategory> categories
+    +ArrayList<ModerationCategory> getCategories()
+    +void setCategories(List<ModerationCategory>)
+    +ModerationCategory getCategoryByName(String)
+}
+
+class ToxicityAnalyzer {
+    -APIClient apiClient
+    +ModerationResult analyzeToxicity(Sentence)
+    +boolean isToxic(ModerationResult)
+}
+
+' ApplicationController implementa il pattern Controller e il pattern Facade
+class ApplicationController {
+    -StorageManager storageManager
+    -SentenceGenerator sentenceGenerator
+    -SyntaxAnalyzer syntaxAnalyzer
+    -ToxicityAnalyzer toxicityAnalyzer
+    +SyntaxTree getSyntaxTreeFromString(String)
+    +Sentence generateNonSenseSentence(String, Template, Tense)
+    +ModerationResult getSentenceToxicity(Sentence)
+    +void saveGeneratedSentence(Sentence)
+    +ArrayList<Sentence> getLastSentences(int)
+    +void addTermsToDictionaryFromInput(Sentence)
+}
+
 Sentence "1" o-- "n" Word : contains 
 Verb "1" o-- "1" Tense : has 
 WordsDictionary "1" o-- "n" Noun : contains 
@@ -79,7 +160,27 @@ WordsDictionary "1" o-- "n" Template : contains
 SentenceGenerator "1" --> "1" WordsDictionary : uses 
 SentenceGenerator ..> Template : uses 
 SentenceGenerator ..> Sentence : creates 
-' TODO: togliere(?)
-Template ..> Word : references 
+
+SyntaxAnalyzer "1" --> "1" APIClient : uses
+SyntaxAnalyzer ..> Sentence : analyzes
+SyntaxAnalyzer ..> SyntaxTree : creates
+
+ToxicityAnalyzer "1" --> "1" APIClient : uses
+ToxicityAnalyzer ..> Sentence : analyzes
+ToxicityAnalyzer ..> ModerationResult : creates
+
+StorageManager ..> WordsDictionary : manages persistence
+StorageManager ..> SentenceHistory : manages persistence
+
+ModerationResult "1" o-- "n" ModerationCategory : contains
+
+SyntaxTree "1" o-- "1" SyntaxNode : has root
+SyntaxNode "1" o-- "1" Word : represents
+SyntaxNode "1" o-- "n" SyntaxNode : has children
+
+ApplicationController "1" --> "1" StorageManager : uses
+ApplicationController "1" --> "1" SentenceGenerator : uses
+ApplicationController "1" --> "1" SyntaxAnalyzer : uses
+ApplicationController "1" --> "1" ToxicityAnalyzer : uses
 
 @enduml
