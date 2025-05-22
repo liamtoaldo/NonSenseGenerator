@@ -1,0 +1,46 @@
+html,
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.main-container {
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.main-container>.row:first-child {
+    flex-shrink: 0;
+}
+
+.section-box {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.fill-height-box {
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.fill-height-box>div:last-child {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.button-group button {
+    margin-right: 5px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}

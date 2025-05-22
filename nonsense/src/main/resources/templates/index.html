@@ -1,5 +1,77 @@
-<html>
-<body>
-  <h1>NonSenseGenerator</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NonSenseGenerator</title>
+	<!-- Bootstrap CSS -->
+	<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Page specific CSS -->
+	<link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column">
+	<div class="container-fluid main-container d-flex flex-column flex-grow-1">
+		<div class="row">
+			<div class="col-12">
+				<h1>NonSenseGenerator</h1>
+			</div>
+		</div>
+		<div class="row flex-grow-1" style="min-height: 0;">
+			<!-- Left Column -->
+			<div class="col-md-3 d-flex flex-column">
+				<div class="section-box fill-height-box">
+					<h5>HISTORY</h5>
+					<div>Placeholder</div>
+				</div>
+			</div>
+
+			<!-- Right Column -->
+			<div class="col-md-9 d-flex flex-column">
+				<div class="section-box">
+					<h5>INPUT</h5>
+					<textarea class="form-control mb-3" rows="3" placeholder="Insert your input sentence"></textarea>
+					<div class="button-group text-end">
+						<div class="btn-group">
+							<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+								aria-expanded="false">
+								TENSE
+							</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">RANDOM</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="#">PRESENT</a></li>
+								<li><a class="dropdown-item" href="#">PAST</a></li>
+								<li><a class="dropdown-item" href="#">FUTURE</a></li>
+							</ul>
+							<button type="button" class="btn btn-primary">ANALYZE</button>
+							<button type="button" class="btn btn-success">GENERATE</button>
+						</div>
+					</div>
+				</div>
+				<div class="row flex-grow-1" style="min-height: 0;">
+					<div class="col-md-4 d-flex flex-column">
+						<div class="section-box fill-height-box">
+							<h5>SYNTAX TREE</h5>
+							<div>Placeholder</div>
+						</div>
+					</div>
+					<div class="col-md-8 d-flex flex-column">
+						<div class="section-box fill-height-box">
+							<h5>OUTPUT</h5>
+							<div>Placeholder</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap JS -->
+	<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
+
 </html>
