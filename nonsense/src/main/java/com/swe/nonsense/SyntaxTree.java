@@ -11,6 +11,10 @@ public class SyntaxTree {
         this.root = root;
     }
 
+    public SyntaxNode getRoot() {
+        return root;
+    }
+
     public void setRoot(SyntaxNode root) {
         this.root = root;
     }

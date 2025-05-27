@@ -2,19 +2,25 @@ package com.swe.nonsense;
 
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class SyntaxNodeTest {
+    private Word testWord;
+
+    @BeforeAll
+    void setUp() {
+        testWord = new Word("word");
+    }
+
     @Test
     void testGetWord() {
-        Word testWord = new Word("parola");
         SyntaxNode node = new SyntaxNode(testWord);
         assert node.getWord().equals(testWord) : "getWord should return the correct Word object";
     }
 
     @Test
     void testSetWord() {
-        Word testWord = new Word("parola");
         SyntaxNode node = new SyntaxNode();
         node.setWord(testWord);
         assert node.getWord().equals(testWord) : "setWord should set the Word object correctly";
