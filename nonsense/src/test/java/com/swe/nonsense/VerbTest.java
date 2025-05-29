@@ -13,6 +13,17 @@ public class VerbTest {
     }
 
     @Test
+    void testVerbConstructor() {
+        assert verb != null : "Verb constructor should create a new Verb instance";
+    }
+
+    @Test
+    void testVerbConstructorNoText() {
+        Verb emptyVerb = new Verb();
+        assert emptyVerb.getText().equals("") : "Verb should be created with an empty string when no text is provided";
+    }
+
+    @Test
     void testGetTense() {
         assert verb.getTense() == Tense.PRESENT : "getTense should return the correct tense of the verb";
     }
@@ -33,7 +44,5 @@ public class VerbTest {
         verb.setText("newTest");
         assert verb.getText().equals("newTest") : "setText should update the text of the verb";
     }
-
-
 
 }

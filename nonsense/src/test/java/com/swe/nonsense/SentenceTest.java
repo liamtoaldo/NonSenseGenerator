@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class SentenceTest {
-    private Sentence sentence; 
+    private Sentence sentence;
     private ArrayList<Word> words;
 
     @BeforeEach
@@ -19,19 +19,55 @@ public class SentenceTest {
     }
 
     @Test
+    void testDefaultConstructor() {
+        Sentence defaultSentence = new Sentence();
+        assert defaultSentence != null : "Default constructor should create a non-null Sentence object";
+        assert defaultSentence.getText().isEmpty() : "Default constructor should create an empty sentence";
+        assert defaultSentence.getGenerationDate() != null
+                : "Default constructor should set a non-null generation date";
+    }
+
+    @Test
+    void testConstructorWithWords() {
+        assert sentence != null : "Constructor with words should create a non-null Sentence object";
+        assert sentence.getText().equals(words)
+                : "Constructor with words should initialize the sentence with the provided words";
+        assert sentence.getGenerationDate() != null : "Constructor with words should set a non-null generation date";
+    }
+
+    @Test
+    void testConstructorWithString() {
+        String sentenceText = "This is a test sentence";
+        Sentence stringSentence = new Sentence(sentenceText);
+        assert stringSentence != null : "Constructor with string should create a non-null Sentence object";
+        assert stringSentence.getText().size() > 0 : "Constructor with string should create a sentence with words";
+        assert stringSentence.getGenerationDate() != null
+                : "Constructor with string should set a non-null generation date";
+    }
+
+    @Test
     void testGetText() {
         assert sentence.getText().equals(words) : "getText should return the initial words of the sentence from setUp";
     }
 
     @Test
     void testGetGenerationDate() {
-        assert sentence.getGenerationDate() != null : "getGenerationDate should return a non-null date for the sentence from setUp";
+        assert sentence.getGenerationDate() != null
+                : "getGenerationDate should return a non-null date for the sentence from setUp";
     }
 
     @Test
     void testSetGenerationDate() {
-        LocalDateTime newDate = LocalDateTime.of(2023, 10, 1, 12, 0);
+        LocalDateTime newDate = LocalDateTime.of(2024, 9, 11, 12, 0);
         sentence.setGenerationDate(newDate);
-        assert sentence.getGenerationDate().equals(newDate) : "setGenerationDate should update the generation date of the sentence from setUp";
+        assert sentence.getGenerationDate().equals(newDate)
+                : "setGenerationDate should update the generation date of the sentence from setUp";
+    }
+
+    @Test
+    void testToString() {
+        String expectedString = "Hello World";
+        assert sentence.toString().equals(expectedString)
+                : "toString should return the correct string representation of the sentence from setUp";
     }
 }

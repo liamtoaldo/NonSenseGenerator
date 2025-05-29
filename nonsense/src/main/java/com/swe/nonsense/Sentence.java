@@ -16,6 +16,15 @@ public class Sentence {
         this.words = words;
         this.generationDate = LocalDateTime.now();
     }
+    
+    public Sentence(String sentence) {
+        this.words = new ArrayList<>();
+        String[] parts = sentence.split(" ");
+        for (String part : parts) {
+            this.words.add(new Word(part));
+        }
+        this.generationDate = LocalDateTime.now();
+    }
 
     // Getters e Setters
     public ArrayList<Word> getText() {
@@ -26,6 +35,16 @@ public class Sentence {
     }
     public void setGenerationDate(LocalDateTime generationDate) {
         this.generationDate = generationDate;
+    }
+
+    // Metodi
+    @Override
+    public String toString() {
+        String sentence = "";
+        for (Word word : words) {
+            sentence += word.getText() + " ";
+        }
+        return sentence.trim();
     }
 
     

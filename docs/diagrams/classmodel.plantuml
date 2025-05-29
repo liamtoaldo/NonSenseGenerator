@@ -6,6 +6,7 @@ class Sentence {
     +String getText()
     +LocalDateTime getGenerationDate()
     +void setGenerationDate(LocalDateTime)
+    +String toString()
 }
 
 enum Tense {
