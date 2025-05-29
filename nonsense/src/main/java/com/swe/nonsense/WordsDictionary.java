@@ -9,7 +9,11 @@ public class WordsDictionary {
     private ArrayList<Verb> verbs;
     private ArrayList<Template> templates;
 
-    public WordsDictionary() {
+    WordsDictionary() {
+        if (instance != null) {
+            throw new IllegalStateException("WordsDictionary is a singleton and cannot be instantiated multiple times");
+        }
+        instance = this;
         nouns = new ArrayList<>();
         adjectives = new ArrayList<>();
         verbs = new ArrayList<>();
