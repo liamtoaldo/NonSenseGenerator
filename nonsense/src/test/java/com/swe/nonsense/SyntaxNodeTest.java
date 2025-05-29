@@ -6,10 +6,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class SyntaxNodeTest {
-    private Word testWord;
+    private static Word testWord;
 
     @BeforeAll
-    void setUp() {
+    static void setUp() {
         testWord = new Word("word");
     }
 
