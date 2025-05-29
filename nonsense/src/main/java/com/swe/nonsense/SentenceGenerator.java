@@ -23,7 +23,7 @@ public class SentenceGenerator {
         for (String word : words) {
             if (word.startsWith("[") && word.endsWith("]")) {
                 String placeholder = word.substring(1, word.length() - 1);
-                String replacement;
+                String replacement = "";
                 switch (placeholder) {
                     case "noun":
                         Noun noun = dictionary.getRandomNoun();
