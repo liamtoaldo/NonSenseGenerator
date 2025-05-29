@@ -19,9 +19,13 @@ public class Sentence {
     
     public Sentence(String sentence) {
         this.words = new ArrayList<>();
-        String[] parts = sentence.split(" ");
-        for (String part : parts) {
-            this.words.add(new Word(part));
+        if (sentence != null && !sentence.isEmpty()) {
+            String[] parts = sentence.split(" ");
+            for (String part : parts) {
+                if (!part.isEmpty()) {
+                    this.words.add(new Word(part));
+                }
+            }
         }
         this.generationDate = LocalDateTime.now();
     }

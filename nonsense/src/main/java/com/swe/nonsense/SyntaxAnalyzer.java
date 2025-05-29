@@ -13,6 +13,9 @@ public class SyntaxAnalyzer {
     }
 
     public SyntaxTree analyzeSyntax(Sentence sentence) {
+        if(sentence == null || sentence.getText() == null || sentence.getText().isEmpty()) {
+            throw new IllegalArgumentException("Sentence cannot be null or empty");
+        }
         // Per il momento usiamo un mock JSONObject per simulare la risposta dell'API
         String mockJsonResponse = """
                                 {
@@ -480,7 +483,7 @@ public class SyntaxAnalyzer {
                         }
                 """;
         JSONObject mockResponse = new JSONObject(mockJsonResponse);
-        JSONArray tokensArray = mockResponse.getJSONObject("document").getJSONArray("tokens");
+        JSONArray tokensArray = mockResponse.getJSONArray("tokens");
 
         SyntaxTree syntaxTree = new SyntaxTree();
 
@@ -544,7 +547,7 @@ public class SyntaxAnalyzer {
             if (label.equals("ROOT")) {
                 JSONObject textObject = currentToken.getJSONObject("text");
                 String wordText = textObject.getString("content");
-                rootNode = new SyntaxNode(new Word(wordText));
+                rootNode = currentNode;
             } else {
                 // Caso base per tutti gli altri nodi
                 if (headTokenIndex >= 0 && headTokenIndex < tempNodes.size()) {
