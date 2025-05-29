@@ -13,8 +13,20 @@ public class WordTest {
     }
 
     @Test
+    void testWordCreation() {
+        assert word != null : "Word should be created successfully";
+    }
+
+    @Test
+    void testWordCreationNoText() {
+        Word emptyWord = new Word();
+        assert emptyWord.getText().equals("") : "Word should be created with an empty string when no text is provided";
+    }
+
+    @Test
     void testGetText() {
-        assert word.getText().equals("test") : "getText should return the correct text of the word when constructed with text";
+        assert word.getText().equals("test")
+                : "getText should return the correct text of the word when constructed with text";
     }
 
     @Test
@@ -34,5 +46,5 @@ public class WordTest {
         Noun noun = new Noun("dog");
         assert noun.getText().equals("dog") : "Noun should be created with the correct text";
     }
-    
+
 }

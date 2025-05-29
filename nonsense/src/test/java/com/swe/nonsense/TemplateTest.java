@@ -13,6 +13,17 @@ public class TemplateTest {
     }
 
     @Test
+    void testConstructorNoText() {
+        Template emptyTemplate = new Template();
+        assert emptyTemplate.getTemplate().equals("") : "Constructor without text should initialize with an empty template";
+    }
+
+    @Test
+    void testConstructorWithText() {
+        assert template.getTemplate().equals("Sample template") : "Constructor with text should initialize with the provided template";
+    }
+
+    @Test
     void testGetTemplate() {
         assert template.getTemplate().equals("Sample template") : "getTemplate should return the correct template text";
     }
