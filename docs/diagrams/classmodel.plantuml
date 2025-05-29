@@ -67,10 +67,7 @@ class SentenceHistory {
 ' SentenceGenerator usa Design Pattern: Factory Method
 class SentenceGenerator {
     -WordsDictionary dictionary
-    +SentenceGenerator(WordsDictionary)
-    +Sentence generateSentence(Template)
     +Sentence generateSentence(Template, Tense)
-    +Sentence generateRandomSentence()
     +Sentence generateRandomSentence(Tense)
 }
 
