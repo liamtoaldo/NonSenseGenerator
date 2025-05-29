@@ -19,6 +19,7 @@ class Word {
     -String text
     +String getText()
     +void setText(String)
+    +boolean equals(Object)
 }
 
 class Noun extends Word {
@@ -100,9 +101,12 @@ class SyntaxTree {
 
 class SyntaxNode {
     -Word word
+    -String dependencyLabel
     -ArrayList<SyntaxNode> children
     +Word getWord()
+    +String getDependencyLabel()
     +void setWord(Word)
+    +void setDependencyLabel(String)
     +ArrayList<SyntaxNode> getChildren()
     +void addChild(SyntaxNode)
 }
