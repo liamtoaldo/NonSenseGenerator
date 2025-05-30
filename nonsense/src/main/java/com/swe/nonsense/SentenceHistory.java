@@ -11,6 +11,7 @@ public class SentenceHistory {
         if (instance != null) {
             throw new IllegalStateException("SentenceHistory is a singleton and cannot be instantiated multiple times");
         }
+        instance = this;
         this.savedSentences = new ArrayList<Sentence>();
     }
 
@@ -18,6 +19,7 @@ public class SentenceHistory {
         if (instance != null) {
             throw new IllegalStateException("SentenceHistory is a singleton and cannot be instantiated multiple times");
         }
+        instance = this;
         this.savedSentences = savedSentences;
     }
 
@@ -31,6 +33,9 @@ public class SentenceHistory {
 
     public ArrayList<Sentence> getLastSentence(int numberOfSentences) {
         ArrayList<Sentence> lastSentences = new ArrayList<>();
+        if (numberOfSentences <= 0) {
+            throw new IllegalArgumentException("Number of sentences visualized must be greater than 0");
+        }
         for (int i = 0; i < numberOfSentences; i++) {
             lastSentences.add(savedSentences.get((savedSentences.size() - 1) - i));
         }
