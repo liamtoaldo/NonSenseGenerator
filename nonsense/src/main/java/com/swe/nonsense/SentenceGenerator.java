@@ -41,7 +41,7 @@ public class SentenceGenerator {
                         break;
                     case "verb":
                         Verb verb;
-                        if(tense != null)
+                        if (tense != null)
                             verb = dictionary.getRandomVerb(tense);
                         else
                             verb = dictionary.getRandomVerb();
@@ -58,7 +58,7 @@ public class SentenceGenerator {
         }
         ArrayList<Word> newSentence = new ArrayList<>();
         for (String part : sentence.split(" ")) {
-           newSentence.add(new Word(part));
+            newSentence.add(new Word(part));
         }
         return new Sentence(newSentence);
     }

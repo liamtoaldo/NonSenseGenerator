@@ -55,6 +55,8 @@ class WordsDictionary {
     +Template getRandomTemplate()
     +ArrayList<Template> getTemplates()
     +void saveTerms(ArrayList<Word>)
+    +void saveTemplates(ArrayList<Template>)
+    +void clearAllData()
 }
 
 ' SentenceHistory usa Design Pattern: Singleton

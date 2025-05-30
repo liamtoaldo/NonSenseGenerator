@@ -9,7 +9,7 @@ public class WordsDictionary {
     private ArrayList<Verb> verbs;
     private ArrayList<Template> templates;
 
-    //Costruttori
+    // Costruttori
     private WordsDictionary() {
         if (instance != null) {
             throw new IllegalStateException("WordsDictionary is a singleton and cannot be instantiated multiple times");
@@ -21,7 +21,8 @@ public class WordsDictionary {
         templates = new ArrayList<>();
     }
 
-    private WordsDictionary(ArrayList<Noun> nouns, ArrayList<Adjective> adjectives, ArrayList<Verb> verbs, ArrayList<Template> templates) {
+    private WordsDictionary(ArrayList<Noun> nouns, ArrayList<Adjective> adjectives, ArrayList<Verb> verbs,
+            ArrayList<Template> templates) {
         if (instance != null) {
             throw new IllegalStateException("WordsDictionary is a singleton and cannot be instantiated multiple times");
         }
@@ -44,7 +45,7 @@ public class WordsDictionary {
         int randomIndex = (int) (Math.random() * nouns.size());
         return nouns.get(randomIndex);
     }
-    
+
     public Adjective getRandomAdjective() {
         if (adjectives.isEmpty()) {
             return null;
@@ -108,4 +109,15 @@ public class WordsDictionary {
             }
         }
     }
-}   
+
+    public void saveTemplates(ArrayList<Template> templates) {
+        this.templates.addAll(templates);
+    }
+
+    public void clearAllData() {
+        nouns.clear();
+        adjectives.clear();
+        verbs.clear();
+        templates.clear();
+    }
+}
