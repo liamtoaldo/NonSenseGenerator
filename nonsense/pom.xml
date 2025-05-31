@@ -54,7 +54,13 @@
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20250517</version>
-		</dependency>	
+		</dependency>
+		<!-- filepath: nonsense/pom.xml -->
+		<dependency>
+			<groupId>io.github.cdimascio</groupId>
+			<artifactId>dotenv-java</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 	</dependencies>
 
 
