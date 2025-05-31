@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class SentenceHistoryTest {
 
+    private StorageManager storageManager;
     private SentenceHistory sentenceHistory;
     private ArrayList<Sentence> savedSentences;
     private Sentence sentence1;
@@ -40,8 +41,10 @@ public class SentenceHistoryTest {
         savedSentences = new ArrayList<>();
         savedSentences.add(sentence1);
         savedSentences.add(sentence2);
-        //sentenceHistory = new SentenceHistory(savedSentences);
+        
         sentenceHistory = SentenceHistory.getInstance();
+        sentenceHistory.save(sentence1);
+        sentenceHistory.save(sentence2);
     }
 
     @Test
@@ -49,11 +52,11 @@ public class SentenceHistoryTest {
         assert sentenceHistory != null : "Constructor with saved sentences should create a non-null SentenceHistory object";
     }
 
-    /*@Test
+    @Test
     void testDefaultConstructor() {
-        SentenceHistory defaultSentenceHistory = new SentenceHistory();
+        //SentenceHistory defaultSentenceHistory = new SentenceHistory();
         assert sentenceHistory != null : "Default constructor should create a non-null SentenceHistory object";
-    }*/
+    }
 
     @Test
     void testGetInstance() {
@@ -77,11 +80,12 @@ public class SentenceHistoryTest {
 
     @Test
     void testSaveMoreSentences() {
+        
         sentenceHistory.save(sentence1);
         sentenceHistory.save(sentence2);
         ArrayList<Sentence> newLastSentences = sentenceHistory.getLastSentence(2);
-        assert newLastSentences.get(newLastSentences.size() - 1).equals(sentence2) : "getLastSentence should return the most recent sentence first";
-        assert newLastSentences.get(newLastSentences.size() - 2).equals(sentence1) : "getLastSentence should return the second most recent sentence second";
+        assert newLastSentences.get(newLastSentences.size() - 1).equals(sentence1) : "getLastSentence should return the most recent sentence first";
+        assert newLastSentences.get(newLastSentences.size() - 2).equals(sentence2) : "getLastSentence should return the second most recent sentence second";
     }
 
 }

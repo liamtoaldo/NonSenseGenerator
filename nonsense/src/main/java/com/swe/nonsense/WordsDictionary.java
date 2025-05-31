@@ -3,13 +3,13 @@ package com.swe.nonsense;
 import java.util.ArrayList;
 
 public class WordsDictionary {
-    private static WordsDictionary instance;
+    private static WordsDictionary instance = new WordsDictionary();
     private ArrayList<Noun> nouns;
     private ArrayList<Adjective> adjectives;
     private ArrayList<Verb> verbs;
     private ArrayList<Template> templates;
 
-    // Costruttori
+    //Costruttore
     private WordsDictionary() {
         if (instance != null) {
             throw new IllegalStateException("WordsDictionary is a singleton and cannot be instantiated multiple times");
@@ -21,19 +21,11 @@ public class WordsDictionary {
         templates = new ArrayList<>();
     }
 
-    private WordsDictionary(ArrayList<Noun> nouns, ArrayList<Adjective> adjectives, ArrayList<Verb> verbs,
-            ArrayList<Template> templates) {
-        if (instance != null) {
-            throw new IllegalStateException("WordsDictionary is a singleton and cannot be instantiated multiple times");
-        }
-        instance = this;
-        this.nouns = nouns;
-        this.adjectives = adjectives;
-        this.verbs = verbs;
-        this.templates = templates;
-    }
-
+    //Getters
     public static WordsDictionary getInstance() {
+        if (instance == null) {
+            instance = new WordsDictionary();
+        }
         return instance;
     }
 
@@ -98,14 +90,15 @@ public class WordsDictionary {
         return templates;
     }
 
+    //Metodi per salvare e cancellare i dati
     public void saveTerms(ArrayList<Word> words) {
         for (Word word : words) {
-            if (word instanceof Noun noun) {
-                nouns.add(noun);
-            } else if (word instanceof Adjective adjective) {
-                adjectives.add(adjective);
-            } else if (word instanceof Verb verb) {
-                verbs.add(verb);
+            if (word instanceof Noun) {
+                nouns.add((Noun) word);
+            } else if (word instanceof Adjective) {
+                adjectives.add((Adjective) word);
+            } else if (word instanceof Verb) {
+                verbs.add((Verb) word);
             }
         }
     }

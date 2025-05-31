@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class WordsDictionaryTest {
+
     private WordsDictionary wordsDictionary;
     private ArrayList<Noun> nouns;
     private ArrayList<Adjective> adjectives;
@@ -22,30 +23,31 @@ public class WordsDictionaryTest {
 
     @BeforeEach
     void setUp() {
-        nouns = new ArrayList<>();
+        /*nouns = new ArrayList<>();
         adjectives = new ArrayList<>();
         verbs = new ArrayList<>();
-        templates = new ArrayList<>();
+        templates = new ArrayList<>();*/
 
         // Creazione di Noun
         noun1 = new Noun("cat");
         noun2 = new Noun("dog");
-        nouns.add(noun1);
-        nouns.add(noun2);
+        //nouns.add(noun1);
+        //nouns.add(noun2);
 
         // Creazione di Adjective
         adjective1 = new Adjective("intelligent");
         adjective2 = new Adjective("tall");
-        adjectives.add(adjective1);
-        adjectives.add(adjective2);
+        //adjectives.add(adjective1);
+        //adjectives.add(adjective2);
 
         // Creazione di Verb (diversi Tense per testare il metodo getRandomVerb(Tense tense))
         verb1 = new Verb("jumps", Tense.PRESENT);
         verb2 = new Verb("runs", Tense.PAST);
-        verbs.add(verb1);
-        verbs.add(verb2);
+        //verbs.add(verb1);
+        //verbs.add(verb2);
 
         // Creazione di Template
+        templates = new ArrayList<>();
         template1 = new Template("First template");
         template2 = new Template("Second template");
         templates.add(template1);
@@ -54,6 +56,16 @@ public class WordsDictionaryTest {
         //Inizializzazione di WordsDictionary
         //wordsDictionary = new WordsDictionary(nouns, adjectives, verbs, templates);
         wordsDictionary = WordsDictionary.getInstance();
+
+        ArrayList<Word> words = new ArrayList<>();
+        words.add(noun1);
+        words.add(noun2);
+        words.add(adjective1);
+        words.add(adjective2);
+        words.add(verb1);
+        words.add(verb2);
+        wordsDictionary.saveTerms(words);
+        wordsDictionary.saveTemplates(templates);
     }
 
     @Test
@@ -63,8 +75,9 @@ public class WordsDictionaryTest {
 
     /*@Test
     void testDefaultConstructor() {
-        WordsDictionary defaultWordsDictionary = new WordsDictionary();
-        assert defaultWordsDictionary != null : "Default constructor should create a non-null WordsDictionary object";
+        wordsDictionary.clearAllData();
+        wordsDictionary.getInstance(); // This will initialize the singleton instance
+        assert wordsDictionary != null : "Default constructor should create a non-null WordsDictionary object";
     }*/
 
     @Test
@@ -112,6 +125,7 @@ public class WordsDictionaryTest {
 
     @Test
     void testSaveTerms() {
+        wordsDictionary.clearAllData();
         ArrayList<Word> words = new ArrayList<>();
         words.add(noun1);
         words.add(adjective1);
@@ -124,6 +138,7 @@ public class WordsDictionaryTest {
 
     @Test
     void testSaveTemplates() {
+        wordsDictionary.clearAllData();
         ArrayList<Template> savedTemplates = new ArrayList<>();
         savedTemplates.add(template1);
         wordsDictionary.saveTemplates(savedTemplates);
