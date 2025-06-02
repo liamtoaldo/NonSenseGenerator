@@ -118,8 +118,26 @@ public class WordsDictionaryTest {
     }
 
     @Test
+    void testGetNouns() {
+        nouns = wordsDictionary.getNouns();
+        assert nouns != null : "getNouns should return a non-null list of Nouns";
+    }
+
+    @Test
+    void testGetAdjectives() {
+        adjectives = wordsDictionary.getAdjectives();
+        assert adjectives != null : "getAdjectives should return a non-null list of Adjectives";
+    }
+
+    @Test
+    void testGetVerbs() {
+        verbs = wordsDictionary.getVerbs();
+        assert verbs != null : "getVerbs should return a non-null list of Verbs";
+    }
+
+    @Test
     void testGetTemplates() {
-        ArrayList<Template> templates = wordsDictionary.getTemplates();
+        templates = wordsDictionary.getTemplates();
         assert templates != null : "getTemplates should return a non-null list of Templates";
     }
 

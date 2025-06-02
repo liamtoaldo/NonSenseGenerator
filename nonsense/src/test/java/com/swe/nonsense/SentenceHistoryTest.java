@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 public class SentenceHistoryTest {
 
-    private StorageManager storageManager;
     private SentenceHistory sentenceHistory;
     private ArrayList<Sentence> savedSentences;
     private Sentence sentence1;
@@ -54,14 +53,21 @@ public class SentenceHistoryTest {
 
     @Test
     void testDefaultConstructor() {
-        //SentenceHistory defaultSentenceHistory = new SentenceHistory();
         assert sentenceHistory != null : "Default constructor should create a non-null SentenceHistory object";
     }
 
+    //Test per i getters
     @Test
     void testGetInstance() {
         SentenceHistory instance = SentenceHistory.getInstance();
         assert instance != null : "getInstance should return a non-null SentenceHistory instance";
+    }
+
+    @Test
+    void testGetSentences() {
+        ArrayList<Sentence> sentences = sentenceHistory.getSentences();
+        assert sentences != null : "getSentences should return a non-null list of Sentences";
+
     }
 
     @Test
@@ -78,6 +84,7 @@ public class SentenceHistoryTest {
         assert lastSentences.get(lastSentences.size() - 1).equals(sentence1) : "save should store the sentence in the SentenceHistory object";
     }
 
+    //Secondo test per metodo save()
     @Test
     void testSaveMoreSentences() {
         

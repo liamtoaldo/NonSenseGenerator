@@ -53,6 +53,9 @@ class WordsDictionary {
     +Verb getRandomVerb()
     +Verb getRandomVerb(Tense)
     +Template getRandomTemplate()
+    +ArrayList<Noun> getNouns()
+    +ArrayList<Adjective> getAdjectives()
+    +ArrayList<Verb> getVerbs()
     +ArrayList<Template> getTemplates()
     +void saveTerms(ArrayList<Word>)
     +void saveTemplates(ArrayList<Template>)
@@ -64,8 +67,10 @@ class SentenceHistory {
     -static SentenceHistory instance
     -ArrayList<Sentence> savedSentences
     +static SentenceHistory getInstance()
-    +void save(Sentence)
+    +ArrayList<Sentence> getSentences()
     +ArrayList<Sentence> getLastSentences(int)
+    +void save(Sentence)
+    
 }
 
 ' SentenceGenerator usa Design Pattern: Factory Method

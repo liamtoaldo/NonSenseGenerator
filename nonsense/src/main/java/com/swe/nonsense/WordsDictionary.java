@@ -3,7 +3,7 @@ package com.swe.nonsense;
 import java.util.ArrayList;
 
 public class WordsDictionary {
-    private static WordsDictionary instance = new WordsDictionary();
+    private static WordsDictionary instance;
     private ArrayList<Noun> nouns;
     private ArrayList<Adjective> adjectives;
     private ArrayList<Verb> verbs;
@@ -84,6 +84,18 @@ public class WordsDictionary {
 
         int randomIndex = (int) (Math.random() * templates.size());
         return templates.get(randomIndex);
+    }
+    
+    public ArrayList<Noun> getNouns() {
+        return nouns;
+    }
+
+    public ArrayList<Adjective> getAdjectives() {
+        return adjectives;
+    }
+
+    public ArrayList<Verb> getVerbs() {
+        return verbs;
     }
 
     public ArrayList<Template> getTemplates() {

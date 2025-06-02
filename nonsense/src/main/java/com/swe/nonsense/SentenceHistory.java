@@ -23,7 +23,11 @@ public class SentenceHistory {
         return instance;
     }
 
-    //Dato savedSentences[sentence_n,..., sentence2, sentence2, sentence1]
+    public ArrayList<Sentence> getSentences() {
+        return savedSentences;
+    }
+
+    //Dato savedSentences[sentence_n,..., sentence2, sentence1]
     //Le sentences in lastSentence saranno visualizzate nel seguente ordine: 
     //lastSentences[sentence1, sentence2, ..., sentence_n]
     public ArrayList<Sentence> getLastSentence(int numberOfSentences) {
