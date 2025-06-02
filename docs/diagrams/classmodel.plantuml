@@ -94,9 +94,9 @@ class StorageManager {
 }
 
 class APIClient {
-    -String apiKey
-    +JSONObject get(String)
-    +JSONObject post(String, JSONObject)
+    -String googleNlpApiKey
+    +String get(String, Map<String, String>)
+    +String post(String, Map<String, String>, JSONObject)
 }
 
 ' SyntaxTree e SyntaxNode formano un pattern Composite
