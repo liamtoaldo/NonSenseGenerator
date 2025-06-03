@@ -132,6 +132,8 @@ public class StorageManagerTest {
 
     @Test
     void testSaveHistory() {
+
+        storageManager.loadDictionary();
         try {
             Files.writeString(sentencesFilePath.toPath(), "[]");
         } catch (Exception e) {
