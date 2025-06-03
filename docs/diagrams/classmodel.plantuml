@@ -7,6 +7,8 @@ class Sentence {
     +LocalDateTime getGenerationDate()
     +void setGenerationDate(LocalDateTime)
     +String toString()
+    +boolean isOpeningPunctuation()
+    +boolean isClosingPunctuation()
 }
 
 enum Tense {

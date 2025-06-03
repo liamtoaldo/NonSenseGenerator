@@ -9,7 +9,12 @@ public class Sentence {
     private ArrayList<Word> words;
     private LocalDateTime generationDate;
 
-    // Costruttori
+    /*
+    
+     COSTRUTTORI
+
+    */
+
     public Sentence() {
         this.words = new ArrayList<>();
         this.generationDate = LocalDateTime.now();
@@ -23,7 +28,7 @@ public class Sentence {
     public Sentence(String sentence) {
         this.words = new ArrayList<>();
         if (sentence != null && !sentence.isEmpty()) {
-            Pattern pattern = Pattern.compile("\\w+|[^\\w\\s]");
+            Pattern pattern = Pattern.compile("\\[.*?\\]|\\w+|[^\\w\\s]");
             Matcher matcher = pattern.matcher(sentence);
             while (matcher.find()) {
                 this.words.add(new Word(matcher.group()));
@@ -32,7 +37,12 @@ public class Sentence {
         this.generationDate = LocalDateTime.now();
     }
 
-    // Getters e Setters
+    /*
+
+     GETTERS E SETTERS
+
+    */
+
     public ArrayList<Word> getText() {
         return words;
     }
@@ -45,14 +55,63 @@ public class Sentence {
         this.generationDate = generationDate;
     }
 
-    // Metodi
+    /*
+
+     METODI
+
+    */
+
     @Override
     public String toString() {
-        String sentence = "";
-        for (Word word : words) {
-            sentence += word.getText() + " ";
+        if (words == null || words.isEmpty()) {
+            return "";
         }
-        return sentence.trim();
+        StringBuilder sb = new StringBuilder();
+        sb.append(words.get(0).getText());
+
+        // Aggiungi uno spazio tra le parole, ma non tra la prima parola e il segno di punteggiatura di apertura, altrimenti
+        // metterebbe spazi dove non andrebbero messi (es. prima di un punto).
+        for (int i = 1; i < words.size(); i++) {
+            String previousWordText = words.get(i - 1).getText();
+            String currentWordText = words.get(i).getText();
+
+            if (!isOpeningPunctuation(previousWordText) && !isClosingPunctuation(currentWordText)) {
+                sb.append(" ");
+            }
+            sb.append(currentWordText);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Verifica se il testo è un segno di punteggiatura di apertura 
+     * es. '(', '[', '{'...
+     * 
+     * @param text Il testo da controllare.
+     * @return true se è un segno di punteggiatura di apertura, false altrimenti.
+     */
+    private boolean isOpeningPunctuation(String text) {
+        if (text == null || text.length() != 1) {
+            return false;
+        }
+        char c = text.charAt(0);
+        return c == '(' || c == '[' || c == '{' || c == '<' || c == '“' || c == '‘';
+    }
+
+    /**
+     * Verifica se il testo è un segno di punteggiatura di chiusura
+     * es. '.', ',', '!', ')'...
+     * 
+     * @param text Il testo da controllare.
+     * @return true se è un segno di punteggiatura di chiusura, false altrimenti.
+     */
+    private boolean isClosingPunctuation(String text) {
+        if (text == null || text.length() != 1) {
+            return false;
+        }
+        char c = text.charAt(0);
+        return c == '.' || c == ',' || c == '!' || c == '?' || c == ';' || c == ':' ||
+                c == ')' || c == ']' || c == '}' || c == '>' || c == '”' || c == '’';
     }
 
 }

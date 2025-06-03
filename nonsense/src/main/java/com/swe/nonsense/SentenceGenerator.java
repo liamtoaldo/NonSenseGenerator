@@ -18,11 +18,11 @@ public class SentenceGenerator {
             throw new IllegalArgumentException("Template cannot be null");
         }
 
-        String sentence = template.getTemplate();
-        String[] words = sentence.split(" ");
-        for (String word : words) {
-            if (word.startsWith("[") && word.endsWith("]")) {
-                String placeholder = word.substring(1, word.length() - 1);
+        Sentence sentence = new Sentence(template.getTemplate());
+        for (Word word : sentence.getText()) {
+            String wordText = word.getText();
+            if (wordText.startsWith("[") && wordText.endsWith("]")) {
+                String placeholder = wordText.substring(1, wordText.length() - 1);
                 String replacement = "";
                 switch (placeholder) {
                     case "noun":
@@ -53,11 +53,11 @@ public class SentenceGenerator {
                     default:
                         break;
                 }
-                sentence = sentence.replace(word, replacement);
+                word.setText(replacement);
             }
         }
         ArrayList<Word> newSentence = new ArrayList<>();
-        for (String part : sentence.split(" ")) {
+        for (String part : sentence.toString().split(" ")) {
             newSentence.add(new Word(part));
         }
         return new Sentence(newSentence);
