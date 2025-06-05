@@ -13,7 +13,7 @@ public class SyntaxAnalyzer {
     }
 
     public SyntaxTree analyzeSyntax(Sentence sentence) {
-        if(sentence == null || sentence.getText() == null || sentence.getText().isEmpty()) {
+        if (sentence == null || sentence.getText() == null || sentence.getText().isEmpty()) {
             throw new IllegalArgumentException("Sentence cannot be null or empty");
         }
         // Per il momento usiamo un mock JSONObject per simulare la risposta dell'API
