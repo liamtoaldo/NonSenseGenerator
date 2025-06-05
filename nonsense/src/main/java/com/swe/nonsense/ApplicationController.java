@@ -2,6 +2,9 @@ package com.swe.nonsense;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ApplicationController {
     private StorageManager storageManager;
     private SentenceGenerator sentenceGenerator;
