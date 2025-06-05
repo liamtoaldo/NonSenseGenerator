@@ -97,6 +97,7 @@ class StorageManager {
 
 class APIClient {
     -String googleNlpApiKey
+    -HttpClient httpClient
     +String get(String, Map<String, String>)
     +String post(String, Map<String, String>, JSONObject)
 }
@@ -121,6 +122,7 @@ class SyntaxNode {
 }
 
 class SyntaxAnalyzer {
+    -static String GOOGLE_NLP_API_URL
     -APIClient apiClient
     +SyntaxTree analyzeSyntax(Sentence)
 }
@@ -142,6 +144,7 @@ class ModerationResult {
 }
 
 class ToxicityAnalyzer {
+    -static String GOOGLE_NLP_API_URL
     -APIClient apiClient
     +ModerationResult analyzeToxicity(Sentence)
     +boolean isToxic(ModerationResult)
