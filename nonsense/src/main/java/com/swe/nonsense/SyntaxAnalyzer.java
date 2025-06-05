@@ -28,14 +28,12 @@ public class SyntaxAnalyzer {
             throw new RuntimeException("Failed to get a valid response from the API");
         }
 
-        // Per il momento usiamo un mock JSONObject per simulare la risposta dell'API
         JSONObject responseObject = new JSONObject(response);
         JSONArray tokensArray = responseObject.getJSONArray("tokens");
 
         SyntaxTree syntaxTree = new SyntaxTree();
 
         SyntaxNode rootNode = null;
-        int rootHeadTokenIndex = -1;
         ArrayList<SyntaxNode> tempNodes = new ArrayList<>();
 
         // Salva prima tutti i token in una lista

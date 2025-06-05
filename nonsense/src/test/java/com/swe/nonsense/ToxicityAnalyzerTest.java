@@ -11,7 +11,7 @@ public class ToxicityAnalyzerTest {
 
     @BeforeEach
     void setUp() {
-        toxicityAnalyzer = new ToxicityAnalyzer(null); 
+        toxicityAnalyzer = new ToxicityAnalyzer(); 
     }
 
     @Test

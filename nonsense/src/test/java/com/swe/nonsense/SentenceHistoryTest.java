@@ -72,7 +72,7 @@ public class SentenceHistoryTest {
 
     @Test
     void testGetLastSentence() {
-        ArrayList<Sentence> lastSentences = sentenceHistory.getLastSentence(1);
+        ArrayList<Sentence> lastSentences = sentenceHistory.getLastSentences(1);
         assert lastSentences.get(lastSentences.size() - 1).equals(sentence2) : "getLastSentence should return the correct number of sentences";
     }
 
@@ -80,7 +80,7 @@ public class SentenceHistoryTest {
     @Test
     void testSaveOneSentence() {
         sentenceHistory.save(sentence1);
-        ArrayList<Sentence> lastSentences = sentenceHistory.getLastSentence(1);
+        ArrayList<Sentence> lastSentences = sentenceHistory.getLastSentences(1);
         assert lastSentences.get(lastSentences.size() - 1).equals(sentence1) : "save should store the sentence in the SentenceHistory object";
     }
 
@@ -90,7 +90,7 @@ public class SentenceHistoryTest {
         
         sentenceHistory.save(sentence1);
         sentenceHistory.save(sentence2);
-        ArrayList<Sentence> newLastSentences = sentenceHistory.getLastSentence(2);
+        ArrayList<Sentence> newLastSentences = sentenceHistory.getLastSentences(2);
         assert newLastSentences.get(newLastSentences.size() - 1).equals(sentence1) : "getLastSentence should return the most recent sentence first";
         assert newLastSentences.get(newLastSentences.size() - 2).equals(sentence2) : "getLastSentence should return the second most recent sentence second";
     }

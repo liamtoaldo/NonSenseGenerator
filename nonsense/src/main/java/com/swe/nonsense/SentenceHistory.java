@@ -30,7 +30,7 @@ public class SentenceHistory {
     //Dato savedSentences[sentence_n,..., sentence2, sentence1]
     //Le sentences in lastSentence saranno visualizzate nel seguente ordine: 
     //lastSentences[sentence1, sentence2, ..., sentence_n]
-    public ArrayList<Sentence> getLastSentence(int numberOfSentences) {
+    public ArrayList<Sentence> getLastSentences(int numberOfSentences) {
         ArrayList<Sentence> lastSentences = new ArrayList<>();
         if ((numberOfSentences <= 0) || (savedSentences.size() < numberOfSentences)) {
             throw new IllegalArgumentException("Number of sentences visualized must be greater than 0 and less than or equal to the number of saved sentences.");

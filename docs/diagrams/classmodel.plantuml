@@ -105,8 +105,10 @@ class APIClient {
 ' SyntaxTree e SyntaxNode formano un pattern Composite
 class SyntaxTree {
     -SyntaxNode root
+    -void collectNodesPreOrder(SyntaxNode, ArrayList<SyntaxNode>)
     +SyntaxNode getRoot()
     +void setRoot(SyntaxNode)
+    +ArrayList<SyntaxNode> getAllNodesInOrder()
 }
 
 class SyntaxNode {
@@ -156,6 +158,7 @@ class ApplicationController {
     -SentenceGenerator sentenceGenerator
     -SyntaxAnalyzer syntaxAnalyzer
     -ToxicityAnalyzer toxicityAnalyzer
+    -Sentence convertStringToSentence(String)
     +SyntaxTree getSyntaxTreeFromString(String)
     +Sentence generateNonSenseSentence(String, Template, Tense)
     +ModerationResult getSentenceToxicity(Sentence)
