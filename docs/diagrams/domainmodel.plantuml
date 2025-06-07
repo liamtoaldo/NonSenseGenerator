@@ -1,0 +1,39 @@
+@startuml
+title Domain Model
+
+object User
+object Application
+object SentenceGenerator
+object Analyzers
+object Storage
+object Noun
+object Verb
+object Adjective
+object Template
+object Sentence
+object SyntaxTree
+object ModerationResult
+
+User --> Application : interacts
+
+Application --> SentenceGenerator : uses
+Application "1"-->"2" Analyzers    : uses
+
+Application --> Storage   : uses for persistence
+
+SentenceGenerator --> Storage : uses data from
+
+Storage "1" *-- "n" Noun      : contains
+Storage "1" *-- "n" Verb      : contains
+Storage "1" *-- "n" Adjective : contains
+Storage "1" *-- "n" Template  : contains
+Storage "1" *-- "n" Sentence  : stores
+
+Analyzers --> Sentence : analyzes
+Analyzers  --> SyntaxTree   : produce
+Analyzers  --> ModerationResult : produce
+
+SentenceGenerator --> Sentence : generates
+
+
+@enduml

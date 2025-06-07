@@ -1,4 +1,5 @@
 @startuml
+title Class Model
 
 class Sentence {
     -ArrayList<Word> words
