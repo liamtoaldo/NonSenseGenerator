@@ -9,6 +9,8 @@
 	<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 	<!-- Page specific CSS -->
 	<link th:href="@{/css/index.css}" rel="stylesheet">
+	<!-- Page specific Javascript-->
+	<script th:src="@{/js/index.js}"></script>
 </head>
 
 <body class="d-flex flex-column">
@@ -60,8 +62,18 @@
 						</div>
 					</div>
 					<div class="col-md-8 d-flex flex-column">
-						<div class="section-box fill-height-box">
+						<div class="section-box d-flex flex-column">
 							<h5>OUTPUT</h5>
+							<div class="mb-3 flex-grow-1">
+								<textarea class="form-control h-100"
+									placeholder="The output sentence"></textarea>
+							</div>
+							<div class="button-group text-end py-0">
+								<button type="button" class="btn btn-success">ANALYZE TOXICITY</button>
+							</div>
+						</div>
+						<div class="section-box fill-height-box">
+							<h5>TOXICITY ANALYSIS</h5>
 							<div>Placeholder</div>
 						</div>
 					</div>
