@@ -23,9 +23,9 @@ public class ApplicationControllerTest {
 
         assertNotNull(syntaxTree, "Syntax tree should not be null");
         assertNotNull(syntaxTree.getRoot(), "Syntax tree root should not be null");
-        assertNotNull(syntaxTree.getAllNodesInOrder(), "Syntax tree nodes should not be null");
-        assertFalse(syntaxTree.getAllNodesInOrder().isEmpty(), "Syntax tree nodes should not be empty");
-        for (SyntaxNode node : syntaxTree.getAllNodesInOrder()) {
+        assertNotNull(syntaxTree.getAllNodes(), "Syntax tree nodes should not be null");
+        assertFalse(syntaxTree.getAllNodes().isEmpty(), "Syntax tree nodes should not be empty");
+        for (SyntaxNode node : syntaxTree.getAllNodes()) {
             assertNotNull(node.getWord(), "Each syntax node should have a word");
             assertFalse(node.getWord().getText().isEmpty(), "Each word in the syntax node should not be empty");
         }

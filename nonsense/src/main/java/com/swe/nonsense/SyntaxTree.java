@@ -24,12 +24,10 @@ public class SyntaxTree {
     /**
      * Restituisce una lista di tutti i nodi dell'albero di sintassi
      * in un ordine di attraversamento in pre-ordine (radice, poi figli ricorsivamente).
-     * Se i figli di ogni nodo sono memorizzati nell'ordine in cui appaiono nella frase originale,
-     * questo attraversamento produrrà i nodi in un ordine strutturato e leggibile.
      *
      * @return Una lista di SyntaxNode. Se l'albero è vuoto, restituisce una lista vuota.
      */
-    public ArrayList<SyntaxNode> getAllNodesInOrder() {
+    public ArrayList<SyntaxNode> getAllNodes() {
         ArrayList<SyntaxNode> orderedNodes = new ArrayList<>();
         if (this.root != null) {
             collectNodesPreOrder(this.root, orderedNodes);

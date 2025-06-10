@@ -2,88 +2,108 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>NonSenseGenerator</title>
-	<!-- Bootstrap CSS -->
-	<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-	<!-- Page specific CSS -->
-	<link th:href="@{/css/index.css}" rel="stylesheet">
-	<!-- Page specific Javascript-->
-	<script th:src="@{/js/index.js}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NonSenseGenerator</title>
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Page specific CSS -->
+    <link th:href="@{/css/index.css}" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column">
-	<div class="container-fluid main-container d-flex flex-column flex-grow-1">
-		<div class="row">
-			<div class="col-12">
-				<h1>NonSenseGenerator</h1>
-			</div>
-		</div>
-		<div class="row flex-grow-1" style="min-height: 0;">
-			<!-- Left Column -->
-			<div class="col-md-3 d-flex flex-column">
-				<div class="section-box fill-height-box">
-					<h5>HISTORY</h5>
-					<div>Placeholder</div>
-				</div>
-			</div>
+    <div class="container-fluid main-container d-flex flex-column flex-grow-1">
+        <div class="row">
+            <div class="col-12">
+                <h1>NonSenseGenerator</h1>
+            </div>
+        </div>
+        <div class="row flex-grow-1" style="min-height: 0;">
+            <!-- Left Column -->
+            <div class="col-md-3 d-flex flex-column">
+                <div class="section-box fill-height-box">
+                    <h5>HISTORY</h5>
+                    <div>Placeholder</div>
+                </div>
+            </div>
 
-			<!-- Right Column -->
-			<div class="col-md-9 d-flex flex-column">
-				<div class="section-box">
-					<h5>INPUT</h5>
-					<textarea class="form-control mb-3" rows="3" placeholder="Insert your input sentence"></textarea>
-					<div class="button-group text-end">
-						<div class="btn-group">
-							<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								TENSE
-							</button>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">RANDOM</a></li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="#">PRESENT</a></li>
-								<li><a class="dropdown-item" href="#">PAST</a></li>
-								<li><a class="dropdown-item" href="#">FUTURE</a></li>
-							</ul>
-							<button type="button" class="btn btn-primary">ANALYZE</button>
-							<button type="button" class="btn btn-success">GENERATE</button>
-						</div>
-					</div>
-				</div>
-				<div class="row flex-grow-1" style="min-height: 0;">
-					<div class="col-md-4 d-flex flex-column">
-						<div class="section-box fill-height-box">
-							<h5>SYNTAX TREE</h5>
-							<div>Placeholder</div>
-						</div>
-					</div>
-					<div class="col-md-8 d-flex flex-column">
-						<div class="section-box d-flex flex-column">
-							<h5>OUTPUT</h5>
-							<div class="mb-3 flex-grow-1">
-								<textarea class="form-control h-100"
-									placeholder="The output sentence"></textarea>
-							</div>
-							<div class="button-group text-end py-0">
-								<button type="button" class="btn btn-success">ANALYZE TOXICITY</button>
-							</div>
-						</div>
-						<div class="section-box fill-height-box">
-							<h5>TOXICITY ANALYSIS</h5>
-							<div>Placeholder</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <!-- Right Column -->
+            <div class="col-md-9 d-flex flex-column">
+                <div class="section-box">
+                    <h5>INPUT</h5>
+                    <textarea class="form-control mb-3" rows="3" placeholder="Insert your input sentence"
+                        id="inputText"></textarea>
+                    <div class="button-group text-end">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                TENSE
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">RANDOM</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">PRESENT</a></li>
+                                <li><a class="dropdown-item" href="#">PAST</a></li>
+                                <li><a class="dropdown-item" href="#">FUTURE</a></li>
+                            </ul>
+                            <button id="analyzeSyntaxButton" type="button" class="btn btn-primary">ANALYZE
+                                SYNTAX</button>
+                            <button id="generateButton" type="button" class="btn btn-success">GENERATE</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row flex-grow-1" style="min-height: 0;">
+                    <div class="col-md-6 d-flex flex-column">
+                        <div class="section-box fill-height-box position-relative">
+                            <h5>SYNTAX TREE</h5>
+                            <div class="h-100 w-100 position-relative">
+                                <!-- Canvas chart -->
+                                <canvas id="syntaxTreeChart" class=""></canvas>
+                                <!-- Spinner overlay -->
+                                <div id="syntaxTreeSpinner"
+                                    class="spinner-border text-primary position-absolute top-50 start-50" role="status"
+                                    style="z-index: 2; display: none;">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex flex-column">
+                        <div class="section-box d-flex flex-column">
+                            <h5>OUTPUT</h5>
+                            <div class="mb-3 flex-grow-1">
+                                <textarea class="form-control h-100" placeholder="The output sentence"></textarea>
+                            </div>
+                            <div class="button-group text-end py-0">
+                                <button type="button" class="btn btn-danger">ANALYZE TOXICITY</button>
+                            </div>
+                        </div>
+                        <div class="section-box fill-height-box">
+                            <h5>TOXICITY ANALYSIS</h5>
+                            <div>Placeholder</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<!-- Bootstrap JS -->
-	<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
+
+
+<!-- Bootstrap JS -->
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-graph"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+<!-- Jquery -->
+<script th:src="@{/js/jquery/jquery-3.7.1.min.js}"></script>
+
+<!-- Page specific Javascript-->
+<script th:src="@{/js/index.js}"></script>
 
 </html>

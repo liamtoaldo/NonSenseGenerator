@@ -64,7 +64,8 @@ public class SyntaxAnalyzer {
                             word = new Verb(wordText, Tense.FUTURE);
                             break;
                         default:
-                            throw new IllegalArgumentException("Unrecognized tense: " + tense);
+                            word = new Verb(wordText, Tense.UNKNOWN); // Gestione di casi sconosciuti
+                            break;
                     }
                     break;
                 case "ADJ":
@@ -74,6 +75,7 @@ public class SyntaxAnalyzer {
                     word = new Word(wordText);
                     break;
             }
+
             SyntaxNode currentNode = new SyntaxNode(word, depLabel);
             tempNodes.add(currentNode);
         }

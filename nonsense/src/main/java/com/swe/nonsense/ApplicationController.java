@@ -23,16 +23,42 @@ public class ApplicationController {
             throw new IllegalArgumentException("Sentence text cannot be null or empty");
         }
 
-        // Usa SyntaxAnalyzer per ottenere i tipi di parole
-        SyntaxAnalyzer syntaxAnalyzer = new SyntaxAnalyzer();
-        SyntaxTree syntaxTree = syntaxAnalyzer.analyzeSyntax(new Sentence(sentenceText));
+        // Analizza la sintassi per ottenere l'albero con le parole tipizzate.
+        Sentence sentenceForAnalysis = new Sentence(sentenceText); 
+        SyntaxTree syntaxTree = this.syntaxAnalyzer.analyzeSyntax(sentenceForAnalysis);
 
-        ArrayList<Word> words = new ArrayList<>();
-        for (SyntaxNode node : syntaxTree.getAllNodesInOrder()) {
-            words.add(node.getWord());
+        ArrayList<SyntaxNode> availableTypedNodes = new ArrayList<>(syntaxTree.getAllNodes());
+
+        Sentence originalOrderSentence = new Sentence(sentenceText);
+        ArrayList<Word> originalWordsInOrder = originalOrderSentence.getText();
+
+        ArrayList<Word> orderedTypedWords = new ArrayList<>();
+
+        // Per ogni parola/token della frase originale, trova la corrispondente Word tipizzata
+        for (Word originalWord : originalWordsInOrder) {
+            String targetText = originalWord.getText();
+            SyntaxNode matchedNode = null;
+            int matchedNodeIndex = -1;
+
+            for (int i = 0; i < availableTypedNodes.size(); i++) {
+                SyntaxNode candidateNode = availableTypedNodes.get(i);
+                if (candidateNode.getWord() != null && candidateNode.getWord().getText().equals(targetText)) {
+                    matchedNode = candidateNode;
+                    matchedNodeIndex = i;
+                    break; // Trovato il primo nodo corrispondente al testo
+                }
+            }
+
+            if (matchedNode != null) {
+                orderedTypedWords.add(matchedNode.getWord());
+                availableTypedNodes.remove(matchedNodeIndex); 
+            } else {
+                // Fallback: se non si trova una parola tipizzata, si utilizza la parola originale
+                orderedTypedWords.add(originalWord);
+            }
         }
 
-        return new Sentence(words);
+        return new Sentence(orderedTypedWords);
     }
 
     public SyntaxTree getSyntaxTreeFromString(String sentenceText) {
@@ -41,7 +67,8 @@ public class ApplicationController {
     }
 
     public Sentence generateNonSenseSentence(String input, Template template, Tense tense) {
-        // TODO: Implement logic to generate a non-sense sentence based on the input, template, and tense.
+        // TODO: Implement logic to generate a non-sense sentence based on the input,
+        // template, and tense.
         return new Sentence();
     }
 
