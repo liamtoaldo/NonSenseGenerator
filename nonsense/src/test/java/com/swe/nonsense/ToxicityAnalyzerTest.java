@@ -46,11 +46,11 @@ public class ToxicityAnalyzerTest {
         assert !isToxicResult : "isToxic should return false for a non-toxic sentence";
     }
 
-/*     @Test
+    @Test
     void testIsToxic_toxic() {
         Sentence sentence = new Sentence("this is a glock. A very dangerous firearm");
 
         boolean isToxicResult = toxicityAnalyzer.isToxic(sentence);
         assert isToxicResult : "isToxic should return true for a toxic sentence";
-    } */
+    } 
 }

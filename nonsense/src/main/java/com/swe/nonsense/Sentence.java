@@ -60,6 +60,13 @@ public class Sentence {
      METODI
 
     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this.toString() == obj.toString()) return true;
+        if (!(obj instanceof Sentence)) return false;
+        Sentence other = (Sentence) obj;
+        return words.equals(other.words);
+    }
 
     @Override
     public String toString() {
