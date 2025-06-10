@@ -7,6 +7,7 @@ class Sentence {
     +String getText()
     +LocalDateTime getGenerationDate()
     +void setGenerationDate(LocalDateTime)
+    +boolean equals(Object)
     +String toString()
     +boolean isOpeningPunctuation()
     +boolean isClosingPunctuation()

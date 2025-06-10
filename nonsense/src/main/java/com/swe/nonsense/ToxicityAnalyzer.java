@@ -29,8 +29,7 @@ public class ToxicityAnalyzer {
     String response = apiClient.post(GOOGLE_MODERATION_API_URL, null, new JSONObject()
         .put("document", new JSONObject()
             .put("type", "PLAIN_TEXT")
-            .put("content", sentence.toString()))
-        .put("encodingType", "UTF8"));
+            .put("content", sentence.toString())));
 
     if (response == null || response.isEmpty() || !response.contains("moderationCategories")) {
       throw new RuntimeException("Failed to get a valid response from the API");
