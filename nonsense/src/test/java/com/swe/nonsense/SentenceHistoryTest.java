@@ -42,6 +42,7 @@ public class SentenceHistoryTest {
         savedSentences.add(sentence2);
         
         sentenceHistory = SentenceHistory.getInstance();
+        sentenceHistory.clearData();
         sentenceHistory.save(sentence1);
         sentenceHistory.save(sentence2);
     }

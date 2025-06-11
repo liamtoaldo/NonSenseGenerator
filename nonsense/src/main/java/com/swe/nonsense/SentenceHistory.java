@@ -41,8 +41,12 @@ public class SentenceHistory {
         return lastSentences;
     }
 
-    //Metodo per i dati
+    //Metodi per aggiungere e togliere i dati
     public void save(Sentence sentence) {
         savedSentences.add(sentence);
+    }
+
+    public void clearData() {
+        savedSentences.clear();
     }
 }

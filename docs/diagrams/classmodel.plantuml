@@ -74,7 +74,7 @@ class SentenceHistory {
     +ArrayList<Sentence> getSentences()
     +ArrayList<Sentence> getLastSentences(int)
     +void save(Sentence)
-    
+    +void clearData()
 }
 
 ' SentenceGenerator usa Design Pattern: Factory Method
