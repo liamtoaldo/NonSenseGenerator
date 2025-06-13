@@ -105,5 +105,10 @@ public class ApplicationController {
 
         WordsDictionary wordsDictionary = WordsDictionary.getInstance();
         wordsDictionary.saveTerms(input.getText());
+        //TODO: capire se ha senso salvare il dizionario ogni volta che viene modificato
+        // Per ora, salviamo il dizionario ogni volta che viene modificato
+        // Questo potrebbe essere ottimizzato per salvare solo quando necessario
+        // ma per ora lo facciamo per semplicità.
+        storageManager.saveDictionary(wordsDictionary);
     }
 }
