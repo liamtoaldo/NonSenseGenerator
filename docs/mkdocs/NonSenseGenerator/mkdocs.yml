@@ -1,0 +1,10 @@
+site_name: NonSenseGenerator
+theme: readthedocs
+repo_url: https://github.com/liamtoaldo/NonSenseGenerator
+repo_name: NonSenseGenerator
+edit_uri: edit/main/docs/mkdocs/NonSenseGenerator/docs/
+site_description: A tool to generate nonsensical text based on user input.
+site_author: 4FB
+nav:
+  - Home: index.md
+  - About: about.md
