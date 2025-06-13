@@ -1,0 +1,17 @@
+[
+  {
+    "template": "The [ADJECTIVE] [NOUN] [VERB] the [NOUN]."
+  },
+  {
+    "template": "A [NOUN] [VERB] over the [ADJECTIVE] [NOUN]."
+  },
+  {
+    "template": "Why did the [NOUN] [VERB] the [ADJECTIVE] [NOUN]?"
+  },
+  {
+    "template": "[NOUN] often [VERB] when they are [ADJECTIVE]."
+  },
+  {
+    "template": "Look, a [ADJECTIVE] [NOUN] is [VERB]!"
+  }
+]

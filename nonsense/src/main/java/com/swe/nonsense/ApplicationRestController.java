@@ -21,11 +21,11 @@ public class ApplicationRestController {
         return app.getSyntaxTreeFromString(sentenceText);
     }
 
-    @GetMapping("/generateSentenceInput")
-    public Sentence generateSentenceInput(@RequestParam String sentenceText,
-                                          @RequestParam Template template,
+    @GetMapping("/generate-sentence")
+    public String generateSentenceInput(@RequestParam String sentenceText,
+                                          @RequestParam(required = false) Template template,
                                           @RequestParam Tense tense) {
-        return app.generateNonSenseSentence(sentenceText, template, tense);
+        return app.generateNonSenseSentence(sentenceText, template, tense).toString();
     }
 
 }

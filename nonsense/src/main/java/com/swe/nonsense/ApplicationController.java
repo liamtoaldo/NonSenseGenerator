@@ -13,6 +13,7 @@ public class ApplicationController {
 
     public ApplicationController() {
         this.storageManager = new StorageManager();
+        storageManager.loadDictionary(); // Carica il dizionario all'avvio dell'applicazione
         this.sentenceGenerator = new SentenceGenerator(WordsDictionary.getInstance());
         this.syntaxAnalyzer = new SyntaxAnalyzer();
         this.toxicityAnalyzer = new ToxicityAnalyzer();

@@ -1,10 +1,12 @@
 package com.swe.nonsense;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.core.io.ClassPathResource;
 
 public class StorageManager {
     private String nounsFilePath;
@@ -15,11 +17,11 @@ public class StorageManager {
 
     //Costruttori
     public StorageManager() {
-        this.nounsFilePath = null;
-        this.adjectivesFilePath = null;
-        this.verbsFilePath = null;
-        this.templatesFilePath = null;
-        this.sentencesFilePath = null;
+        this.nounsFilePath = "nouns.json"; // Questi nomi file verranno cercati alla radice del classpath
+        this.adjectivesFilePath = "adjectives.json";
+        this.verbsFilePath = "verbs.json";
+        this.templatesFilePath = "templates.json";
+        this.sentencesFilePath = "sentences.json";
     }
 
     public StorageManager(String nounsFilePath, String adjectivesFilePath, String verbsFilePath, String templatesFilePath, String sentencesFilePath) {
@@ -43,23 +45,31 @@ public class StorageManager {
 
         try {
             if (nounsFilePath != null) {
-                nouns = mapper.readValue(new File(nounsFilePath), new TypeReference<ArrayList<Noun>>(){});
+                InputStream inputStream = new ClassPathResource(nounsFilePath).getInputStream();
+                nouns = mapper.readValue(inputStream, new TypeReference<ArrayList<Noun>>(){});
+                inputStream.close();
             }
 
             if (adjectivesFilePath != null) {
-                adjectives = mapper.readValue(new File(adjectivesFilePath), new TypeReference<ArrayList<Adjective>>(){});
+                InputStream inputStream = new ClassPathResource(adjectivesFilePath).getInputStream();
+                adjectives = mapper.readValue(inputStream, new TypeReference<ArrayList<Adjective>>(){});
+                inputStream.close();
             }
 
             if (verbsFilePath != null) {
-                verbs = mapper.readValue(new File(verbsFilePath), new TypeReference<ArrayList<Verb>>(){});
+                InputStream inputStream = new ClassPathResource(verbsFilePath).getInputStream();
+                verbs = mapper.readValue(inputStream, new TypeReference<ArrayList<Verb>>(){});
+                inputStream.close();
             }
 
             if (templatesFilePath != null) {
-                templates = mapper.readValue(new File(templatesFilePath), new TypeReference<ArrayList<Template>>(){});
+                InputStream inputStream = new ClassPathResource(templatesFilePath).getInputStream();
+                templates = mapper.readValue(inputStream, new TypeReference<ArrayList<Template>>(){});
+                inputStream.close();
             }         
         } catch (Exception e) {
             e.printStackTrace();
-            //return null;
+            // Considera una gestione dell'eccezione più specifica o il rilancio
         }
 
         for (Noun noun : nouns) {
@@ -82,7 +92,6 @@ public class StorageManager {
     //Salva i dati del dizionario nel file JSON
     public void saveDictionary(WordsDictionary dictionary) {
         ObjectMapper mapper = new ObjectMapper();
-
         try {
             if (nounsFilePath != null) {
                 mapper.writeValue(new File(nounsFilePath), dictionary.getNouns());
@@ -109,7 +118,9 @@ public class StorageManager {
 
         try {
             if (sentencesFilePath != null) {
-                sentences = mapper.readValue(new File(sentencesFilePath), new TypeReference<ArrayList<Sentence>>(){});
+                InputStream inputStream = new ClassPathResource(sentencesFilePath).getInputStream();
+                sentences = mapper.readValue(inputStream, new TypeReference<ArrayList<Sentence>>(){});
+                inputStream.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -126,7 +137,7 @@ public class StorageManager {
     //Salva i dati della sentencehistory nel file JSON
     public void saveHistory(SentenceHistory history) {
         ObjectMapper mapper = new ObjectMapper();
-
+        // Stessa nota di saveDictionary riguardo al salvataggio dei file.
         try {
             if (sentencesFilePath != null) {
                 mapper.writeValue(new File(sentencesFilePath), history.getSentences());
