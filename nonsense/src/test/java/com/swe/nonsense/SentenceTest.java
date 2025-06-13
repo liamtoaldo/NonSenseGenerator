@@ -51,6 +51,22 @@ public class SentenceTest {
     }
 
     @Test
+    void testGetRandomNoun() {
+        sentence.getText().add(new Noun("cat"));
+        Noun randomNoun = sentence.getRandomNoun();
+        assert randomNoun != null : "getRandomNoun should return a non-null Noun from the sentence";
+        assert words.contains(randomNoun) : "getRandomNoun should return a noun that is part of the sentence's words";
+    }
+
+    @Test
+    void testGetRandomAdjective() {
+        sentence.getText().add(new Adjective("beautiful"));
+        Adjective randomAdjective = sentence.getRandomAdjective();
+        assert randomAdjective != null : "getRandomAdjective should return a non-null Adjective from the sentence";
+        assert words.contains(randomAdjective) : "getRandomAdjective should return an adjective that is part of the sentence's words";
+    }
+
+    @Test
     void testGetGenerationDate() {
         assert sentence.getGenerationDate() != null
                 : "getGenerationDate should return a non-null date for the sentence from setUp";

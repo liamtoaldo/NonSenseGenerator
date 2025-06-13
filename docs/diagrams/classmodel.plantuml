@@ -6,6 +6,8 @@ class Sentence {
     -LocalDateTime generationDate
     +String getText()
     +LocalDateTime getGenerationDate()
+    +Noun getRandomNoun()
+    +Adjective getRandomAdjective()
     +void setGenerationDate(LocalDateTime)
     +boolean equals(Object)
     +String toString()
@@ -80,8 +82,8 @@ class SentenceHistory {
 ' SentenceGenerator usa Design Pattern: Factory Method
 class SentenceGenerator {
     -WordsDictionary dictionary
-    +Sentence generateSentence(Template, Tense)
-    +Sentence generateRandomSentence(Tense)
+    +Sentence generateSentence(Sentence, Template, Tense)
+    +Sentence generateRandomSentence(Sentence, Tense)
 }
 
 ' StorageManager agisce come un Data Access Object (DAO) / Repository
@@ -160,7 +162,7 @@ class ApplicationController {
     -SentenceGenerator sentenceGenerator
     -SyntaxAnalyzer syntaxAnalyzer
     -ToxicityAnalyzer toxicityAnalyzer
-    -Sentence convertStringToSentence(String)
+    +Sentence convertStringToSentence(String)
     +SyntaxTree getSyntaxTreeFromString(String)
     +Sentence generateNonSenseSentence(String, Template, Tense)
     +ModerationResult getSentenceToxicity(Sentence)

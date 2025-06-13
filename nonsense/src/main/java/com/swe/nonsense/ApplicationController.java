@@ -18,7 +18,7 @@ public class ApplicationController {
         this.toxicityAnalyzer = new ToxicityAnalyzer();
     }
 
-    private Sentence convertStringToSentence(String sentenceText) {
+    public Sentence convertStringToSentence(String sentenceText) {
         if (sentenceText == null || sentenceText.isEmpty()) {
             throw new IllegalArgumentException("Sentence text cannot be null or empty");
         }
@@ -67,9 +67,22 @@ public class ApplicationController {
     }
 
     public Sentence generateNonSenseSentence(String input, Template template, Tense tense) {
-        // TODO: Implement logic to generate a non-sense sentence based on the input,
-        // template, and tense.
-        return new Sentence();
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("Input cannot be null or empty");
+        }
+        if (template == null) {
+            throw new IllegalArgumentException("Template cannot be null");
+        }
+        if (tense == null) {
+            throw new IllegalArgumentException("Tense cannot be null");
+        }
+        Sentence inputSentence = convertStringToSentence(input);
+        Sentence generatedSentence = sentenceGenerator.generateSentence(inputSentence, template, tense);
+        if (generatedSentence == null || generatedSentence.getText() == null || generatedSentence.getText().isEmpty()) {
+            throw new IllegalStateException("Generated sentence cannot be null or empty");
+        }
+        saveGeneratedSentence(generatedSentence);
+        return generatedSentence;
     }
 
     public ModerationResult getSentenceToxicity(Sentence sentence) {

@@ -1,6 +1,7 @@
 package com.swe.nonsense;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SentenceGenerator {
     private WordsDictionary dictionary;
@@ -13,62 +14,70 @@ public class SentenceGenerator {
         this.dictionary = dictionary;
     }
 
-    Sentence generateSentence(Template template, Tense tense) {
+    Sentence generateSentence(Sentence input, Template template, Tense tense) {
         if (template == null) {
             throw new IllegalArgumentException("Template cannot be null");
         }
 
-        Sentence sentence = new Sentence(template.getTemplate());
-        for (Word word : sentence.getText()) {
-            String wordText = word.getText();
+        Sentence templateSentence = new Sentence(template.getTemplate());
+        ArrayList<Word> processedWords = new ArrayList<>();
+
+        for (Word currentWordFromTemplate : templateSentence.getText()) {
+            String wordText = currentWordFromTemplate.getText();
             if (wordText.startsWith("[") && wordText.endsWith("]")) {
-                String placeholder = wordText.substring(1, wordText.length() - 1);
-                String replacement = "";
-                switch (placeholder) {
+                String placeholderType = wordText.substring(1, wordText.length() - 1).toLowerCase();
+                Word actualReplacement = null;
+                Random random = new Random();
+                // Scelta se usare input o dizionario
+                int choice = (input != null && !input.getText().isEmpty() && random.nextInt(2) == 0) ? 2 : 1;
+
+                switch (placeholderType) {
                     case "noun":
-                        Noun noun = dictionary.getRandomNoun();
+                        Noun noun = (choice == 2 && input != null) ? input.getRandomNoun() : dictionary.getRandomNoun();
+                        if (noun == null)
+                            noun = dictionary.getRandomNoun();
                         if (noun == null) {
-                            throw new IllegalStateException("No nouns available in the dictionary");
+                            throw new IllegalStateException("No nouns available in the dictionary or sentence");
                         }
-                        replacement = noun.getText();
+                        actualReplacement = noun;
                         break;
                     case "adjective":
-                        Adjective adjective = dictionary.getRandomAdjective();
+                        Adjective adjective = (choice == 2 && input != null) ? input.getRandomAdjective()
+                                : dictionary.getRandomAdjective();
+                        if (adjective == null)
+                            adjective = dictionary.getRandomAdjective();
                         if (adjective == null) {
-                            throw new IllegalStateException("No adjectives available in the dictionary");
+                            throw new IllegalStateException("No adjectives available in the dictionary or sentence");
                         }
-                        replacement = adjective.getText();
+                        actualReplacement = adjective;
                         break;
                     case "verb":
-                        Verb verb;
-                        if (tense != null)
-                            verb = dictionary.getRandomVerb(tense);
-                        else
-                            verb = dictionary.getRandomVerb();
+                        Verb verb = (tense != null) ? dictionary.getRandomVerb(tense) : dictionary.getRandomVerb();
                         if (verb == null) {
                             throw new IllegalStateException("No verbs available in the dictionary");
                         }
-                        replacement = verb.getText();
+                        actualReplacement = verb;
                         break;
                     default:
+                        actualReplacement = new Word(wordText);
                         break;
                 }
-                word.setText(replacement);
+                if (actualReplacement != null) {
+                    processedWords.add(actualReplacement);
+                }
+            } else {
+                processedWords.add(currentWordFromTemplate);
             }
         }
-        ArrayList<Word> newSentence = new ArrayList<>();
-        for (String part : sentence.toString().split(" ")) {
-            newSentence.add(new Word(part));
-        }
-        return new Sentence(newSentence);
+        return new Sentence(processedWords);
     }
 
-    Sentence generateRandomSentence(Tense tense) {
+    Sentence generateRandomSentence(Sentence sentence, Tense tense) {
         if (dictionary.getTemplates().isEmpty()) {
             throw new IllegalStateException("No templates available in the dictionary");
         }
         Template randomTemplate = dictionary.getRandomTemplate();
-        return generateSentence(randomTemplate, tense);
+        return generateSentence(sentence, randomTemplate, tense);
     }
 
 }

@@ -35,25 +35,28 @@ public class ApplicationControllerTest {
     void testGenerateNonSenseSentenceBasic() {
         Template template = new Template("This is a [adjective] [noun].");
         Tense tense = Tense.PRESENT;
-        Sentence generated = applicationController.generateNonSenseSentence("test input", template, tense);
-
+        Sentence sentenceText = applicationController.convertStringToSentence("test cat is good");
+        applicationController.addTermsToDictionaryFromInput(sentenceText);
+        Sentence generated = applicationController.generateNonSenseSentence("test cat is good", template, tense);
         assertNotNull(generated, "Generated sentence should not be null");
         List<Word> words = generated.getText();
         assertNotNull(words, "Generated sentence word list should not be null");
         assertFalse(words.isEmpty(), "Generated sentence word list should not be empty");
-        assertEquals(5, words.size(), "Expected 5 words for the template");
+        assertEquals(6, words.size(), "Expected 6 words for the template");
     }
 
     @Test
     void testGenerateNonSenseSentenceNoPlaceholders() {
         Template template = new Template("This is a [adjective] [noun].");
         Tense tense = Tense.PRESENT;
-        Sentence generated = applicationController.generateNonSenseSentence("test input", template, tense);
+        Sentence sentenceText = applicationController.convertStringToSentence("test cat is good");
+        applicationController.addTermsToDictionaryFromInput(sentenceText);
+        Sentence generated = applicationController.generateNonSenseSentence("test cat is good", template, tense);
         List<Word> words = generated.getText();
 
         String text = words.stream()
-                           .map(Word::getText)
-                           .collect(Collectors.joining(" "));
+                .map(Word::getText)
+                .collect(Collectors.joining(" "));
         assertTrue(text.startsWith("This is a"), "Generated sentence should start with 'This is a'");
         // Ensure no placeholder remains
         for (Word w : words) {
@@ -66,14 +69,15 @@ public class ApplicationControllerTest {
     void testGenerateNonSenseSentencePlaceholderReplacementTypes() {
         Template template = new Template("This is a [adjective] [noun].");
         Tense tense = Tense.PRESENT;
-        Sentence generated = applicationController.generateNonSenseSentence("test input", template, tense);
-        List<Word> words = generated.getText();
+        Sentence sentenceText = applicationController.convertStringToSentence("test cat is good");
+        applicationController.addTermsToDictionaryFromInput(sentenceText);
+        Sentence generated = applicationController.generateNonSenseSentence("test cat is good", template, tense);
 
         // Placeholder positions: index 3 -> adjective, index 4 -> noun
-        Word adj = words.get(3);
-        Word noun = words.get(4);
+        Word adj = generated.getText().get(3);
+        Word noun = generated.getText().get(4);
 
-        //Assert that it's type of Adjective and Noun
+        // Assert that it's type of Adjective and Noun
         assertTrue(adj instanceof Adjective, "Word at index 3 should be an Adjective");
         assertTrue(noun instanceof Noun, "Word at index 4 should be a Noun");
     }
@@ -117,6 +121,7 @@ public class ApplicationControllerTest {
     @Test
     void testAddTermsToDictionaryFromInputInvalid() {
         assertThrows(IllegalArgumentException.class, () -> applicationController.addTermsToDictionaryFromInput(null));
-        assertThrows(IllegalArgumentException.class, () -> applicationController.addTermsToDictionaryFromInput(new Sentence("")));
+        assertThrows(IllegalArgumentException.class,
+                () -> applicationController.addTermsToDictionaryFromInput(new Sentence("")));
     }
 }
