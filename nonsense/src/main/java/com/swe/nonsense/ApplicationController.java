@@ -18,13 +18,13 @@ public class ApplicationController {
         this.toxicityAnalyzer = new ToxicityAnalyzer();
     }
 
-    private Sentence convertStringToSentence(String sentenceText) {
+    public Sentence convertStringToSentence(String sentenceText) {
         if (sentenceText == null || sentenceText.isEmpty()) {
             throw new IllegalArgumentException("Sentence text cannot be null or empty");
         }
 
         // Analizza la sintassi per ottenere l'albero con le parole tipizzate.
-        Sentence sentenceForAnalysis = new Sentence(sentenceText); 
+        Sentence sentenceForAnalysis = new Sentence(sentenceText);
         SyntaxTree syntaxTree = this.syntaxAnalyzer.analyzeSyntax(sentenceForAnalysis);
 
         ArrayList<SyntaxNode> availableTypedNodes = new ArrayList<>(syntaxTree.getAllNodes());
@@ -34,7 +34,8 @@ public class ApplicationController {
 
         ArrayList<Word> orderedTypedWords = new ArrayList<>();
 
-        // Per ogni parola/token della frase originale, trova la corrispondente Word tipizzata
+        // Per ogni parola/token della frase originale, trova la corrispondente Word
+        // tipizzata
         for (Word originalWord : originalWordsInOrder) {
             String targetText = originalWord.getText();
             SyntaxNode matchedNode = null;
@@ -51,9 +52,10 @@ public class ApplicationController {
 
             if (matchedNode != null) {
                 orderedTypedWords.add(matchedNode.getWord());
-                availableTypedNodes.remove(matchedNodeIndex); 
+                availableTypedNodes.remove(matchedNodeIndex);
             } else {
-                // Fallback: se non si trova una parola tipizzata, si utilizza la parola originale
+                // Fallback: se non si trova una parola tipizzata, si utilizza la parola
+                // originale
                 orderedTypedWords.add(originalWord);
             }
         }
@@ -67,9 +69,25 @@ public class ApplicationController {
     }
 
     public Sentence generateNonSenseSentence(String input, Template template, Tense tense) {
-        // TODO: Implement logic to generate a non-sense sentence based on the input,
-        // template, and tense.
-        return new Sentence();
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("Input cannot be null or empty");
+        }
+
+        if (tense == null) {
+            throw new IllegalArgumentException("Tense cannot be null");
+        }
+        Sentence inputSentence = convertStringToSentence(input);
+        Sentence generatedSentence = null;
+        if (template == null) {
+            generatedSentence = sentenceGenerator.generateRandomSentence(inputSentence, tense);
+
+        } else
+            generatedSentence = sentenceGenerator.generateSentence(inputSentence, template, tense);
+        if (generatedSentence == null || generatedSentence.getText() == null || generatedSentence.getText().isEmpty()) {
+            throw new IllegalStateException("Generated sentence cannot be null or empty");
+        }
+        saveGeneratedSentence(generatedSentence);
+        return generatedSentence;
     }
 
     public ModerationResult getSentenceToxicity(Sentence sentence) {
@@ -105,7 +123,8 @@ public class ApplicationController {
 
         WordsDictionary wordsDictionary = WordsDictionary.getInstance();
         wordsDictionary.saveTerms(input.getText());
-        //TODO: capire se ha senso salvare il dizionario ogni volta che viene modificato
+        // TODO: capire se ha senso salvare il dizionario ogni volta che viene
+        // modificato
         // Per ora, salviamo il dizionario ogni volta che viene modificato
         // Questo potrebbe essere ottimizzato per salvare solo quando necessario
         // ma per ora lo facciamo per semplicità.

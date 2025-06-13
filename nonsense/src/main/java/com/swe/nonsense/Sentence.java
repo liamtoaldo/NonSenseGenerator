@@ -10,10 +10,10 @@ public class Sentence {
     private LocalDateTime generationDate;
 
     /*
-    
-     COSTRUTTORI
-
-    */
+     * 
+     * COSTRUTTORI
+     * 
+     */
 
     public Sentence() {
         this.words = new ArrayList<>();
@@ -38,10 +38,10 @@ public class Sentence {
     }
 
     /*
-
-     GETTERS E SETTERS
-
-    */
+     * 
+     * GETTERS E SETTERS
+     * 
+     */
 
     public ArrayList<Word> getText() {
         return words;
@@ -55,15 +55,45 @@ public class Sentence {
         this.generationDate = generationDate;
     }
 
+    public Noun getRandomNoun() {
+        ArrayList<Word> wordsTmp = new ArrayList<>();
+        for (Word word : words) {
+            if (word instanceof Noun) {
+                wordsTmp.add(word);
+            }
+        }
+        if (!wordsTmp.isEmpty()) {
+            int randomIndex = (int) (Math.random() * wordsTmp.size());
+            return (Noun) wordsTmp.get(randomIndex);
+        }
+        return null;
+    }
+
+    public Adjective getRandomAdjective() {
+        ArrayList<Word> wordsTmp = new ArrayList<>();
+        for (Word word : words) {
+            if (word instanceof Adjective) {
+                wordsTmp.add(word);
+            }
+        }
+        if (!wordsTmp.isEmpty()) {
+            int randomIndex = (int) (Math.random() * wordsTmp.size());
+            return (Adjective) wordsTmp.get(randomIndex);
+        }
+        return null;
+    }
+
     /*
-
-     METODI
-
-    */
+     * 
+     * METODI
+     * 
+     */
     @Override
     public boolean equals(Object obj) {
-        if (this.toString() == obj.toString()) return true;
-        if (!(obj instanceof Sentence)) return false;
+        if (this.toString() == obj.toString())
+            return true;
+        if (!(obj instanceof Sentence))
+            return false;
         Sentence other = (Sentence) obj;
         return words.equals(other.words);
     }
@@ -76,7 +106,8 @@ public class Sentence {
         StringBuilder sb = new StringBuilder();
         sb.append(words.get(0).getText());
 
-        // Aggiungi uno spazio tra le parole, ma non tra la prima parola e il segno di punteggiatura di apertura, altrimenti
+        // Aggiungi uno spazio tra le parole, ma non tra la prima parola e il segno di
+        // punteggiatura di apertura, altrimenti
         // metterebbe spazi dove non andrebbero messi (es. prima di un punto).
         for (int i = 1; i < words.size(); i++) {
             String previousWordText = words.get(i - 1).getText();
@@ -91,7 +122,7 @@ public class Sentence {
     }
 
     /**
-     * Verifica se il testo è un segno di punteggiatura di apertura 
+     * Verifica se il testo è un segno di punteggiatura di apertura
      * es. '(', '[', '{'...
      * 
      * @param text Il testo da controllare.

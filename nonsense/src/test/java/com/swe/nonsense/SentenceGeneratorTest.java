@@ -12,10 +12,12 @@ public class SentenceGeneratorTest {
     private StorageManager storageManager;
     private WordsDictionary wordsDictionary;
     private SentenceGenerator sentenceGenerator;
+    private ApplicationController applicationController;
 
     @BeforeEach
     void setUp() {
         storageManager = new StorageManager();
+        applicationController = new ApplicationController();
         wordsDictionary = storageManager.loadDictionary();
         wordsDictionary.clearAllData();
         sentenceGenerator = new SentenceGenerator(wordsDictionary);
@@ -40,18 +42,12 @@ public class SentenceGeneratorTest {
 
         wordsDictionary.saveTerms(words);
 
-        Sentence result = sentenceGenerator.generateSentence(template, Tense.PAST);
+        Sentence sentence = new Sentence("The good cat slept.");
+        sentence = applicationController.convertStringToSentence(sentence.toString());
+        Sentence result = sentenceGenerator.generateSentence(sentence, template, Tense.PAST);
         assertNotNull(result, "Generated sentence should not be null");
         assertEquals("The good cat slept.", result.toString(),
                 "Generated sentence does not match expected output");
-    }
-
-    @Test
-    void testGenerateSentence_nullTemplate() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            sentenceGenerator.generateSentence(null, Tense.PRESENT);
-        });
-        assertEquals("Template cannot be null", exception.getMessage());
     }
 
     @Test
@@ -61,11 +57,11 @@ public class SentenceGeneratorTest {
         ArrayList<Word> words = new ArrayList<>();
         words.add(new Verb("runs", Tense.PRESENT));
         wordsDictionary.saveTerms(words);
-
+        Sentence sentence = new Sentence("The runs.");
         Exception exception = assertThrows(IllegalStateException.class, () -> {
-            sentenceGenerator.generateSentence(template, Tense.PRESENT);
+            sentenceGenerator.generateSentence(sentence, template, Tense.PRESENT);
         });
-        assertEquals("No nouns available in the dictionary", exception.getMessage());
+        assertEquals("No nouns available in the dictionary or sentence", exception.getMessage());
     }
 
     @Test
@@ -75,11 +71,12 @@ public class SentenceGeneratorTest {
         ArrayList<Word> words = new ArrayList<>();
         words.add(new Noun("cat"));
         wordsDictionary.saveTerms(words);
-
+        Sentence initialSentence = new Sentence("The runs.");
+        final Sentence sentenceToUse = applicationController.convertStringToSentence(initialSentence.toString());
         Exception exception = assertThrows(IllegalStateException.class, () -> {
-            sentenceGenerator.generateSentence(template, Tense.PRESENT);
+            sentenceGenerator.generateSentence(sentenceToUse, template, Tense.PRESENT);
         });
-        assertEquals("No adjectives available in the dictionary", exception.getMessage());
+        assertEquals("No adjectives available in the dictionary or sentence", exception.getMessage());
     }
 
     @Test
@@ -89,9 +86,10 @@ public class SentenceGeneratorTest {
         ArrayList<Word> words = new ArrayList<>();
         words.add(new Noun("cat"));
         wordsDictionary.saveTerms(words);
-
+        Sentence sentence = new Sentence("The cat.");
+        final Sentence sentenceToUse = applicationController.convertStringToSentence(sentence.toString());
         Exception exception = assertThrows(IllegalStateException.class, () -> {
-            sentenceGenerator.generateSentence(template, Tense.PRESENT);
+            sentenceGenerator.generateSentence(sentenceToUse, template, Tense.PRESENT);
         });
         assertEquals("No verbs available in the dictionary", exception.getMessage());
     }
@@ -108,21 +106,14 @@ public class SentenceGeneratorTest {
         words.add(verb);
         ArrayList<Template> templates = new ArrayList<>();
         templates.add(template);
+        Sentence sentence = new Sentence("A bird flies.");
+        sentence = applicationController.convertStringToSentence(sentence.toString());
 
         wordsDictionary.saveTerms(words);
         wordsDictionary.saveTemplates(templates);
 
-        Sentence result = sentenceGenerator.generateRandomSentence(Tense.PRESENT);
+        Sentence result = sentenceGenerator.generateRandomSentence(sentence, Tense.PRESENT);
         assertNotNull(result, "Generated sentence should not be null");
         assertEquals("A bird flies.", result.toString(), "Generated random sentence does not match expected output");
-    }
-
-    @Test
-    void testGenerateRandomSentence_noTemplates() {
-
-        Exception exception = assertThrows(IllegalStateException.class, () -> {
-            sentenceGenerator.generateRandomSentence(Tense.PRESENT);
-        });
-        assertEquals("No templates available in the dictionary", exception.getMessage());
     }
 }

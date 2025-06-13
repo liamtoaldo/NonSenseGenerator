@@ -92,8 +92,6 @@ public class SyntaxAnalyzer {
 
             // Caso speciale root
             if (label.equals("ROOT")) {
-                JSONObject textObject = currentToken.getJSONObject("text");
-                String wordText = textObject.getString("content");
                 rootNode = currentNode;
             } else {
                 // Caso base per tutti gli altri nodi
