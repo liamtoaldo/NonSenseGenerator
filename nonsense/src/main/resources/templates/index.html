@@ -1,101 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NonSenseGenerator</title>
-    <!-- Bootstrap CSS -->
+
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-    <!-- Page specific CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link th:href="@{/css/index.css}" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
 </head>
 
-<body class="d-flex flex-column">
-    <div class="container-fluid main-container d-flex flex-column flex-grow-1">
-        <div class="row">
-            <div class="col-12">
-                <h1>NonSenseGenerator</h1>
-            </div>
-        </div>
-        <div class="row flex-grow-1" style="min-height: 0;">
-            <!-- Left Column -->
-            <div class="col-md-3 d-flex flex-column">
-                <div class="section-box fill-height-box">
-                    <h5>HISTORY</h5>
-                    <div>Placeholder</div>
-                </div>
-            </div>
+<body class="d-flex">
 
-            <!-- Right Column -->
-            <div class="col-md-9 d-flex flex-column">
-                <div class="section-box">
-                    <h5>INPUT</h5>
-                    <textarea class="form-control mb-3" rows="3" placeholder="Insert your input sentence"
-                        id="inputText"></textarea>
-                    <div class="button-group text-end">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                TEMPLATE
+    <!-- Sidebar -->
+    <div id="sidebar" class="d-flex flex-column collapsed">
+        <div class="sidebar-header">
+            <button id="sidebarToggle" class="btn">
+                <i class="bi bi-list fs-5"></i>
+            </button>
+        </div>
+        <h5 id="sidebarTitle" class="mb-2 mt-4">HISTORY</h5>
+
+        <div class="offcanvas-body flex-grow-1">
+            <div>Placeholder</div>
+        </div>
+    </div>
+
+
+
+    <!-- Main Content -->
+    <div id="main-content" class="flex-grow-1 d-flex flex-column">
+
+        <!-- Header -->
+        <div class="d-flex align-items-center justify-content-between p-3">
+            <h4 class="mb-0">NonSenseGenerator</h4>
+        </div>
+
+
+        <div class="container-fluid d-flex flex-column flex-grow-1 px-4">
+            <div class="row flex-grow-1" style="min-height: 0;">
+                <div class="col-12 d-flex flex-column">
+
+                    <!-- Input Box -->
+                    <h5 class="section-title">INPUT</h5>
+                    <div class="input-area mb-4">
+                        <textarea class="form-control io-box" rows="2" placeholder="Insert your input sentence..."
+                            id="inputText"></textarea>
+                        <div class="input-buttons-container">
+                            <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                title="Template">
+                                <i class="bi bi-layout-text-sidebar-reverse"></i>
                             </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">RANDOM</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Template 1</a></li>
-                                <li><a class="dropdown-item" href="#">Template 2</a></li>
-                                <li><a class="dropdown-item" href="#">Template 3</a></li>
-                            </ul>
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                TENSE
+                            <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                title="Tense">
+                                <i class="bi bi-clock"></i>
                             </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">RANDOM</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">PRESENT</a></li>
-                                <li><a class="dropdown-item" href="#">PAST</a></li>
-                                <li><a class="dropdown-item" href="#">FUTURE</a></li>
-                            </ul>
-                            <button id="analyzeSyntaxButton" type="button" class="btn btn-primary">ANALYZE
-                                SYNTAX</button>
-                            <button id="generateButton" type="button" class="btn btn-success">GENERATE</button>
+                            <button id="analyzeSyntaxButton" type="button" class="btn" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Analyze Syntax">
+                                <i class="bi bi-diagram-3"></i>
+                            </button>
+                            <button id="generateButton" type="button" class="btn" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Generate">
+                                <i class="bi bi-send"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-                <div class="row flex-grow-1" style="min-height: 0;">
-                    <div class="col-md-6 d-flex flex-column">
-                        <div class="section-box fill-height-box position-relative">
-                            <h5>SYNTAX TREE</h5>
-                            <div class="h-100 w-100 position-relative">
-                                <!-- Canvas chart -->
-                                <canvas id="syntaxTreeChart" class=""></canvas>
-                                <!-- Spinner overlay -->
-                                <div id="syntaxTreeSpinner"
-                                    class="spinner-border text-primary position-absolute top-50 start-50" role="status"
-                                    style="z-index: 2; display: none;">
-                                    <span class="visually-hidden">Loading...</span>
+
+                    <div class="row flex-grow-1" style="min-height: 0;">
+
+                        <!-- Syntax Tree Section -->
+                        <div class="col-md-6 d-flex flex-column">
+                            <h5 class="section-title">SYNTAX TREE</h5>
+                            <div class="section-box fill-height-box d-flex flex-column">
+                                <div class="flex-grow-1 position-relative overflow-auto">
+                                    <canvas id="syntaxTreeChart"></canvas>
+                                    <div id="syntaxTreeSpinner" class="spinner-border position-absolute top-50 start-50"
+                                        role="status" style="z-index: 2; display: none;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 d-flex flex-column">
-                        <div class="section-box d-flex flex-column">
-                            <h5>OUTPUT</h5>
-                            <div class="mb-3 flex-grow-1">
-                                <textarea class="form-control h-100" placeholder="The output sentence"></textarea>
+
+                        <div class="col-md-6 d-flex flex-column">
+
+                            <!-- Output Section -->
+                            <h5 class="section-title">OUTPUT</h5>
+                            <div class="position-relative mb-3 flex-grow-1">
+                                <textarea id="outputText" class="form-control io-box h-100"></textarea>
+                                <div class="output-buttons text-end py-0">
+                                    <button id="analyzeToxicityButton" type="button" class="btn"
+                                        data-bs-toggle="tooltip" title="Analyze Toxicity">
+                                        <i class="bi bi-shield-check"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="button-group text-end py-0">
-                                <button type="button" class="btn btn-danger">ANALYZE TOXICITY</button>
+
+                            <!-- Toxicity Analysis Section -->
+                            <h5 class="section-title">TOXICITY ANALYSIS</h5>
+                            <div class="section-box fill-height-box">
+                                <div id="toxicityAnalysisResult"></div>
                             </div>
-                        </div>
-                        <div class="section-box fill-height-box">
-                            <h5>TOXICITY ANALYSIS</h5>
-                            <div>Placeholder</div>
                         </div>
                     </div>
                 </div>

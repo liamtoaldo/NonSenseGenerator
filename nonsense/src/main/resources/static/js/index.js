@@ -32,9 +32,24 @@ function flattenTree(node, parentIndex = null, arr = [], labels = []) {
 }
 
 $(document).ready(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip();
+
+    // Nasconde il tooltip dopo il click sul bottone
+    $('[data-bs-toggle="tooltip"]').on('click', function () {
+        $(this).blur();
+    });
+
+    const sidebarToggle = $('#sidebarToggle');
+    const sidebar = $('#sidebar');
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.on('click', function() {
+            sidebar.toggleClass('collapsed');
+        });
+    }
+
     const analyzeButton = $('#analyzeSyntaxButton');
     const inputText = $('#inputText');
-    const ctx = $('#syntaxTreeChart')
+    const ctx = $('#syntaxTreeChart');
     let chart = null;
 
     if (analyzeButton && inputText && syntaxTreeChart) {
