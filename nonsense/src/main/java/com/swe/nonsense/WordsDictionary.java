@@ -1,15 +1,42 @@
 package com.swe.nonsense;
 
 import java.util.ArrayList;
-
+/**
+ * Class that manages the dictionary of words and templates. It is a singleton class so it can only be instantiated once.
+ * A dictionary is a collection of words and templates that can be used to generate sentences.
+ */
 public class WordsDictionary {
+
+    /**
+     * Singleton instance of WordsDictionary
+     */
     private static WordsDictionary instance;
+    
+    /**
+     * ArrayList of Nouns that contains the saved nouns
+     */
     private ArrayList<Noun> nouns;
+    
+    /**
+     * ArrayList of Adjectives that contains the saved adjectives
+     */
     private ArrayList<Adjective> adjectives;
+    
+    /**
+     * ArrayList of Verbs that contains the saved verbs
+     */
     private ArrayList<Verb> verbs;
+    
+    /**
+     * ArrayList of Templates that contains the saved templates
+     */
     private ArrayList<Template> templates;
 
     //Costruttore
+    /**
+     * Private constructor to enforce singleton pattern
+     * @throws IllegalStateException if an instance already exists
+     */
     private WordsDictionary() {
         if (instance != null) {
             throw new IllegalStateException("WordsDictionary is a singleton and cannot be instantiated multiple times");
@@ -22,6 +49,12 @@ public class WordsDictionary {
     }
 
     //Getters
+
+    /**
+     * Method that returns the singleton instance of WordsDictionary
+     *
+     * @return instance of WordsDictionary
+     */
     public static WordsDictionary getInstance() {
         if (instance == null) {
             instance = new WordsDictionary();
@@ -29,6 +62,11 @@ public class WordsDictionary {
         return instance;
     }
 
+    /**
+     * Method that returns a random noun from the dictionary
+     *
+     * @return a random Noun or null if there are no nouns
+     */
     public Noun getRandomNoun() {
         if (nouns.isEmpty()) {
             return null;
@@ -38,6 +76,11 @@ public class WordsDictionary {
         return nouns.get(randomIndex);
     }
 
+    /**
+     * Method that returns a random adjective from the dictionary
+     *
+     * @return a random Adjective or null if there are no adjectives
+     */
     public Adjective getRandomAdjective() {
         if (adjectives.isEmpty()) {
             return null;
@@ -47,6 +90,11 @@ public class WordsDictionary {
         return adjectives.get(randomIndex);
     }
 
+    /**
+     * Method that returns a random verb from the dictionary
+     *
+     * @return a random Verb or null if there are no verbs
+     */
     public Verb getRandomVerb() {
         if (verbs.isEmpty()) {
             return null;
@@ -56,6 +104,12 @@ public class WordsDictionary {
         return verbs.get(randomIndex);
     }
 
+    /**
+     * Method that returns a random verb from the dictionary with a specific tense
+     * 
+     * @param tense the tense of the verb to be returned
+     * @return a random Verb with the specified Tense or null if there are no verbs with that Tense
+     */
     public Verb getRandomVerb(Tense tense) {
         if (verbs.isEmpty()) {
             return null;
@@ -77,6 +131,11 @@ public class WordsDictionary {
         return verb;
     }
 
+    /**
+     * Method that returns a random template from the dictionary
+     *
+     * @return a random Template or null if there are no templates
+     */
     public Template getRandomTemplate() {
         if (templates.isEmpty()) {
             return null;
@@ -86,23 +145,49 @@ public class WordsDictionary {
         return templates.get(randomIndex);
     }
     
+    /**
+     * Method that returns all saved nouns from the dictionary
+     * 
+     * @return all saved nouns
+     */
     public ArrayList<Noun> getNouns() {
         return nouns;
     }
 
+    /**
+     * Method that returns all saved adjectives from the dictionary
+     * 
+     * @return all saved adjectives
+     */
     public ArrayList<Adjective> getAdjectives() {
         return adjectives;
     }
 
+    /**
+     * Method that returns all saved verbs from the dictionary
+     * 
+     * @return all saved verbs
+     */
     public ArrayList<Verb> getVerbs() {
         return verbs;
     }
 
+    /**
+     * Method that returns all saved templates from the dictionary
+     * 
+     * @return all saved templates
+     */
     public ArrayList<Template> getTemplates() {
         return templates;
     }
 
     //Metodi per salvare e cancellare i dati
+
+    /**
+     * Method that saves a list of words in the dictionary. It checks the type of each word and adds it to the corresponding list (nouns, adjectives, or verbs)
+     * 
+     * @param words
+     */
     public void saveTerms(ArrayList<Word> words) {
         for (Word word : words) {
             if (word instanceof Noun) {
@@ -115,10 +200,18 @@ public class WordsDictionary {
         }
     }
 
+    /**
+     * Method that saves a list of templates in the dictionary
+     * 
+     * @param templates
+     */
     public void saveTemplates(ArrayList<Template> templates) {
         this.templates.addAll(templates);
     }
 
+    /**
+     * Method that clears all saved nouns, adjectives, verbs, and templates from the dictionary
+     */
     public void clearAllData() {
         nouns.clear();
         adjectives.clear();
