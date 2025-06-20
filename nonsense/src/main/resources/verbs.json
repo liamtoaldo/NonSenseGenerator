@@ -1,22 +1,3346 @@
 [
   {
-    "text": "runs",
+    "text": "run",
     "tense": "PRESENT"
   },
   {
-    "text": "ate",
+    "text": "eat",
     "tense": "PAST"
   },
   {
-    "text": "will sleep",
+    "text": "sleep",
     "tense": "FUTURE"
   },
   {
-    "text": "reads",
+    "text": "read",
     "tense": "PRESENT"
   },
   {
-    "text": "wrote",
+    "text": "write",
     "tense": "PAST"
+  },
+  {
+    "text": "walk",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "talk",
+    "tense": "PAST"
+  },
+  {
+    "text": "think",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "create",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "build",
+    "tense": "PAST"
+  },
+  {
+    "text": "destroy",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "learn",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "teach",
+    "tense": "PAST"
+  },
+  {
+    "text": "see",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hear",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "drive",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "fly",
+    "tense": "PAST"
+  },
+  {
+    "text": "swim",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sing",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "dance",
+    "tense": "PAST"
+  },
+  {
+    "text": "paint",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "cook",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "clean",
+    "tense": "PAST"
+  },
+  {
+    "text": "code",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "jump",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sleep",
+    "tense": "PAST"
+  },
+  {
+    "text": "eat",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "write",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "read",
+    "tense": "PAST"
+  },
+  {
+    "text": "talk",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "walk",
+    "tense": "PAST"
+  },
+  {
+    "text": "build",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "destroy",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "create",
+    "tense": "PAST"
+  },
+  {
+    "text": "learn",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "teach",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "see",
+    "tense": "PAST"
+  },
+  {
+    "text": "hear",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hear",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "drive",
+    "tense": "PAST"
+  },
+  {
+    "text": "fly",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "swim",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sing",
+    "tense": "PAST"
+  },
+  {
+    "text": "dance",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "paint",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "cook",
+    "tense": "PAST"
+  },
+  {
+    "text": "clean",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "code",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "jump",
+    "tense": "PAST"
+  },
+  {
+    "text": "run",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "eat",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sleep",
+    "tense": "PAST"
+  },
+  {
+    "text": "read",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "write",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "speak",
+    "tense": "PAST"
+  },
+  {
+    "text": "walk",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "think",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "create",
+    "tense": "PAST"
+  },
+  {
+    "text": "build",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "destroy",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "learn",
+    "tense": "PAST"
+  },
+  {
+    "text": "teach",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "see",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "hear",
+    "tense": "PAST"
+  },
+  {
+    "text": "drive",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "fly",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "swim",
+    "tense": "PAST"
+  },
+  {
+    "text": "sing",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "dance",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "paint",
+    "tense": "PAST"
+  },
+  {
+    "text": "cook",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "clean",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "code",
+    "tense": "PAST"
+  },
+  {
+    "text": "jump",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sleep",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "run",
+    "tense": "PAST"
+  },
+  {
+    "text": "write",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "talk",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "think",
+    "tense": "PAST"
+  },
+  {
+    "text": "create",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "build",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "destroy",
+    "tense": "PAST"
+  },
+  {
+    "text": "learn",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "teach",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "see",
+    "tense": "PAST"
+  },
+  {
+    "text": "hear",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "drive",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "fly",
+    "tense": "PAST"
+  },
+  {
+    "text": "swim",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sing",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "dance",
+    "tense": "PAST"
+  },
+  {
+    "text": "paint",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "cook",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "clean",
+    "tense": "PAST"
+  },
+  {
+    "text": "code",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "work",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "play",
+    "tense": "PAST"
+  },
+  {
+    "text": "sing",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "study",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "travel",
+    "tense": "PAST"
+  },
+  {
+    "text": "eat",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "live",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "die",
+    "tense": "PAST"
+  },
+  {
+    "text": "live",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "open",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "close",
+    "tense": "PAST"
+  },
+  {
+    "text": "open",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "buy",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sell",
+    "tense": "PAST"
+  },
+  {
+    "text": "buy",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "give",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "take",
+    "tense": "PAST"
+  },
+  {
+    "text": "give",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "find",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "lose",
+    "tense": "PAST"
+  },
+  {
+    "text": "find",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "start",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "end",
+    "tense": "PAST"
+  },
+  {
+    "text": "start",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "win",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "lose",
+    "tense": "PAST"
+  },
+  {
+    "text": "win",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "come",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "go",
+    "tense": "PAST"
+  },
+  {
+    "text": "come",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "go",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "come",
+    "tense": "PAST"
+  },
+  {
+    "text": "go",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "say",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "say",
+    "tense": "PAST"
+  },
+  {
+    "text": "say",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "tell",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "tell",
+    "tense": "PAST"
+  },
+  {
+    "text": "tell",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "ask",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "ask",
+    "tense": "PAST"
+  },
+  {
+    "text": "ask",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "answer",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "answer",
+    "tense": "PAST"
+  },
+  {
+    "text": "answer",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "show",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "show",
+    "tense": "PAST"
+  },
+  {
+    "text": "show",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "mean",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "mean",
+    "tense": "PAST"
+  },
+  {
+    "text": "mean",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "feel",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "feel",
+    "tense": "PAST"
+  },
+  {
+    "text": "feel",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "become",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "become",
+    "tense": "PAST"
+  },
+  {
+    "text": "become",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "leave",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "leave",
+    "tense": "PAST"
+  },
+  {
+    "text": "leave",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "put",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "put",
+    "tense": "PAST"
+  },
+  {
+    "text": "put",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hold",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "hold",
+    "tense": "PAST"
+  },
+  {
+    "text": "hold",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "bring",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "bring",
+    "tense": "PAST"
+  },
+  {
+    "text": "bring",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "spend",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "spend",
+    "tense": "PAST"
+  },
+  {
+    "text": "spend",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "stand",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "stand",
+    "tense": "PAST"
+  },
+  {
+    "text": "stand",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "lose",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "lose",
+    "tense": "PAST"
+  },
+  {
+    "text": "lose",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "catch",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "catch",
+    "tense": "PAST"
+  },
+  {
+    "text": "catch",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "fall",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "fall",
+    "tense": "PAST"
+  },
+  {
+    "text": "fall",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "rise",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "rise",
+    "tense": "PAST"
+  },
+  {
+    "text": "rise",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "set",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "set",
+    "tense": "PAST"
+  },
+  {
+    "text": "set",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "grow",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "grow",
+    "tense": "PAST"
+  },
+  {
+    "text": "grow",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hide",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "hide",
+    "tense": "PAST"
+  },
+  {
+    "text": "hide",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "meet",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "meet",
+    "tense": "PAST"
+  },
+  {
+    "text": "meet",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "send",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "send",
+    "tense": "PAST"
+  },
+  {
+    "text": "send",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "spend",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "spend",
+    "tense": "PAST"
+  },
+  {
+    "text": "spend",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hold",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "hold",
+    "tense": "PAST"
+  },
+  {
+    "text": "hold",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "pay",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "pay",
+    "tense": "PAST"
+  },
+  {
+    "text": "pay",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "win",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "win",
+    "tense": "PAST"
+  },
+  {
+    "text": "win",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "cut",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "cut",
+    "tense": "PAST"
+  },
+  {
+    "text": "cut",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hit",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "hit",
+    "tense": "PAST"
+  },
+  {
+    "text": "hit",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "shut",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "shut",
+    "tense": "PAST"
+  },
+  {
+    "text": "shut",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "spread",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "spread",
+    "tense": "PAST"
+  },
+  {
+    "text": "spread",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "read",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "read",
+    "tense": "PAST"
+  },
+  {
+    "text": "read",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "lend",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "lend",
+    "tense": "PAST"
+  },
+  {
+    "text": "lend",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "send",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "send",
+    "tense": "PAST"
+  },
+  {
+    "text": "send",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "build",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "build",
+    "tense": "PAST"
+  },
+  {
+    "text": "build",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "break",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "break",
+    "tense": "PAST"
+  },
+  {
+    "text": "break",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "choose",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "choose",
+    "tense": "PAST"
+  },
+  {
+    "text": "choose",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "draw",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "draw",
+    "tense": "PAST"
+  },
+  {
+    "text": "draw",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "drink",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "drink",
+    "tense": "PAST"
+  },
+  {
+    "text": "drink",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "eat",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "eat",
+    "tense": "PAST"
+  },
+  {
+    "text": "eat",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "give",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "give",
+    "tense": "PAST"
+  },
+  {
+    "text": "give",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "ride",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "ride",
+    "tense": "PAST"
+  },
+  {
+    "text": "ride",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "see",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "see",
+    "tense": "PAST"
+  },
+  {
+    "text": "see",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "take",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "take",
+    "tense": "PAST"
+  },
+  {
+    "text": "take",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "wake",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "wake",
+    "tense": "PAST"
+  },
+  {
+    "text": "wake",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "drive",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "drive",
+    "tense": "PAST"
+  },
+  {
+    "text": "drive",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "forget",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "forget",
+    "tense": "PAST"
+  },
+  {
+    "text": "forget",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "freeze",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "freeze",
+    "tense": "PAST"
+  },
+  {
+    "text": "freeze",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "get",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "get",
+    "tense": "PAST"
+  },
+  {
+    "text": "get",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "go",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "go",
+    "tense": "PAST"
+  },
+  {
+    "text": "go",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "know",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "know",
+    "tense": "PAST"
+  },
+  {
+    "text": "know",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "lie",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "lie",
+    "tense": "PAST"
+  },
+  {
+    "text": "lie",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "ride",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "ride",
+    "tense": "PAST"
+  },
+  {
+    "text": "ride",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "ring",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "ring",
+    "tense": "PAST"
+  },
+  {
+    "text": "ring",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "rise",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "rise",
+    "tense": "PAST"
+  },
+  {
+    "text": "rise",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "shake",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "shake",
+    "tense": "PAST"
+  },
+  {
+    "text": "shake",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sing",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sing",
+    "tense": "PAST"
+  },
+  {
+    "text": "sing",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "speak",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "speak",
+    "tense": "PAST"
+  },
+  {
+    "text": "speak",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "steal",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "steal",
+    "tense": "PAST"
+  },
+  {
+    "text": "steal",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "swear",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "swear",
+    "tense": "PAST"
+  },
+  {
+    "text": "swear",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "tear",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "tear",
+    "tense": "PAST"
+  },
+  {
+    "text": "tear",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "throw",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "throw",
+    "tense": "PAST"
+  },
+  {
+    "text": "throw",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "wear",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "wear",
+    "tense": "PAST"
+  },
+  {
+    "text": "wear",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "write",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "write",
+    "tense": "PAST"
+  },
+  {
+    "text": "write",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "beat",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "beat",
+    "tense": "PAST"
+  },
+  {
+    "text": "beat",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "bite",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "bite",
+    "tense": "PAST"
+  },
+  {
+    "text": "bite",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "blow",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "blow",
+    "tense": "PAST"
+  },
+  {
+    "text": "blow",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "breed",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "breed",
+    "tense": "PAST"
+  },
+  {
+    "text": "breed",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "dig",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "dig",
+    "tense": "PAST"
+  },
+  {
+    "text": "dig",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "feed",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "feed",
+    "tense": "PAST"
+  },
+  {
+    "text": "feed",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "fight",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "fight",
+    "tense": "PAST"
+  },
+  {
+    "text": "fight",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "find",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "find",
+    "tense": "PAST"
+  },
+  {
+    "text": "find",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hang",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "hang",
+    "tense": "PAST"
+  },
+  {
+    "text": "hang",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "keep",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "keep",
+    "tense": "PAST"
+  },
+  {
+    "text": "keep",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "make",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "make",
+    "tense": "PAST"
+  },
+  {
+    "text": "make",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sit",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sit",
+    "tense": "PAST"
+  },
+  {
+    "text": "sit",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "spell",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "spell",
+    "tense": "PAST"
+  },
+  {
+    "text": "spell",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "stand",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "stand",
+    "tense": "PAST"
+  },
+  {
+    "text": "stand",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "understand",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "understand",
+    "tense": "PAST"
+  },
+  {
+    "text": "understand",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "weep",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "weep",
+    "tense": "PAST"
+  },
+  {
+    "text": "weep",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "wind",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "wind",
+    "tense": "PAST"
+  },
+  {
+    "text": "wind",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hold",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "hold",
+    "tense": "PAST"
+  },
+  {
+    "text": "hold",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sing",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sing",
+    "tense": "PAST"
+  },
+  {
+    "text": "sing",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "swim",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "swim",
+    "tense": "PAST"
+  },
+  {
+    "text": "swim",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "fly",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "fly",
+    "tense": "PAST"
+  },
+  {
+    "text": "fly",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "give",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "give",
+    "tense": "PAST"
+  },
+  {
+    "text": "give",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "take",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "take",
+    "tense": "PAST"
+  },
+  {
+    "text": "take",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "put",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "put",
+    "tense": "PAST"
+  },
+  {
+    "text": "put",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "get",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "get",
+    "tense": "PAST"
+  },
+  {
+    "text": "get",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "come",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "come",
+    "tense": "PAST"
+  },
+  {
+    "text": "come",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "go",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "go",
+    "tense": "PAST"
+  },
+  {
+    "text": "go",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "make",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "make",
+    "tense": "PAST"
+  },
+  {
+    "text": "make",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "do",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "do",
+    "tense": "PAST"
+  },
+  {
+    "text": "do",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "have",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "have",
+    "tense": "PAST"
+  },
+  {
+    "text": "have",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "say",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "say",
+    "tense": "PAST"
+  },
+  {
+    "text": "say",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "see",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "see",
+    "tense": "PAST"
+  },
+  {
+    "text": "see",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "know",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "know",
+    "tense": "PAST"
+  },
+  {
+    "text": "know",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "think",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "think",
+    "tense": "PAST"
+  },
+  {
+    "text": "think",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "feel",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "feel",
+    "tense": "PAST"
+  },
+  {
+    "text": "feel",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "become",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "become",
+    "tense": "PAST"
+  },
+  {
+    "text": "become",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "leave",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "leave",
+    "tense": "PAST"
+  },
+  {
+    "text": "leave",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "mean",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "mean",
+    "tense": "PAST"
+  },
+  {
+    "text": "mean",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "work",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "work",
+    "tense": "PAST"
+  },
+  {
+    "text": "work",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "play",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "play",
+    "tense": "PAST"
+  },
+  {
+    "text": "play",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "study",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "study",
+    "tense": "PAST"
+  },
+  {
+    "text": "study",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "travel",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "travel",
+    "tense": "PAST"
+  },
+  {
+    "text": "travel",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "live",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "live",
+    "tense": "PAST"
+  },
+  {
+    "text": "live",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "die",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "die",
+    "tense": "PAST"
+  },
+  {
+    "text": "die",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "open",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "open",
+    "tense": "PAST"
+  },
+  {
+    "text": "open",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "close",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "close",
+    "tense": "PAST"
+  },
+  {
+    "text": "close",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "buy",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "buy",
+    "tense": "PAST"
+  },
+  {
+    "text": "buy",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sell",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sell",
+    "tense": "PAST"
+  },
+  {
+    "text": "sell",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "win",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "win",
+    "tense": "PAST"
+  },
+  {
+    "text": "win",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "lose",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "lose",
+    "tense": "PAST"
+  },
+  {
+    "text": "lose",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "start",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "start",
+    "tense": "PAST"
+  },
+  {
+    "text": "start",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "end",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "end",
+    "tense": "PAST"
+  },
+  {
+    "text": "end",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "help",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "help",
+    "tense": "PAST"
+  },
+  {
+    "text": "help",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "use",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "use",
+    "tense": "PAST"
+  },
+  {
+    "text": "use",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "find",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "find",
+    "tense": "PAST"
+  },
+  {
+    "text": "find",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "send",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "send",
+    "tense": "PAST"
+  },
+  {
+    "text": "send",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "bring",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "bring",
+    "tense": "PAST"
+  },
+  {
+    "text": "bring",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "take",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "take",
+    "tense": "PAST"
+  },
+  {
+    "text": "take",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "give",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "give",
+    "tense": "PAST"
+  },
+  {
+    "text": "give",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "ask",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "ask",
+    "tense": "PAST"
+  },
+  {
+    "text": "ask",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "show",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "show",
+    "tense": "PAST"
+  },
+  {
+    "text": "show",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "put",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "put",
+    "tense": "PAST"
+  },
+  {
+    "text": "put",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "keep",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "keep",
+    "tense": "PAST"
+  },
+  {
+    "text": "keep",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "let",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "let",
+    "tense": "PAST"
+  },
+  {
+    "text": "let",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "need",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "need",
+    "tense": "PAST"
+  },
+  {
+    "text": "need",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "feel",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "feel",
+    "tense": "PAST"
+  },
+  {
+    "text": "feel",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "become",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "become",
+    "tense": "PAST"
+  },
+  {
+    "text": "become",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "leave",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "leave",
+    "tense": "PAST"
+  },
+  {
+    "text": "leave",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "mean",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "mean",
+    "tense": "PAST"
+  },
+  {
+    "text": "mean",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "move",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "move",
+    "tense": "PAST"
+  },
+  {
+    "text": "move",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "live",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "live",
+    "tense": "PAST"
+  },
+  {
+    "text": "live",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "believe",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "believe",
+    "tense": "PAST"
+  },
+  {
+    "text": "believe",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hold",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "hold",
+    "tense": "PAST"
+  },
+  {
+    "text": "hold",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "write",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "write",
+    "tense": "PAST"
+  },
+  {
+    "text": "write",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "provide",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "provide",
+    "tense": "PAST"
+  },
+  {
+    "text": "provide",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sit",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sit",
+    "tense": "PAST"
+  },
+  {
+    "text": "sit",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "stand",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "stand",
+    "tense": "PAST"
+  },
+  {
+    "text": "stand",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "lose",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "lose",
+    "tense": "PAST"
+  },
+  {
+    "text": "lose",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "pay",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "pay",
+    "tense": "PAST"
+  },
+  {
+    "text": "pay",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "meet",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "meet",
+    "tense": "PAST"
+  },
+  {
+    "text": "meet",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "include",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "include",
+    "tense": "PAST"
+  },
+  {
+    "text": "include",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "continue",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "continue",
+    "tense": "PAST"
+  },
+  {
+    "text": "continue",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "set",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "set",
+    "tense": "PAST"
+  },
+  {
+    "text": "set",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "learn",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "learn",
+    "tense": "PAST"
+  },
+  {
+    "text": "learn",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "change",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "change",
+    "tense": "PAST"
+  },
+  {
+    "text": "change",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "lead",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "lead",
+    "tense": "PAST"
+  },
+  {
+    "text": "lead",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "understand",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "understand",
+    "tense": "PAST"
+  },
+  {
+    "text": "understand",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "watch",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "watch",
+    "tense": "PAST"
+  },
+  {
+    "text": "watch",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "follow",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "follow",
+    "tense": "PAST"
+  },
+  {
+    "text": "follow",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "stop",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "stop",
+    "tense": "PAST"
+  },
+  {
+    "text": "stop",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "create",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "create",
+    "tense": "PAST"
+  },
+  {
+    "text": "create",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "speak",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "speak",
+    "tense": "PAST"
+  },
+  {
+    "text": "speak",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "produce",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "produce",
+    "tense": "PAST"
+  },
+  {
+    "text": "produce",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "receive",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "receive",
+    "tense": "PAST"
+  },
+  {
+    "text": "receive",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "require",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "require",
+    "tense": "PAST"
+  },
+  {
+    "text": "require",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "report",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "report",
+    "tense": "PAST"
+  },
+  {
+    "text": "report",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "build",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "build",
+    "tense": "PAST"
+  },
+  {
+    "text": "build",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hope",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "hope",
+    "tense": "PAST"
+  },
+  {
+    "text": "hope",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "expect",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "expect",
+    "tense": "PAST"
+  },
+  {
+    "text": "expect",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "wait",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "wait",
+    "tense": "PAST"
+  },
+  {
+    "text": "wait",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "grow",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "grow",
+    "tense": "PAST"
+  },
+  {
+    "text": "grow",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "send",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "send",
+    "tense": "PAST"
+  },
+  {
+    "text": "send",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "remain",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "remain",
+    "tense": "PAST"
+  },
+  {
+    "text": "remain",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "appear",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "appear",
+    "tense": "PAST"
+  },
+  {
+    "text": "appear",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sell",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sell",
+    "tense": "PAST"
+  },
+  {
+    "text": "sell",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "add",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "add",
+    "tense": "PAST"
+  },
+  {
+    "text": "add",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "develop",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "develop",
+    "tense": "PAST"
+  },
+  {
+    "text": "develop",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "agree",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "agree",
+    "tense": "PAST"
+  },
+  {
+    "text": "agree",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "consider",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "consider",
+    "tense": "PAST"
+  },
+  {
+    "text": "consider",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "buy",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "buy",
+    "tense": "PAST"
+  },
+  {
+    "text": "buy",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "decide",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "decide",
+    "tense": "PAST"
+  },
+  {
+    "text": "decide",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "explain",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "explain",
+    "tense": "PAST"
+  },
+  {
+    "text": "explain",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "prepare",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "prepare",
+    "tense": "PAST"
+  },
+  {
+    "text": "prepare",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "carry",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "carry",
+    "tense": "PAST"
+  },
+  {
+    "text": "carry",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "receive",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "receive",
+    "tense": "PAST"
+  },
+  {
+    "text": "receive",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "describe",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "describe",
+    "tense": "PAST"
+  },
+  {
+    "text": "describe",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "push",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "push",
+    "tense": "PAST"
+  },
+  {
+    "text": "push",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "pull",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "pull",
+    "tense": "PAST"
+  },
+  {
+    "text": "pull",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "enter",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "enter",
+    "tense": "PAST"
+  },
+  {
+    "text": "enter",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "exit",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "exit",
+    "tense": "PAST"
+  },
+  {
+    "text": "exit",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "arrive",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "arrive",
+    "tense": "PAST"
+  },
+  {
+    "text": "arrive",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "depart",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "depart",
+    "tense": "PAST"
+  },
+  {
+    "text": "depart",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "return",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "return",
+    "tense": "PAST"
+  },
+  {
+    "text": "return",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "live",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "live",
+    "tense": "PAST"
+  },
+  {
+    "text": "live",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "die",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "die",
+    "tense": "PAST"
+  },
+  {
+    "text": "die",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "marry",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "marry",
+    "tense": "PAST"
+  },
+  {
+    "text": "marry",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "divorce",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "divorce",
+    "tense": "PAST"
+  },
+  {
+    "text": "divorce",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "eat",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "eat",
+    "tense": "PAST"
+  },
+  {
+    "text": "eat",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "drink",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "drink",
+    "tense": "PAST"
+  },
+  {
+    "text": "drink",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sleep",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sleep",
+    "tense": "PAST"
+  },
+  {
+    "text": "sleep",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "wake",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "wake",
+    "tense": "PAST"
+  },
+  {
+    "text": "wake",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "dress",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "dress",
+    "tense": "PAST"
+  },
+  {
+    "text": "dress",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "undress",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "undress",
+    "tense": "PAST"
+  },
+  {
+    "text": "undress",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "wash",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "wash",
+    "tense": "PAST"
+  },
+  {
+    "text": "wash",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "clean",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "clean",
+    "tense": "PAST"
+  },
+  {
+    "text": "clean",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "cook",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "cook",
+    "tense": "PAST"
+  },
+  {
+    "text": "cook",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "eat",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "eat",
+    "tense": "PAST"
+  },
+  {
+    "text": "eat",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "drink",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "drink",
+    "tense": "PAST"
+  },
+  {
+    "text": "drink",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "breathe",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "breathe",
+    "tense": "PAST"
+  },
+  {
+    "text": "breathe",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "hear",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "hear",
+    "tense": "PAST"
+  },
+  {
+    "text": "hear",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "see",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "see",
+    "tense": "PAST"
+  },
+  {
+    "text": "see",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "smell",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "smell",
+    "tense": "PAST"
+  },
+  {
+    "text": "smell",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "taste",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "taste",
+    "tense": "PAST"
+  },
+  {
+    "text": "taste",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "touch",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "touch",
+    "tense": "PAST"
+  },
+  {
+    "text": "touch",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "feel",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "feel",
+    "tense": "PAST"
+  },
+  {
+    "text": "feel",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "speak",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "speak",
+    "tense": "PAST"
+  },
+  {
+    "text": "speak",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "listen",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "listen",
+    "tense": "PAST"
+  },
+  {
+    "text": "listen",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "read",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "read",
+    "tense": "PAST"
+  },
+  {
+    "text": "read",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "write",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "write",
+    "tense": "PAST"
+  },
+  {
+    "text": "write",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "learn",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "learn",
+    "tense": "PAST"
+  },
+  {
+    "text": "learn",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "teach",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "teach",
+    "tense": "PAST"
+  },
+  {
+    "text": "teach",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "study",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "study",
+    "tense": "PAST"
+  },
+  {
+    "text": "study",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "graduate",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "graduate",
+    "tense": "PAST"
+  },
+  {
+    "text": "graduate",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "work",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "work",
+    "tense": "PAST"
+  },
+  {
+    "text": "work",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "retire",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "retire",
+    "tense": "PAST"
+  },
+  {
+    "text": "retire",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "travel",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "travel",
+    "tense": "PAST"
+  },
+  {
+    "text": "travel",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "visit",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "visit",
+    "tense": "PAST"
+  },
+  {
+    "text": "visit",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "explore",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "explore",
+    "tense": "PAST"
+  },
+  {
+    "text": "explore",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "discover",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "discover",
+    "tense": "PAST"
+  },
+  {
+    "text": "discover",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "invent",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "invent",
+    "tense": "PAST"
+  },
+  {
+    "text": "invent",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "create",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "create",
+    "tense": "PAST"
+  },
+  {
+    "text": "create",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "destroy",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "destroy",
+    "tense": "PAST"
+  },
+  {
+    "text": "destroy",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "build",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "build",
+    "tense": "PAST"
+  },
+  {
+    "text": "build",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "design",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "design",
+    "tense": "PAST"
+  },
+  {
+    "text": "design",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "draw",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "draw",
+    "tense": "PAST"
+  },
+  {
+    "text": "draw",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "paint",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "paint",
+    "tense": "PAST"
+  },
+  {
+    "text": "paint",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sculpt",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sculpt",
+    "tense": "PAST"
+  },
+  {
+    "text": "sculpt",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "sing",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "sing",
+    "tense": "PAST"
+  },
+  {
+    "text": "sing",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "dance",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "dance",
+    "tense": "PAST"
+  },
+  {
+    "text": "dance",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "play",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "play",
+    "tense": "PAST"
+  },
+  {
+    "text": "play",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "compose",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "compose",
+    "tense": "PAST"
+  },
+  {
+    "text": "compose",
+    "tense": "FUTURE"
+  },
+  {
+    "text": "perform",
+    "tense": "PRESENT"
+  },
+  {
+    "text": "perform",
+    "tense": "PAST"
+  },
+  {
+    "text": "perform",
+    "tense": "FUTURE"
   }
 ]

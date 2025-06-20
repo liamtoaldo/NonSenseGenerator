@@ -13,5 +13,2063 @@
   },
   {
     "text": "interesting"
+  },
+  {
+    "text": "beautiful"
+  },
+  {
+    "text": "ugly"
+  },
+  {
+    "text": "smart"
+  },
+  {
+    "text": "stupid"
+  },
+  {
+    "text": "tall"
+  },
+  {
+    "text": "short"
+  },
+  {
+    "text": "old"
+  },
+  {
+    "text": "young"
+  },
+  {
+    "text": "new"
+  },
+  {
+    "text": "ancient"
+  },
+  {
+    "text": "bright"
+  },
+  {
+    "text": "dark"
+  },
+  {
+    "text": "loud"
+  },
+  {
+    "text": "quiet"
+  },
+  {
+    "text": "soft"
+  },
+  {
+    "text": "hard"
+  },
+  {
+    "text": "easy"
+  },
+  {
+    "text": "difficult"
+  },
+  {
+    "text": "simple"
+  },
+  {
+    "text": "complex"
+  },
+  {
+    "text": "brave"
+  },
+  {
+    "text": "cowardly"
+  },
+  {
+    "text": "honest"
+  },
+  {
+    "text": "dishonest"
+  },
+  {
+    "text": "kind"
+  },
+  {
+    "text": "cruel"
+  },
+  {
+    "text": "generous"
+  },
+  {
+    "text": "stingy"
+  },
+  {
+    "text": "polite"
+  },
+  {
+    "text": "rude"
+  },
+  {
+    "text": "calm"
+  },
+  {
+    "text": "anxious"
+  },
+  {
+    "text": "energetic"
+  },
+  {
+    "text": "lazy"
+  },
+  {
+    "text": "clean"
+  },
+  {
+    "text": "dirty"
+  },
+  {
+    "text": "dry"
+  },
+  {
+    "text": "wet"
+  },
+  {
+    "text": "hot"
+  },
+  {
+    "text": "cold"
+  },
+  {
+    "text": "warm"
+  },
+  {
+    "text": "cool"
+  },
+  {
+    "text": "empty"
+  },
+  {
+    "text": "full"
+  },
+  {
+    "text": "hungry"
+  },
+  {
+    "text": "thirsty"
+  },
+  {
+    "text": "sleepy"
+  },
+  {
+    "text": "awake"
+  },
+  {
+    "text": "sick"
+  },
+  {
+    "text": "healthy"
+  },
+  {
+    "text": "strong"
+  },
+  {
+    "text": "weak"
+  },
+  {
+    "text": "rich"
+  },
+  {
+    "text": "poor"
+  },
+  {
+    "text": "safe"
+  },
+  {
+    "text": "dangerous"
+  },
+  {
+    "text": "true"
+  },
+  {
+    "text": "false"
+  },
+  {
+    "text": "good"
+  },
+  {
+    "text": "bad"
+  },
+  {
+    "text": "perfect"
+  },
+  {
+    "text": "imperfect"
+  },
+  {
+    "text": "delicious"
+  },
+  {
+    "text": "tasteless"
+  },
+  {
+    "text": "fragrant"
+  },
+  {
+    "text": "stinky"
+  },
+  {
+    "text": "smooth"
+  },
+  {
+    "text": "rough"
+  },
+  {
+    "text": "sharp"
+  },
+  {
+    "text": "dull"
+  },
+  {
+    "text": "heavy"
+  },
+  {
+    "text": "light"
+  },
+  {
+    "text": "near"
+  },
+  {
+    "text": "far"
+  },
+  {
+    "text": "wide"
+  },
+  {
+    "text": "narrow"
+  },
+  {
+    "text": "deep"
+  },
+  {
+    "text": "shallow"
+  },
+  {
+    "text": "thick"
+  },
+  {
+    "text": "thin"
+  },
+  {
+    "text": "straight"
+  },
+  {
+    "text": "curved"
+  },
+  {
+    "text": "round"
+  },
+  {
+    "text": "square"
+  },
+  {
+    "text": "triangular"
+  },
+  {
+    "text": "rectangular"
+  },
+  {
+    "text": "oval"
+  },
+  {
+    "text": "flat"
+  },
+  {
+    "text": "bumpy"
+  },
+  {
+    "text": "hollow"
+  },
+  {
+    "text": "solid"
+  },
+  {
+    "text": "sticky"
+  },
+  {
+    "text": "slippery"
+  },
+  {
+    "text": "wobbly"
+  },
+  {
+    "text": "stable"
+  },
+  {
+    "text": "flexible"
+  },
+  {
+    "text": "rigid"
+  },
+  {
+    "text": "elastic"
+  },
+  {
+    "text": "brittle"
+  },
+  {
+    "text": "shiny"
+  },
+  {
+    "text": "matte"
+  },
+  {
+    "text": "transparent"
+  },
+  {
+    "text": "opaque"
+  },
+  {
+    "text": "visible"
+  },
+  {
+    "text": "invisible"
+  },
+  {
+    "text": "audible"
+  },
+  {
+    "text": "inaudible"
+  },
+  {
+    "text": "tangible"
+  },
+  {
+    "text": "intangible"
+  },
+  {
+    "text": "active"
+  },
+  {
+    "text": "passive"
+  },
+  {
+    "text": "eager"
+  },
+  {
+    "text": "reluctant"
+  },
+  {
+    "text": "enthusiastic"
+  },
+  {
+    "text": "apathetic"
+  },
+  {
+    "text": "optimistic"
+  },
+  {
+    "text": "pessimistic"
+  },
+  {
+    "text": "patient"
+  },
+  {
+    "text": "impatient"
+  },
+  {
+    "text": "curious"
+  },
+  {
+    "text": "indifferent"
+  },
+  {
+    "text": "creative"
+  },
+  {
+    "text": "unimaginative"
+  },
+  {
+    "text": "logical"
+  },
+  {
+    "text": "illogical"
+  },
+  {
+    "text": "rational"
+  },
+  {
+    "text": "irrational"
+  },
+  {
+    "text": "sensible"
+  },
+  {
+    "text": "foolish"
+  },
+  {
+    "text": "responsible"
+  },
+  {
+    "text": "irresponsible"
+  },
+  {
+    "text": "reliable"
+  },
+  {
+    "text": "unreliable"
+  },
+  {
+    "text": "dependable"
+  },
+  {
+    "text": "undependable"
+  },
+  {
+    "text": "loyal"
+  },
+  {
+    "text": "disloyal"
+  },
+  {
+    "text": "friendly"
+  },
+  {
+    "text": "unfriendly"
+  },
+  {
+    "text": "sociable"
+  },
+  {
+    "text": "unsociable"
+  },
+  {
+    "text": "outgoing"
+  },
+  {
+    "text": "shy"
+  },
+  {
+    "text": "modest"
+  },
+  {
+    "text": "arrogant"
+  },
+  {
+    "text": "humble"
+  },
+  {
+    "text": "proud"
+  },
+  {
+    "text": "assertive"
+  },
+  {
+    "text": "submissive"
+  },
+  {
+    "text": "determined"
+  },
+  {
+    "text": "hesitant"
+  },
+  {
+    "text": "confident"
+  },
+  {
+    "text": "insecure"
+  },
+  {
+    "text": "careful"
+  },
+  {
+    "text": "careless"
+  },
+  {
+    "text": "cautious"
+  },
+  {
+    "text": "reckless"
+  },
+  {
+    "text": "attentive"
+  },
+  {
+    "text": "distracted"
+  },
+  {
+    "text": "focused"
+  },
+  {
+    "text": "unfocused"
+  },
+  {
+    "text": "organized"
+  },
+  {
+    "text": "disorganized"
+  },
+  {
+    "text": "neat"
+  },
+  {
+    "text": "messy"
+  },
+  {
+    "text": "tidy"
+  },
+  {
+    "text": "untidy"
+  },
+  {
+    "text": "cleanly"
+  },
+  {
+    "text": "slovenly"
+  },
+  {
+    "text": "punctual"
+  },
+  {
+    "text": "late"
+  },
+  {
+    "text": "early"
+  },
+  {
+    "text": "timely"
+  },
+  {
+    "text": "untimely"
+  },
+  {
+    "text": "diligent"
+  },
+  {
+    "text": "negligent"
+  },
+  {
+    "text": "efficient"
+  },
+  {
+    "text": "inefficient"
+  },
+  {
+    "text": "productive"
+  },
+  {
+    "text": "unproductive"
+  },
+  {
+    "text": "successful"
+  },
+  {
+    "text": "unsuccessful"
+  },
+  {
+    "text": "effective"
+  },
+  {
+    "text": "ineffective"
+  },
+  {
+    "text": "useful"
+  },
+  {
+    "text": "useless"
+  },
+  {
+    "text": "helpful"
+  },
+  {
+    "text": "unhelpful"
+  },
+  {
+    "text": "valuable"
+  },
+  {
+    "text": "worthless"
+  },
+  {
+    "text": "precious"
+  },
+  {
+    "text": "cheap"
+  },
+  {
+    "text": "expensive"
+  },
+  {
+    "text": "affordable"
+  },
+  {
+    "text": "costly"
+  },
+  {
+    "text": "free"
+  },
+  {
+    "text": "paid"
+  },
+  {
+    "text": "borrowed"
+  },
+  {
+    "text": "lent"
+  },
+  {
+    "text": "owned"
+  },
+  {
+    "text": "shared"
+  },
+  {
+    "text": "public"
+  },
+  {
+    "text": "private"
+  },
+  {
+    "text": "common"
+  },
+  {
+    "text": "rare"
+  },
+  {
+    "text": "unique"
+  },
+  {
+    "text": "ordinary"
+  },
+  {
+    "text": "special"
+  },
+  {
+    "text": "general"
+  },
+  {
+    "text": "specific"
+  },
+  {
+    "text": "definite"
+  },
+  {
+    "text": "indefinite"
+  },
+  {
+    "text": "certain"
+  },
+  {
+    "text": "uncertain"
+  },
+  {
+    "text": "possible"
+  },
+  {
+    "text": "impossible"
+  },
+  {
+    "text": "probable"
+  },
+  {
+    "text": "improbable"
+  },
+  {
+    "text": "likely"
+  },
+  {
+    "text": "unlikely"
+  },
+  {
+    "text": "sure"
+  },
+  {
+    "text": "unsure"
+  },
+  {
+    "text": "clear"
+  },
+  {
+    "text": "unclear"
+  },
+  {
+    "text": "obvious"
+  },
+  {
+    "text": "hidden"
+  },
+  {
+    "text": "apparent"
+  },
+  {
+    "text": "invisible"
+  },
+  {
+    "text": "visible"
+  },
+  {
+    "text": "distinct"
+  },
+  {
+    "text": "indistinct"
+  },
+  {
+    "text": "plain"
+  },
+  {
+    "text": "fancy"
+  },
+  {
+    "text": "simple"
+  },
+  {
+    "text": "ornate"
+  },
+  {
+    "text": "elegant"
+  },
+  {
+    "text": "clumsy"
+  },
+  {
+    "text": "graceful"
+  },
+  {
+    "text": "awkward"
+  },
+  {
+    "text": "fluent"
+  },
+  {
+    "text": "hesitant"
+  },
+  {
+    "text": " articulate"
+  },
+  {
+    "text": "inarticulate"
+  },
+  {
+    "text": "eloquent"
+  },
+  {
+    "text": "inelegant"
+  },
+  {
+    "text": "vivid"
+  },
+  {
+    "text": "dull"
+  },
+  {
+    "text": "colorful"
+  },
+  {
+    "text": "monochromatic"
+  },
+  {
+    "text": "bright"
+  },
+  {
+    "text": "faded"
+  },
+  {
+    "text": "glowing"
+  },
+  {
+    "text": "dim"
+  },
+  {
+    "text": "sparkling"
+  },
+  {
+    "text": "murky"
+  },
+  {
+    "text": "clear"
+  },
+  {
+    "text": "cloudy"
+  },
+  {
+    "text": "sunny"
+  },
+  {
+    "text": "stormy"
+  },
+  {
+    "text": "windy"
+  },
+  {
+    "text": "calm"
+  },
+  {
+    "text": "breezy"
+  },
+  {
+    "text": "still"
+  },
+  {
+    "text": "fresh"
+  },
+  {
+    "text": "stale"
+  },
+  {
+    "text": "crisp"
+  },
+  {
+    "text": "soggy"
+  },
+  {
+    "text": "juicy"
+  },
+  {
+    "text": "dry"
+  },
+  {
+    "text": "ripe"
+  },
+  {
+    "text": "unripe"
+  },
+  {
+    "text": "sweet"
+  },
+  {
+    "text": "sour"
+  },
+  {
+    "text": "bitter"
+  },
+  {
+    "text": "spicy"
+  },
+  {
+    "text": "mild"
+  },
+  {
+    "text": "salty"
+  },
+  {
+    "text": "bland"
+  },
+  {
+    "text": "creamy"
+  },
+  {
+    "text": "crunchy"
+  },
+  {
+    "text": "chewy"
+  },
+  {
+    "text": "tender"
+  },
+  {
+    "text": "tough"
+  },
+  {
+    "text": "smooth"
+  },
+  {
+    "text": "grainy"
+  },
+  {
+    "text": "velvety"
+  },
+  {
+    "text": "silky"
+  },
+  {
+    "text": "rough"
+  },
+  {
+    "text": "prickly"
+  },
+  {
+    "text": "fuzzy"
+  },
+  {
+    "text": "fluffy"
+  },
+  {
+    "text": "hairy"
+  },
+  {
+    "text": "bald"
+  },
+  {
+    "text": "curly"
+  },
+  {
+    "text": "straight"
+  },
+  {
+    "text": "wavy"
+  },
+  {
+    "text": "braided"
+  },
+  {
+    "text": "long"
+  },
+  {
+    "text": "short"
+  },
+  {
+    "text": "blond"
+  },
+  {
+    "text": "brunette"
+  },
+  {
+    "text": "redhead"
+  },
+  {
+    "text": "grey"
+  },
+  {
+    "text": "white"
+  },
+  {
+    "text": "black"
+  },
+  {
+    "text": "blue"
+  },
+  {
+    "text": "green"
+  },
+  {
+    "text": "yellow"
+  },
+  {
+    "text": "orange"
+  },
+  {
+    "text": "purple"
+  },
+  {
+    "text": "pink"
+  },
+  {
+    "text": "brown"
+  },
+  {
+    "text": "grey"
+  },
+  {
+    "text": "silver"
+  },
+  {
+    "text": "golden"
+  },
+  {
+    "text": "bronze"
+  },
+  {
+    "text": "metallic"
+  },
+  {
+    "text": "wooden"
+  },
+  {
+    "text": "plastic"
+  },
+  {
+    "text": "glass"
+  },
+  {
+    "text": "fabric"
+  },
+  {
+    "text": "paper"
+  },
+  {
+    "text": "leather"
+  },
+  {
+    "text": "stone"
+  },
+  {
+    "text": "concrete"
+  },
+  {
+    "text": "brick"
+  },
+  {
+    "text": "steel"
+  },
+  {
+    "text": "iron"
+  },
+  {
+    "text": "copper"
+  },
+  {
+    "text": "aluminum"
+  },
+  {
+    "text": "rubber"
+  },
+  {
+    "text": "ceramic"
+  },
+  {
+    "text": "porcelain"
+  },
+  {
+    "text": "cotton"
+  },
+  {
+    "text": "wool"
+  },
+  {
+    "text": "silk"
+  },
+  {
+    "text": "linen"
+  },
+  {
+    "text": "denim"
+  },
+  {
+    "text": "velvet"
+  },
+  {
+    "text": "satin"
+  },
+  {
+    "text": "chiffon"
+  },
+  {
+    "text": "lace"
+  },
+  {
+    "text": "embroidered"
+  },
+  {
+    "text": "knitted"
+  },
+  {
+    "text": "woven"
+  },
+  {
+    "text": "dyed"
+  },
+  {
+    "text": "printed"
+  },
+  {
+    "text": "striped"
+  },
+  {
+    "text": "polka-dotted"
+  },
+  {
+    "text": "checkered"
+  },
+  {
+    "text": "floral"
+  },
+  {
+    "text": "geometric"
+  },
+  {
+    "text": "abstract"
+  },
+  {
+    "text": "realistic"
+  },
+  {
+    "text": "modern"
+  },
+  {
+    "text": "traditional"
+  },
+  {
+    "text": "contemporary"
+  },
+  {
+    "text": "vintage"
+  },
+  {
+    "text": "retro"
+  },
+  {
+    "text": "futuristic"
+  },
+  {
+    "text": "ancient"
+  },
+  {
+    "text": "classic"
+  },
+  {
+    "text": "trendy"
+  },
+  {
+    "text": "fashionable"
+  },
+  {
+    "text": "stylish"
+  },
+  {
+    "text": "chic"
+  },
+  {
+    "text": "elegant"
+  },
+  {
+    "text": "casual"
+  },
+  {
+    "text": "formal"
+  },
+  {
+    "text": "sporty"
+  },
+  {
+    "text": "athletic"
+  },
+  {
+    "text": "comfortable"
+  },
+  {
+    "text": "uncomfortable"
+  },
+  {
+    "text": "cozy"
+  },
+  {
+    "text": "chilly"
+  },
+  {
+    "text": "snug"
+  },
+  {
+    "text": "loose"
+  },
+  {
+    "text": "tight"
+  },
+  {
+    "text": "baggy"
+  },
+  {
+    "text": "fitted"
+  },
+  {
+    "text": "tailored"
+  },
+  {
+    "text": "seamless"
+  },
+  {
+    "text": "stitched"
+  },
+  {
+    "text": "buttoned"
+  },
+  {
+    "text": "zippered"
+  },
+  {
+    "text": "laced"
+  },
+  {
+    "text": "velcroed"
+  },
+  {
+    "text": "buckled"
+  },
+  {
+    "text": "ornamental"
+  },
+  {
+    "text": "decorative"
+  },
+  {
+    "text": "functional"
+  },
+  {
+    "text": "practical"
+  },
+  {
+    "text": "essential"
+  },
+  {
+    "text": "superfluous"
+  },
+  {
+    "text": "necessary"
+  },
+  {
+    "text": "unnecessary"
+  },
+  {
+    "text": "important"
+  },
+  {
+    "text": "unimportant"
+  },
+  {
+    "text": "significant"
+  },
+  {
+    "text": "insignificant"
+  },
+  {
+    "text": "crucial"
+  },
+  {
+    "text": "trivial"
+  },
+  {
+    "text": "major"
+  },
+  {
+    "text": "minor"
+  },
+  {
+    "text": "primary"
+  },
+  {
+    "text": "secondary"
+  },
+  {
+    "text": "first"
+  },
+  {
+    "text": "last"
+  },
+  {
+    "text": "initial"
+  },
+  {
+    "text": "final"
+  },
+  {
+    "text": "preliminary"
+  },
+  {
+    "text": "concluding"
+  },
+  {
+    "text": "opening"
+  },
+  {
+    "text": "closing"
+  },
+  {
+    "text": "beginning"
+  },
+  {
+    "text": "ending"
+  },
+  {
+    "text": "starting"
+  },
+  {
+    "text": "finishing"
+  },
+  {
+    "text": "consecutive"
+  },
+  {
+    "text": "subsequent"
+  },
+  {
+    "text": "preceding"
+  },
+  {
+    "text": "following"
+  },
+  {
+    "text": "previous"
+  },
+  {
+    "text": "next"
+  },
+  {
+    "text": "current"
+  },
+  {
+    "text": "past"
+  },
+  {
+    "text": "future"
+  },
+  {
+    "text": "present"
+  },
+  {
+    "text": "immediate"
+  },
+  {
+    "text": "delayed"
+  },
+  {
+    "text": "quick"
+  },
+  {
+    "text": "slow"
+  },
+  {
+    "text": "rapid"
+  },
+  {
+    "text": "leisurely"
+  },
+  {
+    "text": "swift"
+  },
+  {
+    "text": "gradual"
+  },
+  {
+    "text": "sudden"
+  },
+  {
+    "text": "abrupt"
+  },
+  {
+    "text": "unexpected"
+  },
+  {
+    "text": "anticipated"
+  },
+  {
+    "text": "foreseen"
+  },
+  {
+    "text": "unforeseen"
+  },
+  {
+    "text": "predictable"
+  },
+  {
+    "text": "unpredictable"
+  },
+  {
+    "text": "certain"
+  },
+  {
+    "text": "doubtful"
+  },
+  {
+    "text": "sure"
+  },
+  {
+    "text": "unsure"
+  },
+  {
+    "text": "confident"
+  },
+  {
+    "text": "hesitant"
+  },
+  {
+    "text": "decisive"
+  },
+  {
+    "text": "indecisive"
+  },
+  {
+    "text": "resolute"
+  },
+  {
+    "text": "irresolute"
+  },
+  {
+    "text": "firm"
+  },
+  {
+    "text": "wavering"
+  },
+  {
+    "text": "stable"
+  },
+  {
+    "text": "unstable"
+  },
+  {
+    "text": "steady"
+  },
+  {
+    "text": "unsteady"
+  },
+  {
+    "text": "balanced"
+  },
+  {
+    "text": "unbalanced"
+  },
+  {
+    "text": "equal"
+  },
+  {
+    "text": "unequal"
+  },
+  {
+    "text": "fair"
+  },
+  {
+    "text": "unfair"
+  },
+  {
+    "text": "just"
+  },
+  {
+    "text": "unjust"
+  },
+  {
+    "text": "right"
+  },
+  {
+    "text": "wrong"
+  },
+  {
+    "text": "correct"
+  },
+  {
+    "text": "incorrect"
+  },
+  {
+    "text": "accurate"
+  },
+  {
+    "text": "inaccurate"
+  },
+  {
+    "text": "precise"
+  },
+  {
+    "text": "imprecise"
+  },
+  {
+    "text": "exact"
+  },
+  {
+    "text": "inexact"
+  },
+  {
+    "text": "definite"
+  },
+  {
+    "text": "vague"
+  },
+  {
+    "text": "specific"
+  },
+  {
+    "text": "general"
+  },
+  {
+    "text": "particular"
+  },
+  {
+    "text": "universal"
+  },
+  {
+    "text": "individual"
+  },
+  {
+    "text": "collective"
+  },
+  {
+    "text": "personal"
+  },
+  {
+    "text": "impersonal"
+  },
+  {
+    "text": "subjective"
+  },
+  {
+    "text": "objective"
+  },
+  {
+    "text": "biased"
+  },
+  {
+    "text": "unbiased"
+  },
+  {
+    "text": "neutral"
+  },
+  {
+    "text": "partial"
+  },
+  {
+    "text": "impartial"
+  },
+  {
+    "text": "fair-minded"
+  },
+  {
+    "text": "prejudiced"
+  },
+  {
+    "text": "tolerant"
+  },
+  {
+    "text": "intolerant"
+  },
+  {
+    "text": "open-minded"
+  },
+  {
+    "text": "close-minded"
+  },
+  {
+    "text": "understanding"
+  },
+  {
+    "text": "ununderstanding"
+  },
+  {
+    "text": "sympathetic"
+  },
+  {
+    "text": "unsympathetic"
+  },
+  {
+    "text": "compassionate"
+  },
+  {
+    "text": "unfeeling"
+  },
+  {
+    "text": "empathetic"
+  },
+  {
+    "text": "cold"
+  },
+  {
+    "text": "warm"
+  },
+  {
+    "text": "friendly"
+  },
+  {
+    "text": "hostile"
+  },
+  {
+    "text": "amiable"
+  },
+  {
+    "text": "belligerent"
+  },
+  {
+    "text": "peaceful"
+  },
+  {
+    "text": "aggressive"
+  },
+  {
+    "text": "calm"
+  },
+  {
+    "text": "agitated"
+  },
+  {
+    "text": "serene"
+  },
+  {
+    "text": "turbulent"
+  },
+  {
+    "text": "tranquil"
+  },
+  {
+    "text": "chaotic"
+  },
+  {
+    "text": "orderly"
+  },
+  {
+    "text": "disorderly"
+  },
+  {
+    "text": "structured"
+  },
+  {
+    "text": "unstructured"
+  },
+  {
+    "text": "systematic"
+  },
+  {
+    "text": "random"
+  },
+  {
+    "text": "organized"
+  },
+  {
+    "text": "haphazard"
+  },
+  {
+    "text": "methodical"
+  },
+  {
+    "text": "erratic"
+  },
+  {
+    "text": "consistent"
+  },
+  {
+    "text": "inconsistent"
+  },
+  {
+    "text": "regular"
+  },
+  {
+    "text": "irregular"
+  },
+  {
+    "text": "uniform"
+  },
+  {
+    "text": "varied"
+  },
+  {
+    "text": "diverse"
+  },
+  {
+    "text": "monotonous"
+  },
+  {
+    "text": "repetitive"
+  },
+  {
+    "text": "novel"
+  },
+  {
+    "text": "original"
+  },
+  {
+    "text": "unoriginal"
+  },
+  {
+    "text": "innovative"
+  },
+  {
+    "text": "conventional"
+  },
+  {
+    "text": "traditional"
+  },
+  {
+    "text": "unconventional"
+  },
+  {
+    "text": "rebellious"
+  },
+  {
+    "text": "obedient"
+  },
+  {
+    "text": "compliant"
+  },
+  {
+    "text": "defiant"
+  },
+  {
+    "text": "submissive"
+  },
+  {
+    "text": "assertive"
+  },
+  {
+    "text": "dominant"
+  },
+  {
+    "text": "subordinate"
+  },
+  {
+    "text": "superior"
+  },
+  {
+    "text": "inferior"
+  },
+  {
+    "text": "senior"
+  },
+  {
+    "text": "junior"
+  },
+  {
+    "text": "elder"
+  },
+  {
+    "text": "younger"
+  },
+  {
+    "text": "adult"
+  },
+  {
+    "text": "childish"
+  },
+  {
+    "text": "mature"
+  },
+  {
+    "text": "immature"
+  },
+  {
+    "text": "experienced"
+  },
+  {
+    "text": "inexperienced"
+  },
+  {
+    "text": "skilled"
+  },
+  {
+    "text": "unskilled"
+  },
+  {
+    "text": "talented"
+  },
+  {
+    "text": "untalented"
+  },
+  {
+    "text": "gifted"
+  },
+  {
+    "text": "ordinary"
+  },
+  {
+    "text": "exceptional"
+  },
+  {
+    "text": "average"
+  },
+  {
+    "text": "remarkable"
+  },
+  {
+    "text": "notable"
+  },
+  {
+    "text": "insignificant"
+  },
+  {
+    "text": "memorable"
+  },
+  {
+    "text": "forgettable"
+  },
+  {
+    "text": "impressive"
+  },
+  {
+    "text": "unimpressive"
+  },
+  {
+    "text": "striking"
+  },
+  {
+    "text": "unremarkable"
+  },
+  {
+    "text": "stunning"
+  },
+  {
+    "text": "plain"
+  },
+  {
+    "text": "gorgeous"
+  },
+  {
+    "text": "hideous"
+  },
+  {
+    "text": "attractive"
+  },
+  {
+    "text": "unattractive"
+  },
+  {
+    "text": "appealing"
+  },
+  {
+    "text": "unappealing"
+  },
+  {
+    "text": "charming"
+  },
+  {
+    "text": "repulsive"
+  },
+  {
+    "text": "delightful"
+  },
+  {
+    "text": "dreadful"
+  },
+  {
+    "text": "pleasant"
+  },
+  {
+    "text": "unpleasant"
+  },
+  {
+    "text": "agreeable"
+  },
+  {
+    "text": "disagreeable"
+  },
+  {
+    "text": "enjoyable"
+  },
+  {
+    "text": "unenjoyable"
+  },
+  {
+    "text": "likable"
+  },
+  {
+    "text": "unlikable"
+  },
+  {
+    "text": "lovable"
+  },
+  {
+    "text": "hateful"
+  },
+  {
+    "text": "adorable"
+  },
+  {
+    "text": "detestable"
+  },
+  {
+    "text": "admirable"
+  },
+  {
+    "text": "contemptible"
+  },
+  {
+    "text": "respectable"
+  },
+  {
+    "text": "despicable"
+  },
+  {
+    "text": "praiseworthy"
+  },
+  {
+    "text": "blameworthy"
+  },
+  {
+    "text": "innocent"
+  },
+  {
+    "text": "guilty"
+  },
+  {
+    "text": "responsible"
+  },
+  {
+    "text": "blameless"
+  },
+  {
+    "text": "culpable"
+  },
+  {
+    "text": "faultless"
+  },
+  {
+    "text": "flawless"
+  },
+  {
+    "text": "defective"
+  },
+  {
+    "text": "perfect"
+  },
+  {
+    "text": "imperfect"
+  },
+  {
+    "text": "complete"
+  },
+  {
+    "text": "incomplete"
+  },
+  {
+    "text": "whole"
+  },
+  {
+    "text": "partial"
+  },
+  {
+    "text": "entire"
+  },
+  {
+    "text": "fragmented"
+  },
+  {
+    "text": "full"
+  },
+  {
+    "text": "empty"
+  },
+  {
+    "text": "abundant"
+  },
+  {
+    "text": "scarce"
+  },
+  {
+    "text": "plentiful"
+  },
+  {
+    "text": "meager"
+  },
+  {
+    "text": "sufficient"
+  },
+  {
+    "text": "insufficient"
+  },
+  {
+    "text": "adequate"
+  },
+  {
+    "text": "inadequate"
+  },
+  {
+    "text": "enough"
+  },
+  {
+    "text": "lacking"
+  },
+  {
+    "text": "excessive"
+  },
+  {
+    "text": "insufficient"
+  },
+  {
+    "text": "optimal"
+  },
+  {
+    "text": "suboptimal"
+  },
+  {
+    "text": "maximal"
+  },
+  {
+    "text": "minimal"
+  },
+  {
+    "text": "maximum"
+  },
+  {
+    "text": "minimum"
+  },
+  {
+    "text": "high"
+  },
+  {
+    "text": "low"
+  },
+  {
+    "text": "tall"
+  },
+  {
+    "text": "short"
+  },
+  {
+    "text": "long"
+  },
+  {
+    "text": "brief"
+  },
+  {
+    "text": "wide"
+  },
+  {
+    "text": "narrow"
+  },
+  {
+    "text": "broad"
+  },
+  {
+    "text": "limited"
+  },
+  {
+    "text": "extensive"
+  },
+  {
+    "text": "vast"
+  },
+  {
+    "text": "tiny"
+  },
+  {
+    "text": "huge"
+  },
+  {
+    "text": "enormous"
+  },
+  {
+    "text": "giant"
+  },
+  {
+    "text": "miniature"
+  },
+  {
+    "text": "microscopic"
+  },
+  {
+    "text": "colossal"
+  },
+  {
+    "text": "petite"
+  },
+  {
+    "text": "grand"
+  },
+  {
+    "text": "small"
+  },
+  {
+    "text": "medium"
+  },
+  {
+    "text": "large"
+  },
+  {
+    "text": "great"
+  },
+  {
+    "text": "little"
+  },
+  {
+    "text": "considerable"
+  },
+  {
+    "text": "negligible"
+  },
+  {
+    "text": "significant"
+  },
+  {
+    "text": "minor"
+  },
+  {
+    "text": "major"
+  },
+  {
+    "text": "important"
+  },
+  {
+    "text": "unimportant"
+  },
+  {
+    "text": "crucial"
+  },
+  {
+    "text": "trivial"
   }
 ]

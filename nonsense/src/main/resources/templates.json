@@ -60,9 +60,6 @@
     "template": "When the [NOUN] [VERB], the [ADJECTIVE] [NOUN] [VERB]."
   },
   {
-    "template": "[NOUN] [VERB] [ADVERB], but [NOUN] [VERB] [ADVERB]."
-  },
-  {
     "template": "Since the [NOUN] [VERB] [ADJECTIVE], everyone [VERB]."
   },
   {
@@ -93,9 +90,6 @@
     "template": "Before the [NOUN] could [VERB], the [ADJECTIVE] [NOUN] [VERB]."
   },
   {
-    "template": "The [NOUN] [VERB] [ADVERB], and everyone [VERB] with [NOUN]."
-  },
-  {
     "template": "Where [VERB] the [ADJECTIVE] [NOUN] [VERB]?"
   },
   {
@@ -120,9 +114,6 @@
     "template": "Whenever the [NOUN] [VERB], the [ADJECTIVE] [NOUN] [VERB] [ADJECTIVE]."
   },
   {
-    "template": "The [NOUN] that [VERB] [ADVERB] [VERB] [ADJECTIVE]."
-  },
-  {
     "template": "The [ADJECTIVE] [NOUN] [VERB] among the [NOUN]."
   },
   {
@@ -133,9 +124,6 @@
   },
   {
     "template": "As soon as the [NOUN] [VERB], the [ADJECTIVE] [NOUN] will [VERB]."
-  },
-  {
-    "template": "The [NOUN] [VERB] [ADVERB], or the [ADJECTIVE] [NOUN] will [VERB]."
   },
   {
     "template": "Until the [NOUN] [VERB], nothing will [VERB] [ADJECTIVE]."
