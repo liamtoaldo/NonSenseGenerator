@@ -1,38 +1,60 @@
 package com.swe.nonsense;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.core.io.ClassPathResource;
 
 /**
  * Class that manages the storage of words and templates from dictionary, history or JSON files to dictionary, history or JSON files
  */
 public class StorageManager {
+    private final Path storageDir;
     private String nounsFilePath;
     private String adjectivesFilePath;
     private String verbsFilePath;
     private String templatesFilePath;
     private String sentencesFilePath;
 
-    //Costruttori
-
     /**
-     * Default constructor that initializes the file paths to default values
+     * Default constructor that initializes file paths to an external directory
+     * in the user's home folder. If the files don't exist, they are copied
+     * from the classpath resources.
      */
     public StorageManager() {
-        this.nounsFilePath = "nouns.json";
-        this.adjectivesFilePath = "adjectives.json";
-        this.verbsFilePath = "verbs.json";
-        this.templatesFilePath = "templates.json";
-        this.sentencesFilePath = "sentences.json";
+        // Define an external storage directory (e.g., ~/.NonSenseGenerator/data)
+        this.storageDir = Paths.get(System.getProperty("user.home"), ".NonSenseGenerator", "data");
+        try {
+            // Create the directory if it doesn't exist
+            Files.createDirectories(storageDir);
+        } catch (IOException e) {
+            throw new RuntimeException("Could not create storage directory", e);
+        }
+        
+        // Initialize paths and copy default files if they don't exist
+        this.nounsFilePath = initializeDataFile("nouns.json");
+        this.adjectivesFilePath = initializeDataFile("adjectives.json");
+        this.verbsFilePath = initializeDataFile("verbs.json");
+        this.templatesFilePath = initializeDataFile("templates.json");
+        this.sentencesFilePath = initializeDataFile("sentences.json");
+
+        // Load data into memory right after initialization
+        loadDictionary();
+        loadHistory();
     }
 
     /**
-     * Constructor that initializes the file paths to the specified values in the parameters
+     * Constructor that initializes the file paths to the specified values in the parameters.
+     * This is useful for testing with specific file paths.
      *
      * @param nounsFilePath       Path to the nouns JSON file
      * @param adjectivesFilePath  Path to the adjectives JSON file
@@ -41,11 +63,30 @@ public class StorageManager {
      * @param sentencesFilePath   Path to the sentences JSON file
      */
     public StorageManager(String nounsFilePath, String adjectivesFilePath, String verbsFilePath, String templatesFilePath, String sentencesFilePath) {
+        this.storageDir = null; // Not used in this constructor
         this.nounsFilePath = nounsFilePath;
         this.adjectivesFilePath = adjectivesFilePath;
         this.verbsFilePath = verbsFilePath;
         this.templatesFilePath = templatesFilePath;
         this.sentencesFilePath = sentencesFilePath;
+    }
+
+    /**
+     * Checks if a data file exists in the storage directory. If not, copies it from the classpath.
+     * @param fileName The name of the file (e.g., "nouns.json")
+     * @return The absolute path to the data file as a String.
+     */
+    private String initializeDataFile(String fileName) {
+        Path filePath = storageDir.resolve(fileName);
+        if (!Files.exists(filePath)) {
+            try (InputStream resourceStream = new ClassPathResource(fileName).getInputStream()) {
+                Files.copy(resourceStream, filePath);
+            } catch (IOException e) {
+                System.err.println("Warning: Could not copy default file: " + fileName);
+                // Continue execution, the file will be created on the first save.
+            }
+        }
+        return filePath.toString();
     }
 
     //Carica i dati dal file JSON e li salva nel dizionario
@@ -58,6 +99,7 @@ public class StorageManager {
     public WordsDictionary loadDictionary() {
         WordsDictionary dictionary = WordsDictionary.getInstance();
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
 
         ArrayList<Noun> nouns = new ArrayList<>();
         ArrayList<Adjective> adjectives = new ArrayList<>();
@@ -66,28 +108,20 @@ public class StorageManager {
         ArrayList<Word> words = new ArrayList<>();
 
         try {
-            if (nounsFilePath != null) {
-                InputStream inputStream = new ClassPathResource(nounsFilePath).getInputStream();
-                nouns = mapper.readValue(inputStream, new TypeReference<ArrayList<Noun>>(){});
-                inputStream.close();
+            if (nounsFilePath != null && new File(nounsFilePath).exists()) {
+                nouns = mapper.readValue(new File(nounsFilePath), new TypeReference<ArrayList<Noun>>(){});
             }
 
-            if (adjectivesFilePath != null) {
-                InputStream inputStream = new ClassPathResource(adjectivesFilePath).getInputStream();
-                adjectives = mapper.readValue(inputStream, new TypeReference<ArrayList<Adjective>>(){});
-                inputStream.close();
+            if (adjectivesFilePath != null && new File(adjectivesFilePath).exists()) {
+                adjectives = mapper.readValue(new File(adjectivesFilePath), new TypeReference<ArrayList<Adjective>>(){});
             }
 
-            if (verbsFilePath != null) {
-                InputStream inputStream = new ClassPathResource(verbsFilePath).getInputStream();
-                verbs = mapper.readValue(inputStream, new TypeReference<ArrayList<Verb>>(){});
-                inputStream.close();
+            if (verbsFilePath != null && new File(verbsFilePath).exists()) {
+                verbs = mapper.readValue(new File(verbsFilePath), new TypeReference<ArrayList<Verb>>(){});
             }
 
-            if (templatesFilePath != null) {
-                InputStream inputStream = new ClassPathResource(templatesFilePath).getInputStream();
-                templates = mapper.readValue(inputStream, new TypeReference<ArrayList<Template>>(){});
-                inputStream.close();
+            if (templatesFilePath != null && new File(templatesFilePath).exists()) {
+                templates = mapper.readValue(new File(templatesFilePath), new TypeReference<ArrayList<Template>>(){});
             }         
         } catch (Exception e) {
             e.printStackTrace();
@@ -118,18 +152,20 @@ public class StorageManager {
      */
     public void saveDictionary(WordsDictionary dictionary) {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         try {
             if (nounsFilePath != null) {
-                mapper.writeValue(new File(nounsFilePath), dictionary.getNouns());
+                mapper.writerWithDefaultPrettyPrinter().writeValue(new File(nounsFilePath), dictionary.getNouns());
             }
             if (adjectivesFilePath != null) {
-                mapper.writeValue(new File(adjectivesFilePath), dictionary.getAdjectives());
+                mapper.writerWithDefaultPrettyPrinter().writeValue(new File(adjectivesFilePath), dictionary.getAdjectives());
             }
             if (verbsFilePath != null) {
-                mapper.writeValue(new File(verbsFilePath), dictionary.getVerbs());
+                mapper.writerWithDefaultPrettyPrinter().writeValue(new File(verbsFilePath), dictionary.getVerbs());
             }
             if (templatesFilePath != null) {
-                mapper.writeValue(new File(templatesFilePath), dictionary.getTemplates());
+                mapper.writerWithDefaultPrettyPrinter().writeValue(new File(templatesFilePath), dictionary.getTemplates());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -145,14 +181,13 @@ public class StorageManager {
     public SentenceHistory loadHistory() {
         SentenceHistory history = SentenceHistory.getInstance();
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
 
         ArrayList<Sentence> sentences = new ArrayList<>();
 
         try {
-            if (sentencesFilePath != null) {
-                InputStream inputStream = new ClassPathResource(sentencesFilePath).getInputStream();
-                sentences = mapper.readValue(inputStream, new TypeReference<ArrayList<Sentence>>(){});
-                inputStream.close();
+            if (sentencesFilePath != null && new File(sentencesFilePath).exists()) {
+                sentences = mapper.readValue(new File(sentencesFilePath), new TypeReference<ArrayList<Sentence>>(){});
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -173,10 +208,11 @@ public class StorageManager {
      */
     public void saveHistory(SentenceHistory history) {
         ObjectMapper mapper = new ObjectMapper();
-        // Stessa nota di saveDictionary riguardo al salvataggio dei file.
+        mapper.registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         try {
             if (sentencesFilePath != null) {
-                mapper.writeValue(new File(sentencesFilePath), history.getSentences());
+                mapper.writerWithDefaultPrettyPrinter().writeValue(new File(sentencesFilePath), history.getSentences());
             }
         } catch (Exception e) {
             e.printStackTrace();
