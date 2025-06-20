@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/custom.css" rel="stylesheet" />
     
       <script>
         // Current page data
@@ -40,11 +41,45 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../about/">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Manual</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#project-description">Project Description</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#technology-stack-used">Technology Stack Used</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#external-apis-used">External APIs Used</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installation-steps">Installation Steps</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#running-without-building">Running without building</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#building-and-running-the-application">Building and running the application</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#syntax-analysis">Syntax Analysis</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sentence-generation">Sentence Generation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#toxicity-analysis">Toxicity Analysis</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -87,12 +122,223 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="official-nonsensegenerator-manual">Official NonSenseGenerator manual</h1>
+<h2 id="project-description">Project Description</h2>
+<p>NonSenseGenerator is a web application that allows users to generate nonsensical sentences based on their input.<br>
+It uses Google's Natural Language API to analyze sentence structure.<br>
+It provides features for syntax analysis, sentence generation, toxicity analysis, and a public history log of generated sentences.<br>
+The application is designed to be intuitive and user-friendly.<br></p>
+<h2 id="technology-stack-used">Technology Stack Used</h2>
+<p>The NonSenseGenerator application is built using a combination of frontend and backend technologies, libraries, and plugins. 
+<br>Below is a summary of the tech stack:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend</td>
+<td>Java</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Backend</td>
+<td>Spring Boot</td>
+<td>3.1.4</td>
+</tr>
+<tr>
+<td>Build &amp; Dependency Management</td>
+<td>Maven</td>
+<td>(Managed by Spring)</td>
+</tr>
+<tr>
+<td>Backend</td>
+<td>Thymeleaf</td>
+<td>(Managed by Spring)</td>
+</tr>
+<tr>
+<td>Libraries (UI/UX)</td>
+<td>Bootstrap</td>
+<td>5.3.3</td>
+</tr>
+<tr>
+<td>Libraries (DOM)</td>
+<td>jQuery</td>
+<td>3.7.1</td>
+</tr>
+<tr>
+<td>Libraries (Charts)</td>
+<td>Chart.js</td>
+<td>4.5.0</td>
+</tr>
+<tr>
+<td>Chart.js Plugins</td>
+<td>Chart.js Chart Graphs Plugin</td>
+<td>1.0.1</td>
+</tr>
+<tr>
+<td>Chart.js Plugins</td>
+<td>Chart.js Data Labels Plugin</td>
+<td>2.2.0</td>
+</tr>
+<tr>
+<td>Libraries (Java)</td>
+<td>JSON</td>
+<td>20250517</td>
+</tr>
+<tr>
+<td>Libraries (Java)</td>
+<td>Dotenv</td>
+<td>3.0.0</td>
+</tr>
+<tr>
+<td>Testing</td>
+<td>JUnit 5</td>
+<td>(Managed by Spring)</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>MkDocs</td>
+<td>1.6.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="external-apis-used">External APIs Used</h3>
+<p>The application integrates with the following external APIs:</p>
+<table>
+<thead>
+<tr>
+<th>API Name</th>
+<th>Provider</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>documents.analyzeSyntax</td>
+<td>Google Cloud</td>
+<td>Analyzes the syntax of sentences by providing<br> a syntax tree and part-of-speech tags.</td>
+</tr>
+<tr>
+<td>documents.moderateText</td>
+<td>Google Cloud</td>
+<td>Analyzes the toxicity of sentences to determine<br> if they contain harmful or offensive content.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="installation">Installation</h2>
+<p>To install and run the NonSenseGenerator application, follow these steps:</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>
+<p><strong>Java 21 or higher</strong>:</p>
+<ul>
+<li>Check if you have Java installed by running:
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
+</code></pre></div></li>
+<li>If not installed, download and install it from <a href="https://www.oracle.com/java/technologies/javase-jdk21-downloads.html">Oracle's official website</a> or use your OS package manager.</li>
+</ul>
+</li>
+<li>
+<p><strong>Maven</strong> (not mandatory, since it's provided in the project through the <code>nonsense/mvnw</code> wrapper for Linux and MacOS or <code>nonsense\mvnw.cmd</code> for Windows)</p>
+</li>
+<li>
+<p>A <strong>Google Cloud account</strong> with the Natural Language API enabled</p>
+<ul>
+<li>Follow the instructions in the <a href="https://cloud.google.com/natural-language/docs/setup">Google Cloud documentation</a> to set up your account and enable the API.</li>
+<li>IMPORTANT: Create the <code>nonsense/.env</code> file in the <code>nonsense</code> directory to store your API key.</li>
+<li>Obtain your API key and set it as an environment variable inside <code>nonsense/.env</code>:
+<div class="highlight"><pre><span></span><code><span class="nv">GOOGLE_NLP_API_KEY</span><span class="o">=</span><span class="s2">&quot;your_api_key_here&quot;</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="installation-steps">Installation Steps</h3>
+<ol>
+<li>
+<p><strong>Clone the repository:</strong>
+    <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/liamtoaldo/NonSenseGenerator.git
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Navigate to the project directory:</strong>
+    <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>NonSenseGenerator
+<span class="nb">cd</span><span class="w"> </span>nonsense
+</code></pre></div></p>
+</li>
+<li><strong>Choose your installation method:</strong></li>
+</ol>
+<h4 id="running-without-building">Running without building</h4>
+<p>It's recommended if you are a developer and want to run the application and make changes to the code.</p>
+<ol>
+<li><strong>Run the application:</strong><ul>
+<li>If you have Maven installed, run:
+<div class="highlight"><pre><span></span><code>mvn<span class="w"> </span>spring-boot:run
+</code></pre></div></li>
+<li>If you are using the provided wrapper, run:
+<div class="highlight"><pre><span></span><code>./mvnw<span class="w"> </span>spring-boot:run<span class="w">  </span><span class="c1"># For Linux and MacOS</span>
+mvnw.cmd<span class="w"> </span>spring-boot:run<span class="w">  </span><span class="c1"># For Windows</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+<h4 id="building-and-running-the-application">Building and running the application</h4>
+<p>It's recommended if you are a user and want to just use the application.</p>
+<ol>
+<li><strong>Build the application:</strong><ul>
+<li>If you have Maven installed, run:
+<div class="highlight"><pre><span></span><code>mvn<span class="w"> </span>clean<span class="w"> </span>package
+</code></pre></div></li>
+<li>If you are using the provided wrapper, run:
+<div class="highlight"><pre><span></span><code>./mvnw<span class="w"> </span>clean<span class="w"> </span>package<span class="w">  </span><span class="c1"># For Linux and MacOS</span>
+mvnw.cmd<span class="w"> </span>clean<span class="w"> </span>package<span class="w">  </span><span class="c1"># For Windows</span>
+</code></pre></div></li>
+<li>If you get errors because of tests, you can skip them by adding the <code>-DskipTests</code> flag</li>
+</ul>
+</li>
+<li><strong>Run the application:</strong>
+    <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>target/nonsense-0.0.1-SNAPSHOT.jar
+</code></pre></div></li>
+</ol>
+<h2 id="usage">Usage</h2>
+<p>Once the application is running, you can access it in your web browser at <code>http://localhost:8080</code></p>
+<h3 id="syntax-analysis">Syntax Analysis</h3>
+<p>To analyze the syntax of a sentence, enter the sentence in the input field and click the "Analyze Syntax" button. The application will display the syntax tree and part-of-speech tags for each word in the sentence.
+<br>
+<br>
+<img alt="Syntax Analysis Tutorial" src="../images/tutorial/syntax-analysis.png" />
+<br>
+<br>
+Root nodes are red, regardless of their part of speech.<br>
+Child nodes are colored based on their part of speech:</p>
+<ul>
+<li>Nouns: Purple</li>
+<li>Verbs: Green</li>
+<li>Adjectives: Yellow</li>
+<li>Everything else: Blue<br></li>
+</ul>
+<h3 id="sentence-generation">Sentence Generation</h3>
+<p>To generate a nonsensical sentence, enter a sentence in the input field and click the "Generate" button.<br>
+You can select a pre-defined template or let the system choose one for you.<br>
+You can also choose the generated sentence's tense (present, past, or future) or use present tense by default.<br>
+The application will display the generated sentence in the output field.
+<br>
+<br>
+<img alt="Sentence Generation Tutorial 1" src="../images/tutorial/sentence-generation1.png" /></p>
+<hr>
+<p><img alt="Sentence Generation Tutorial 2" src="../images/tutorial/sentence-generation2.png" /></p>
+<h3 id="toxicity-analysis">Toxicity Analysis</h3>
+<p>To analyze the toxicity of a sentence after generating it, click the "Analyze Toxicity" button inside the generated sentence field.<br></p>
+<!--TODO: finish once ready -->
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../about/" class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../user_stories/" class="btn btn-neutral float-right" title="User Stories">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -120,7 +366,7 @@
         </span>
     
     
-      <span><a href="../about/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../user_stories/" style="color: #fcfcfc">Next &raquo;</a></span>
