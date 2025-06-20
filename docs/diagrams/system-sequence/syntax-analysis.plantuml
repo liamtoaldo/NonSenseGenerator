@@ -1,0 +1,30 @@
+@startuml
+title System Sequence Diagram for Syntax Analysis
+actor User
+participant System
+
+User -> System: inputs sentence
+User -> System: requests syntax analysis
+activate System
+
+alt sentence is valid, API call successful and syntax tree built
+    note right of System
+        1. Call Google NLP API.
+        2. Parse the response.
+        3. Build the syntax tree.
+    end note
+    System --> User : displays syntax tree
+
+else sentence is empty or null
+    System --> User : displays error for empty input
+
+else API call failed or timeout
+    System --> User : displays error for API failure
+
+else unexpected error
+    System --> User : displays generic error message
+end
+
+deactivate System
+
+@enduml
