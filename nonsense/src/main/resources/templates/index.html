@@ -57,29 +57,32 @@
                         <div class="input-buttons-container">
 
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                     <i class="bi bi-layout-text-sidebar-reverse"></i>
                                 </button>
-                                <ul class="dropdown-menu overflow-auto " id="templatesDropdown" style="max-height: 50dvh;">
+                                <ul class="dropdown-menu overflow-auto " id="templatesDropdown"
+                                    style="max-height: 50dvh;">
                                     <li><a class="dropdown-item" href="#" data-template="">Random Template</a></li>
                                     <hr class="m-1" />
                                 </ul>
                             </div>
 
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                     <i class="bi bi-clock"></i>
                                 </button>
                                 <ul class="dropdown-menu" id="tensesDropdown">
                                 </ul>
                             </div>
 
-                            <button id="analyzeSyntaxButton" type="button" class="btn bg-secondary text-dark" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" title="Analyze Syntax">
+                            <button id="analyzeSyntaxButton" type="button" class="btn bg-secondary text-dark"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Analyze Syntax">
                                 <i class="bi bi-diagram-3"></i>
                             </button>
-                            <button id="generateButton" type="button" class="btn bg-primary text-light" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" title="Generate">
+                            <button id="generateButton" type="button" class="btn bg-primary text-light"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Generate">
                                 <i class="bi bi-send"></i>
                             </button>
                         </div>
@@ -106,6 +109,13 @@
                             <h5 class="section-title"><i class="bi bi-send"></i> GENERATED SENTENCE</h5>
                             <div class="position-relative mb-3 flex-grow-1">
                                 <textarea id="outputText" class="form-control io-box h-100" disabled></textarea>
+                                <div id="outputSpinner" class="position-absolute top-0 start-0 w-100 p-3" style="display: none; z-index: 2;">
+                                    <p class="card-text placeholder-glow">
+                                        <span class="placeholder col-7"></span>
+                                        <span class="placeholder col-6"></span>
+                                        <span class="placeholder col-8"></span>
+                                    </p>
+                                </div>
                                 <div class="output-buttons text-end py-0">
                                     <button id="analyzeToxicityButton" type="button" class="btn bg-success text-light"
                                         data-bs-toggle="tooltip" title="Analyze Toxicity">

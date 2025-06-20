@@ -15,7 +15,6 @@ let selectedTense = "PRESENT";
 const selectTemplate = (template) => {
     selectedTemplate = template;
     selectedTemplatePg.removeClass('d-none').html('<span class="text-secondary">Selected template: </span>' + template);
-    console.log(`Selected template: ${template}`);
 }
 
 const selectTense = (tense) => {
@@ -118,7 +117,8 @@ $(document).ready(function () {
             console.log(inputText.val());
             console.log(selectedTemplate);
             console.log(selectedTense);
-
+            if (selectedTemplate === "Random Template") selectedTemplate = "";
+            console.log(`Selected template: ${selectedTemplate}`);
             generateSentence(inputText.val(), selectedTemplate, selectedTense);
         });
     }

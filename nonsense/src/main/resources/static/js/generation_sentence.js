@@ -3,11 +3,14 @@ const generateSentence = (text, template, tense) => {
         showAlert("Input cannot be empty.", "danger");
         return;
     }
+    $('#outputText').text('');
+    $('#outputSpinner').show();
 
     $.ajax({
         url: `/api/v1/nonsense/generate-sentence?text=${encodeURIComponent(text)}&template=${encodeURIComponent(template)}&tense=${encodeURIComponent(tense)}`,
         type: 'GET',
         success: function (data) {
+            $('#outputSpinner').hide();
             const sentence = data;
             $('#outputText').text(sentence);
             showAlert("Sentence generated", "success");
