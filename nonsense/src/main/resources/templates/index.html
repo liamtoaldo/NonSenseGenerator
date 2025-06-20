@@ -44,21 +44,42 @@
             <div class="row flex-grow-1" style="min-height: 0;">
                 <div class="col-12 d-flex flex-column">
 
+                    <div class="d-flex flex-column mb-3">
+                        <small id="selectedTemplate" class="d-none"></small>
+                        <small id="selectedTense" class="d-none"></small>
+                    </div>
+
                     <!-- Input Box -->
                     <h5 class="section-title">MY SENTENCE</h5>
                     <div class="input-area mb-4">
                         <textarea class="form-control io-box" rows="2" placeholder="Insert your input sentence..."
                             id="inputText"></textarea>
                         <div class="input-buttons-container">
-                            <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                title="Template">
-                                <i class="bi bi-layout-text-sidebar-reverse"></i>
-                            </button>
-                            <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                title="Tense">
-                                <i class="bi bi-clock"></i>
-                            </button>
-                            <button id="analyzeSyntaxButton" type="button" class="btn" data-bs-toggle="tooltip"
+
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-layout-text-sidebar-reverse"></i>
+                                </button>
+                                <ul class="dropdown-menu" id="templatesDropdown">
+                                    <!-- Populated from js -->
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-clock"></i>
+                                </button>
+                                <ul class="dropdown-menu" id="tensesDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+
+                            <button id="analyzeSyntaxButton" type="button" class="btn bg-secondary text-dark" data-bs-toggle="tooltip"
                                 data-bs-placement="bottom" title="Analyze Syntax">
                                 <i class="bi bi-diagram-3"></i>
                             </button>
@@ -125,5 +146,6 @@
 
 <!-- Page specific Javascript-->
 <script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/analysis_syntax.js}"></script>
 
 </html>

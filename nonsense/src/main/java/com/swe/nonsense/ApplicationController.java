@@ -131,4 +131,9 @@ public class ApplicationController {
         // ma per ora lo facciamo per semplicità.
         storageManager.saveDictionary(wordsDictionary);
     }
+
+    public ArrayList<Template> getTemplates() {
+        WordsDictionary wordsDictionary = WordsDictionary.getInstance();
+        return wordsDictionary.getTemplates();
+    }
 }

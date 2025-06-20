@@ -169,6 +169,8 @@ class ApplicationController {
     +void saveGeneratedSentence(Sentence)
     +ArrayList<Sentence> getLastSentences(int)
     +void addTermsToDictionaryFromInput(Sentence)
+    +ArrayList<Template> getTemplates()
+    +ArrayList<Template> getTenses()
 }
 
 Sentence "1" o-- "n" Word : contains 
