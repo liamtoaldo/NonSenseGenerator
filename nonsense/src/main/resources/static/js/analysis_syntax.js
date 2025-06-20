@@ -31,7 +31,7 @@ const flattenTree = (node, parentIndex = null, arr = [], labels = []) => {
 const analyzesyntax = (inputText) => {
     const sentence = inputText.val();
     if (sentence.trim() === '') {
-        //TODO: mostrare un messaggio di errore
+        showAlert("Input text is empty.", "Warning");
         return;
     }
 

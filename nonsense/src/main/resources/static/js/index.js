@@ -68,6 +68,19 @@ const initializeTenses = () => {
     console.log("Tenses loaded successfully:", tenses);
 }
 
+// Miscellaneous functions
+
+const showAlert = (message, type = 'success') => {
+    const alert = `<div class="alert alert-${type} alert-dismissible fade show position-fixed bottom-0 end-0 m-3" role="alert">
+        <strong>${type.charAt(0).toUpperCase() + type.slice(1)}!</strong> ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`;
+    $('body').append(alert);
+    setTimeout(() => {
+        $('.alert').alert('close');
+    }, 5000);
+}
+
 // Main functions
 
 $(document).ready(function () {
@@ -92,10 +105,12 @@ $(document).ready(function () {
 
     // Buttons variables
     const analyzeSyntaxButton = $('#analyzeSyntaxButton');
+    const generateButton = $('#generateButton');
     const inputText = $('#inputText');
     // Action buttons
     if (analyzeSyntaxButton && inputText) {
         analyzeSyntaxButton.on('click', () => analyzesyntax(inputText));
+        generateButton.on('click', () => generateSentence(inputText.val(), selectedTemplate, selectedTense));
     }
 
 });
