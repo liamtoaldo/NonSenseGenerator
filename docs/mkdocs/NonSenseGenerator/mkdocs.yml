@@ -13,5 +13,6 @@ nav:
   - System Test Document: system_test_document.md
   - Unit Test Report: unit_test_report.md
 markdown_extensions:
-  - fenced_code
-  - codehilite
+  - pymdownx.superfences
+extra_css:
+  - css/custom.css
