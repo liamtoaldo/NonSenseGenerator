@@ -1,6 +1,5 @@
 package com.swe.nonsense;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ApplicationRestController {
     private final ApplicationController app;
 
-    @Autowired
     public ApplicationRestController(ApplicationController app) {
         this.app = app;
     }
@@ -22,9 +20,10 @@ public class ApplicationRestController {
     }
 
     @GetMapping("/generate-sentence")
-    public String generateSentenceInput(@RequestParam String sentenceText,
-                                          @RequestParam(required = false) Template template,
-                                          @RequestParam Tense tense) {
+    public String generateSentenceInput(
+        @RequestParam String sentenceText,
+        @RequestParam(required = false) Template template,
+        @RequestParam Tense tense) {
         return app.generateNonSenseSentence(sentenceText, template, tense).toString();
     }
 
