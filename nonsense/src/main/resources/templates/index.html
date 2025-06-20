@@ -45,7 +45,7 @@
                 <div class="col-12 d-flex flex-column">
 
                     <!-- Input Box -->
-                    <h5 class="section-title">INPUT</h5>
+                    <h5 class="section-title">MY SENTENCE</h5>
                     <div class="input-area mb-4">
                         <textarea class="form-control io-box" rows="2" placeholder="Insert your input sentence..."
                             id="inputText"></textarea>
@@ -62,7 +62,7 @@
                                 data-bs-placement="bottom" title="Analyze Syntax">
                                 <i class="bi bi-diagram-3"></i>
                             </button>
-                            <button id="generateButton" type="button" class="btn" data-bs-toggle="tooltip"
+                            <button id="generateButton" type="button" class="btn bg-primary text-light" data-bs-toggle="tooltip"
                                 data-bs-placement="bottom" title="Generate">
                                 <i class="bi bi-send"></i>
                             </button>
@@ -73,7 +73,7 @@
 
                         <!-- Syntax Tree Section -->
                         <div class="col-md-6 d-flex flex-column">
-                            <h5 class="section-title">SYNTAX TREE</h5>
+                            <h5 class="section-title"><i class="bi bi-diagram-3"></i> SYNTAX TREE</h5>
                             <div class="section-box fill-height-box d-flex flex-column">
                                 <div class="flex-grow-1 position-relative overflow-auto">
                                     <canvas id="syntaxTreeChart"></canvas>
@@ -87,11 +87,11 @@
                         <div class="col-md-6 d-flex flex-column">
 
                             <!-- Output Section -->
-                            <h5 class="section-title">OUTPUT</h5>
+                            <h5 class="section-title"><i class="bi bi-send"></i> GENERATED SENTENCE</h5>
                             <div class="position-relative mb-3 flex-grow-1">
-                                <textarea id="outputText" class="form-control io-box h-100"></textarea>
+                                <textarea id="outputText" class="form-control io-box h-100" disabled></textarea>
                                 <div class="output-buttons text-end py-0">
-                                    <button id="analyzeToxicityButton" type="button" class="btn"
+                                    <button id="analyzeToxicityButton" type="button" class="btn bg-success text-light"
                                         data-bs-toggle="tooltip" title="Analyze Toxicity">
                                         <i class="bi bi-shield-check"></i>
                                     </button>
@@ -99,7 +99,7 @@
                             </div>
 
                             <!-- Toxicity Analysis Section -->
-                            <h5 class="section-title">TOXICITY ANALYSIS</h5>
+                            <h5 class="section-title"><i class="bi bi-shield-check"></i> TOXICITY ANALYSIS</h5>
                             <div class="section-box fill-height-box">
                                 <div id="toxicityAnalysisResult"></div>
                             </div>
