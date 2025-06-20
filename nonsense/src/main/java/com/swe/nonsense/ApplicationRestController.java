@@ -24,10 +24,10 @@ public class ApplicationRestController {
 
     @GetMapping("/generate-sentence")
     public String generateSentenceInput(
-        @RequestParam String sentenceText,
+        @RequestParam String text,
         @RequestParam(required = false) Template template,
         @RequestParam Tense tense) {
-        return app.generateNonSenseSentence(sentenceText, template, tense).toString();
+        return app.generateNonSenseSentence(text, template, tense).toString();
     }
 
     @GetMapping("/dictionary/templates")
