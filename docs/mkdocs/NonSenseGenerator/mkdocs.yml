@@ -6,9 +6,12 @@ edit_uri: edit/main/docs/mkdocs/NonSenseGenerator/docs/
 site_description: A tool to generate nonsensical text based on user input.
 site_author: 4FB
 nav:
-  - Home: about.md
+  - Home: index.md
   - Manual: manual.md
   - User Stories: user_stories.md
   - Design Document: design_document.md
   - System Test Document: system_test_document.md
   - Unit Test Report: unit_test_report.md
+markdown_extensions:
+  - fenced_code
+  - codehilite
