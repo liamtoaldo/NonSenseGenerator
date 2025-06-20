@@ -9,8 +9,8 @@ if (window.ChartDataLabels) {
 
 const selectedTemplatePg = $('#selectedTemplate');
 const selectedTensePg = $('#selectedTense');
-let selectedTemplate = null;
-let selectedTense = null;
+let selectedTemplate = "";
+let selectedTense = "PRESENT";
 
 const selectTemplate = (template) => {
     selectedTemplate = template;
@@ -29,11 +29,10 @@ const initializeTemplates = () => {
         url: '/api/v1/nonsense/dictionary/templates',
         method: 'GET',
         dataType: 'json',
-        success: function(data) {
+        success: function (data) {
             templates = data;
             const templatesDropdown = $('#templatesDropdown');
             if (templatesDropdown) {
-                templatesDropdown.empty();
                 templates.forEach(t => {
                     templatesDropdown.append(`<button class="dropdown-item">${t.template}</button>`);
                 });
@@ -43,9 +42,11 @@ const initializeTemplates = () => {
                     selectTemplate(template);
                 });
             }
+            selectedTemplatePg.removeClass('d-none').html('<span class="text-secondary">Selected template: </span>' + "Random Template");
+
             console.log("Templates loaded successfully:", data);
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Error loading templates:", status, error);
         }
     });
@@ -64,6 +65,7 @@ const initializeTenses = () => {
             const tense = $(this).html();
             selectTense(tense);
         });
+        selectedTensePg.removeClass('d-none').html('<span class="text-secondary">Selected tense: </span>' + "Present");
     }
     console.log("Tenses loaded successfully:", tenses);
 }
@@ -98,7 +100,7 @@ $(document).ready(function () {
     const sidebarToggle = $('#sidebarToggle');
     const sidebar = $('#sidebar');
     if (sidebarToggle && sidebar) {
-        sidebarToggle.on('click', function() {
+        sidebarToggle.on('click', function () {
             sidebar.toggleClass('collapsed');
         });
     }
@@ -109,8 +111,16 @@ $(document).ready(function () {
     const inputText = $('#inputText');
     // Action buttons
     if (analyzeSyntaxButton && inputText) {
-        analyzeSyntaxButton.on('click', () => analyzesyntax(inputText));
-        generateButton.on('click', () => generateSentence(inputText.val(), selectedTemplate, selectedTense));
+        analyzeSyntaxButton.on('click', function () {
+            analyzesyntax(inputText);
+        });
+        generateButton.on('click', function () {
+            console.log(inputText.val());
+            console.log(selectedTemplate);
+            console.log(selectedTense);
+
+            generateSentence(inputText.val(), selectedTemplate, selectedTense);
+        });
     }
 
 });

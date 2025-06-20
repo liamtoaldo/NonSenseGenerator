@@ -1,15 +1,6 @@
 const generateSentence = (text, template, tense) => {
-
-    if(!text){
-        showAlert("Text input is empty.", "Warning");
-        return;
-    }
-    if(!template){
-        showAlert("Template is not selected.", "Warning");
-        return;
-    }
-    if(!tense){
-        showAlert("Tense is not selected.", "Warning");
+    if (!text || text.trim() === '') {
+        showAlert("Input cannot be empty.", "danger");
         return;
     }
 
@@ -22,7 +13,28 @@ const generateSentence = (text, template, tense) => {
             showAlert("Sentence generated", "success");
         },
         error: function (xhr, status, error) {
-            showAlert("Error generating sentence", "error");
+            console.error('Error:', error, 'Status:', status, 'Response:', xhr.responseText);
+            let errorMessage = "An unexpected error occurred.";
+
+            if (status === 'timeout') {
+                errorMessage = "API call failed or timed out.";
+            } else if (xhr.status === 400) {
+                if (xhr.responseText && xhr.responseText.includes("convert")) {
+                    errorMessage = "The selected tense is not supported.";
+                } else {
+                    errorMessage = "Invalid request. Please check your input.";
+                }
+            } else if (xhr.status === 500) {
+                if (xhr.responseText && xhr.responseText.includes("No templates available")) {
+                    errorMessage = "Template not found for random generation.";
+                } else {
+                    errorMessage = "API call failed due to a server error.";
+                }
+            } else if (status === 'error') {
+                errorMessage = "API call failed. Check network connection.";
+            }
+
+            showAlert(errorMessage, "danger");
         }
     });
 };

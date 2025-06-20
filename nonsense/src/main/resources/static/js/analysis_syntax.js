@@ -31,7 +31,7 @@ const flattenTree = (node, parentIndex = null, arr = [], labels = []) => {
 const analyzesyntax = (inputText) => {
     const sentence = inputText.val();
     if (sentence.trim() === '') {
-        showAlert("Input text is empty.", "Warning");
+        showAlert("Input text cannot be empty.", "danger");
         return;
     }
 
@@ -123,5 +123,18 @@ const analyzesyntax = (inputText) => {
             // Nascondi spinner
             $('#syntaxTreeSpinner').hide();
         },
+        error: function (xhr, status, error) {
+            $('#syntaxTreeSpinner').hide();
+            console.error('Error:', error, 'Status:', status, 'Response:', xhr.responseText);
+            let errorMessage = "An unexpected error occurred.";
+
+            if (status === 'timeout') {
+                errorMessage = "API call failed or timed out.";
+            } else if (status === 'error') {
+                errorMessage = "API call failed. Check network connection.";
+            }
+            
+            showAlert(errorMessage, "danger");
+        }
     })
 }

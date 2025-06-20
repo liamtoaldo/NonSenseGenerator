@@ -79,7 +79,7 @@ public class ApplicationController {
         }
         Sentence inputSentence = convertStringToSentence(input);
         Sentence generatedSentence = null;
-        if (template == null) {
+        if (template.getTemplate() == "") {
             generatedSentence = sentenceGenerator.generateRandomSentence(inputSentence, tense);
 
         } else

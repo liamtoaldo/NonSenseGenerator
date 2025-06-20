@@ -9,9 +9,150 @@
     "template": "Why did the [NOUN] [VERB] the [ADJECTIVE] [NOUN]?"
   },
   {
-    "template": "[NOUN] often [VERB] when they are [ADJECTIVE]."
+    "template": "[NOUN] often [VERB] when they [VERB] [ADJECTIVE]."
   },
   {
-    "template": "Look, a [ADJECTIVE] [NOUN] is [VERB]!"
+    "template": "Look, a [ADJECTIVE] [NOUN] [VERB]!"
+  },
+  {
+    "template": "The [NOUN] [VERB] [ADJECTIVE]."
+  },
+  {
+    "template": "A [ADJECTIVE] [NOUN] [VERB], and another [NOUN] [VERB] too."
+  },
+  {
+    "template": "Because the [NOUN] [VERB] [ADJECTIVE], it decided to [VERB]."
+  },
+  {
+    "template": "The [NOUN] that [VERB] [VERB] [ADJECTIVE], but the other one [VERB] not."
+  },
+  {
+    "template": "If a [NOUN] [VERB], will the [ADJECTIVE] [NOUN] notice?"
+  },
+  {
+    "template": "The [NOUN] [VERB] not very [ADJECTIVE]."
+  },
+  {
+    "template": "[VERB] the [NOUN] [VERB] with the [ADJECTIVE] [NOUN]?"
+  },
+  {
+    "template": "The [NOUN] [VERB], yet the other [NOUN] [VERB] [ADJECTIVE]."
+  },
+  {
+    "template": "After the [NOUN] [VERB], everything [VERB] [ADJECTIVE]."
+  },
+  {
+    "template": "Though the [NOUN] [VERB] [ADJECTIVE], it [VERB] with vigor, and the crowd [VERB] wild."
+  },
+  {
+    "template": "The [NOUN] [VERB] the [ADJECTIVE] task."
+  },
+  {
+    "template": "She [VERB] the [NOUN], and he [VERB] the [ADJECTIVE] [NOUN]."
+  },
+  {
+    "template": "Although the [NOUN] [VERB] [ADJECTIVE], it [VERB] anyway."
+  },
+  {
+    "template": "The [ADJECTIVE] [NOUN] [VERB] in the [NOUN]."
+  },
+  {
+    "template": "When the [NOUN] [VERB], the [ADJECTIVE] [NOUN] [VERB]."
+  },
+  {
+    "template": "[NOUN] [VERB] [ADVERB], but [NOUN] [VERB] [ADVERB]."
+  },
+  {
+    "template": "Since the [NOUN] [VERB] [ADJECTIVE], everyone [VERB]."
+  },
+  {
+    "template": "The [NOUN] [VERB] for [ADJECTIVE] reasons."
+  },
+  {
+    "template": "While the [NOUN] [VERB], the [ADJECTIVE] [NOUN] [VERB] too."
+  },
+  {
+    "template": "How [ADJECTIVE] [VERB] the [NOUN] that [VERB]?"
+  },
+  {
+    "template": "The [NOUN] [VERB] during the [ADJECTIVE] [NOUN]."
+  },
+  {
+    "template": "What a [ADJECTIVE] [NOUN] that [VERB]!"
+  },
+  {
+    "template": "The [ADJECTIVE] [NOUN] [VERB], so the [NOUN] [VERB] too."
+  },
+  {
+    "template": "Unless the [NOUN] [VERB], the [ADJECTIVE] [NOUN] will not [VERB]."
+  },
+  {
+    "template": "The [NOUN] [VERB] behind the [ADJECTIVE] [NOUN]."
+  },
+  {
+    "template": "Before the [NOUN] could [VERB], the [ADJECTIVE] [NOUN] [VERB]."
+  },
+  {
+    "template": "The [NOUN] [VERB] [ADVERB], and everyone [VERB] with [NOUN]."
+  },
+  {
+    "template": "Where [VERB] the [ADJECTIVE] [NOUN] [VERB]?"
+  },
+  {
+    "template": "The [NOUN] [VERB] through the [ADJECTIVE] [NOUN]."
+  },
+  {
+    "template": "Even though the [NOUN] [VERB] [ADJECTIVE], it [VERB], and everyone [VERB]."
+  },
+  {
+    "template": "The [ADJECTIVE] [NOUN] [VERB] until the [NOUN] [VERB]."
+  },
+  {
+    "template": "Can the [NOUN] [VERB] without the [ADJECTIVE] [NOUN]?"
+  },
+  {
+    "template": "The [NOUN] [VERB] above the [ADJECTIVE] [NOUN]."
+  },
+  {
+    "template": "The [NOUN] [VERB], but the [ADJECTIVE] [NOUN] [VERB] differently."
+  },
+  {
+    "template": "Whenever the [NOUN] [VERB], the [ADJECTIVE] [NOUN] [VERB] [ADJECTIVE]."
+  },
+  {
+    "template": "The [NOUN] that [VERB] [ADVERB] [VERB] [ADJECTIVE]."
+  },
+  {
+    "template": "The [ADJECTIVE] [NOUN] [VERB] among the [NOUN]."
+  },
+  {
+    "template": "Should the [NOUN] [VERB] the [ADJECTIVE] [NOUN]?"
+  },
+  {
+    "template": "The [NOUN] [VERB] across the [ADJECTIVE] [NOUN]."
+  },
+  {
+    "template": "As soon as the [NOUN] [VERB], the [ADJECTIVE] [NOUN] will [VERB]."
+  },
+  {
+    "template": "The [NOUN] [VERB] [ADVERB], or the [ADJECTIVE] [NOUN] will [VERB]."
+  },
+  {
+    "template": "Until the [NOUN] [VERB], nothing will [VERB] [ADJECTIVE]."
+  },
+  {
+    "template": "The [ADJECTIVE] [NOUN] [VERB] beneath the [NOUN]."
+  },
+  {
+    "template": "Once the [NOUN] [VERB], the [ADJECTIVE] [NOUN] [VERB] too, and everything [VERB]."
+  },
+  {
+    "template": "The [NOUN] [VERB] within the [ADJECTIVE] [NOUN]."
+  },
+  {
+    "template": "Either the [NOUN] [VERB], or the [ADJECTIVE] [NOUN] will [VERB]."
+  },
+  {
+    "template": "The [NOUN] [VERB] beside the [ADJECTIVE] [NOUN]."
   }
 ]
