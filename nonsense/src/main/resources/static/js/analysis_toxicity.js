@@ -91,3 +91,12 @@ const analyzeToxicity = (sentence) => {
         }
     });
 };
+
+const clearToxicityAnalysisCanvas = () => {
+    if (window.toxicityChartInstance) {
+        window.toxicityChartInstance.destroy();
+        window.toxicityChartInstance = null;
+    }
+    $('#toxicityChart').hide();
+    $('#toxicitySpinner').hide();
+}

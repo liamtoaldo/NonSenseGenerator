@@ -23,10 +23,7 @@
             </button>
         </div>
         <h5 id="sidebarTitle" class="mb-2 mt-4">HISTORY</h5>
-
-        <div class="offcanvas-body flex-grow-1">
-            <div>Placeholder</div>
-        </div>
+        <div id="historyContainer" class="offcanvas-body flex-grow-1"></div>
     </div>
 
 
@@ -73,8 +70,7 @@
                                     aria-expanded="false">
                                     <i class="bi bi-clock"></i>
                                 </button>
-                                <ul class="dropdown-menu" id="tensesDropdown">
-                                </ul>
+                                <ul class="dropdown-menu" id="tensesDropdown"></ul>
                             </div>
 
                             <button id="analyzeSyntaxButton" type="button" class="btn bg-secondary text-dark"
@@ -156,8 +152,8 @@
 
 <!-- Page specific Javascript-->
 <script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/history.js}"></script>
 <script th:src="@{/js/analysis_syntax.js}"></script>
 <script th:src="@{/js/analysis_toxicity.js}"></script>
 <script th:src="@{/js/generation_sentence.js}"></script>
-
 </html>

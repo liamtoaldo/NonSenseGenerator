@@ -90,6 +90,7 @@ $(document).ready(function () {
 
     initializeTemplates();
     initializeTenses();
+    initializeHistory();
 
     // Tooltips initialization
     $('[data-bs-toggle="tooltip"]').tooltip();

@@ -13,6 +13,8 @@ const generateSentence = (text, template, tense) => {
             $('#outputSpinner').hide();
             const sentence = data;
             $('#outputText').text(sentence);
+            // Add the generated sentence to history
+            addSentenceToHistory(text, sentence);
             showAlert("Sentence generated", "success");
         },
         error: function (xhr, status, error) {

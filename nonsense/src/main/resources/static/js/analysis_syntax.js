@@ -170,3 +170,13 @@ const analyzesyntax = (inputText) => {
         }
     })
 }
+
+const clearSyntaxTreeCanvas = () => {
+    const ctx = $('#syntaxTreeChart');
+    if (window.syntaxTreeChartInstance) {
+        window.syntaxTreeChartInstance.destroy();
+        window.syntaxTreeChartInstance = null;
+    }
+    ctx.empty();
+    $('#syntaxTreeSpinner').hide();
+}
