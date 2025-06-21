@@ -30,6 +30,19 @@ public class ApplicationRestController {
         return app.generateNonSenseSentence(text, template, tense).toString();
     }
 
+    @GetMapping("/sentence/toxicity")
+    public String getSentenceToxicity(@RequestParam String text) {
+        Sentence sentence = app.convertStringToSentence(text);
+        ModerationResult result = app.getSentenceToxicity(sentence);
+        // JSON conversion
+        com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+        try {
+            return mapper.writeValueAsString(result);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to convert ModerationResult to JSON", e);
+        }
+    }
+
     @GetMapping("/dictionary/templates")
     public ArrayList<Template> getTemplates() {
         return app.getTemplates();
