@@ -51,7 +51,7 @@ public class SentenceGenerator {
                 Word actualReplacement = null;
                 Random random = new Random();
                 // Scelta se usare input o dizionario
-                int choice = (input != null && !input.getText().isEmpty() && random.nextInt(2) == 0) ? 2 : 1;
+                int choice = (input != null && !input.getText().isEmpty() && random.nextInt(10) < 7) ? 2 : 1;
 
                 switch (placeholderType) {
                     case "noun":
