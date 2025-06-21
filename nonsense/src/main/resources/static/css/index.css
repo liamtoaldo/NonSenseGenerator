@@ -23,7 +23,7 @@ body {
 
 /* Sidebar  */
 #sidebar {
-    width: 30%;
+    width: 100%;
     background-color: var(--dark-bg);
     padding: 1rem;
     transition: width 0.3s ease;
