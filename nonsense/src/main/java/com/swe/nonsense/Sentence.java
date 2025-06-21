@@ -68,7 +68,7 @@ public class Sentence {
     /**
      * Method that return the words that compose the sentence
      * 
-     * @return ArrayList of Words that composes the sentence
+     * @return An ArrayList of Words that composes the sentence
      */
     public ArrayList<Word> getText() {
         return words;
@@ -95,7 +95,7 @@ public class Sentence {
     /**
      * Method that return a random Noun from the Sentence
      * 
-     * @return a random Noun from the Sentence, or null if there are no Nouns
+     * @return A random Noun from the Sentence, or null if there are no Nouns
      */
     public Noun getRandomNoun() {
         ArrayList<Word> wordsTmp = new ArrayList<>();
@@ -114,7 +114,7 @@ public class Sentence {
     /**
      * Method that returns a random Adjective from the Sentence
      * 
-     * @return a random Adjective from the Sentence, or null if there are no Adjectives
+     * @return A random Adjective from the Sentence, or null if there are no Adjectives
      */
     public Adjective getRandomAdjective() {
         ArrayList<Word> wordsTmp = new ArrayList<>();
@@ -155,7 +155,7 @@ public class Sentence {
     /**
      * Override of the toString method to return the Sentence as a String
      * 
-     * @return the Sentence as a String, with words separated by spaces and punctuation handled correctly
+     * @return The Sentence as a String, with words separated by spaces and punctuation handled correctly
      */
     @Override
     public String toString() {

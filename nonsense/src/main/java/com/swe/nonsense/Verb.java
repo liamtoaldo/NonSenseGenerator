@@ -47,7 +47,7 @@ public class Verb extends Word {
     /**
      * Method that returns the Tense of the Verb
      * 
-     * @return the Tense of the Verb
+     * @return The Tense of the Verb
      */
     public Tense getTense() {
         return tense;

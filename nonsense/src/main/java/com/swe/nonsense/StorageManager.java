@@ -73,6 +73,7 @@ public class StorageManager {
 
     /**
      * Checks if a data file exists in the storage directory. If not, copies it from the classpath.
+     * 
      * @param fileName The name of the file (e.g., "nouns.json")
      * @return The absolute path to the data file as a String.
      */
@@ -177,7 +178,7 @@ public class StorageManager {
      * Method that loads the history from JSON files' contents by reading from the specified file path.
      * It reads sentences from the sentences JSON file and saves them into the sentence history.
      * 
-     * @return the history with all the sentences loaded from the JSON file
+     * @return The history with all the sentences loaded from the JSON file
      */
     public SentenceHistory loadHistory() {
         SentenceHistory history = SentenceHistory.getInstance();

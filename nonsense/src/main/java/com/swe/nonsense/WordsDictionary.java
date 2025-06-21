@@ -35,7 +35,7 @@ public class WordsDictionary {
     //Costruttore
     /**
      * Private constructor to enforce singleton pattern
-     * @throws IllegalStateException if an instance already exists
+     * @throws IllegalStateException If an instance already exists
      */
     private WordsDictionary() {
         if (instance != null) {
@@ -65,7 +65,7 @@ public class WordsDictionary {
     /**
      * Method that returns a random noun from the dictionary
      *
-     * @return a random Noun or null if there are no nouns
+     * @return A random Noun or null if there are no nouns
      */
     public Noun getRandomNoun() {
         if (nouns.isEmpty()) {
@@ -79,7 +79,7 @@ public class WordsDictionary {
     /**
      * Method that returns a random adjective from the dictionary
      *
-     * @return a random Adjective or null if there are no adjectives
+     * @return A random Adjective or null if there are no adjectives
      */
     public Adjective getRandomAdjective() {
         if (adjectives.isEmpty()) {
@@ -93,7 +93,7 @@ public class WordsDictionary {
     /**
      * Method that returns a random verb from the dictionary
      *
-     * @return a random Verb or null if there are no verbs
+     * @return A random Verb or null if there are no verbs
      */
     public Verb getRandomVerb() {
         if (verbs.isEmpty()) {
@@ -107,8 +107,8 @@ public class WordsDictionary {
     /**
      * Method that returns a random verb from the dictionary with a specific tense
      * 
-     * @param tense the tense of the verb to be returned
-     * @return a random Verb with the specified Tense or null if there are no verbs with that Tense
+     * @param tense The tense of the verb to be returned
+     * @return A random Verb with the specified Tense or null if there are no verbs with that Tense
      */
     public Verb getRandomVerb(Tense tense) {
         if (verbs.isEmpty()) {
@@ -134,7 +134,7 @@ public class WordsDictionary {
     /**
      * Method that returns a random template from the dictionary
      *
-     * @return a random Template or null if there are no templates
+     * @return A random Template or null if there are no templates
      */
     public Template getRandomTemplate() {
         if (templates.isEmpty()) {
@@ -148,7 +148,7 @@ public class WordsDictionary {
     /**
      * Method that returns all saved nouns from the dictionary
      * 
-     * @return all saved nouns
+     * @return All saved nouns
      */
     public ArrayList<Noun> getNouns() {
         return nouns;
@@ -157,7 +157,7 @@ public class WordsDictionary {
     /**
      * Method that returns all saved adjectives from the dictionary
      * 
-     * @return all saved adjectives
+     * @return All saved adjectives
      */
     public ArrayList<Adjective> getAdjectives() {
         return adjectives;
@@ -166,7 +166,7 @@ public class WordsDictionary {
     /**
      * Method that returns all saved verbs from the dictionary
      * 
-     * @return all saved verbs
+     * @return All saved verbs
      */
     public ArrayList<Verb> getVerbs() {
         return verbs;
@@ -175,7 +175,7 @@ public class WordsDictionary {
     /**
      * Method that returns all saved templates from the dictionary
      * 
-     * @return all saved templates
+     * @return All saved templates
      */
     public ArrayList<Template> getTemplates() {
         return templates;
@@ -186,7 +186,7 @@ public class WordsDictionary {
     /**
      * Method that saves a list of words in the dictionary. It checks the type of each word and adds it to the corresponding list (nouns, adjectives, or verbs)
      * 
-     * @param words
+     * @param words The ArryList of words to be saved in the dictionary
      */
     public void saveTerms(ArrayList<Word> words) {
         for (Word word : words) {
@@ -203,7 +203,7 @@ public class WordsDictionary {
     /**
      * Method that saves a list of templates in the dictionary
      * 
-     * @param templates
+     * @param templates The ArrayList of templates to be saved in the dictionary
      */
     public void saveTemplates(ArrayList<Template> templates) {
         this.templates.addAll(templates);

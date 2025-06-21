@@ -34,7 +34,7 @@ public class Word {
     /**
      * Method that return the content of the Word
      * 
-     * @return the content inside the Word
+     * @return The content inside the Word
      */
     public String getText() {
         return text;
@@ -70,7 +70,7 @@ public class Word {
     /**
      * Method to expose the class type to Jackson for JSON serialization
      * 
-     * @return the simple name of the class (e.g., "Noun", "Verb", etc.)
+     * @return The simple name of the class (e.g., "Noun", "Verb", etc.)
      */
     @JsonProperty("wordClassType") // Il nome che apparirà nel JSON
     public String getWordClassType() {

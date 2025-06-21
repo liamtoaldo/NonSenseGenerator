@@ -34,7 +34,7 @@ public class Template {
     /**
      * Method that returns the Template
      * 
-     * @return the Template contained in the Template Object
+     * @return The Template contained in the Template Object
      */
     public String getTemplate() {
         return template;

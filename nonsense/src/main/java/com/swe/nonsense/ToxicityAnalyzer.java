@@ -5,21 +5,36 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * Class that analyzes the toxicity of a sentence using Google Moderation API
+ */
 public class ToxicityAnalyzer {
+  /**
+   * URL of the Google Moderation API used
+   */
   static final String GOOGLE_MODERATION_API_URL = "https://language.googleapis.com/v1/documents:moderateText";
+  
+  /**
+   * API client used for making requests to the Google Moderation API 
+   */
   private APIClient apiClient;
 
   // Costruttore
+  /**
+   * Constructor that initializes the API client
+   */
   public ToxicityAnalyzer() {
     this.apiClient = new APIClient();
   }
 
   /**
-   * Analizza la tossicità di una frase.
-   * 
-   * @param sentence La frase da analizzare.
-   * @return Il risultato dell'analisi, contenente il punteggio della relativa
-   *         categoria di tossicità.
+   * Analyzes the toxicity of a sentence by sending it to the Google Moderation API.
+   * The response is parsed to extract the relevant toxicity categories and their confidence scores.
+   *
+   * @param sentence The sentence to analyze
+   * @return The result of the analysis, containing the score of the relevant toxicity category
+   * @throws IllegalArgumentException If the sentence is null or empty
+   * @throws RuntimeException If the API response is invalid or empty
    */
   public ModerationResult analyzeToxicity(Sentence sentence) {
     if (sentence == null || sentence.toString().isEmpty()) {
@@ -53,10 +68,10 @@ public class ToxicityAnalyzer {
   }
 
   /**
-   * Verifica se una frase è tossica.
-   * 
-   * @param sentence La frase da verificare.
-   * @return true se la frase è tossica, false altrimenti.
+   * Checks if a sentence is toxic.
+   *
+   * @param sentence The sentence to check.
+   * @return true if the sentence is toxic, false otherwise.
    */
   public boolean isToxic(Sentence sentence) {
     ModerationResult result = analyzeToxicity(sentence);

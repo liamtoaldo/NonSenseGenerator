@@ -20,7 +20,7 @@ public class SentenceHistory {
     //Costruttore
     /**
      * Private constructor to enforce singleton pattern
-     * @throws IllegalStateException if an instance already exists
+     * @throws IllegalStateException If an instance already exists
      */
     private SentenceHistory() {
         if (instance != null) {
@@ -47,7 +47,7 @@ public class SentenceHistory {
     /**
      * Method that returns all saved sentences
      *
-     * @return an ArrayList containing all saved sentences
+     * @return An ArrayList containing all saved sentences
      */
     public ArrayList<Sentence> getSentences() {
         return savedSentences;
@@ -63,8 +63,8 @@ public class SentenceHistory {
      * This method returns the last sentences saved in the history, in reverse order.
      * 
      * @param numberOfSentences
-     * @return a number of sentences saved in the history equal to numberOfSentences parameter
-     * @throws IllegalArgumentException if numberOfSentences is less than or equal to 0 or greater than the number of saved sentences
+     * @return A number of sentences saved in the history equal to numberOfSentences parameter
+     * @throws IllegalArgumentException If numberOfSentences is less than or equal to 0 or greater than the number of saved sentences
      */
     public ArrayList<Sentence> getLastSentences(int numberOfSentences) {
         ArrayList<Sentence> lastSentences = new ArrayList<>();

@@ -5,14 +5,36 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * Class that analyzes the syntax of a sentence using Google NLP API.
+ * This class builds a syntax tree representing the grammatical structure of the sentence.
+ */
 public class SyntaxAnalyzer {
+    /**
+     * URL of the Google NLP API used
+     */
     static final String GOOGLE_NLP_API_URL = "https://language.googleapis.com/v1/documents:analyzeSyntax";
+    /**
+     * URL of the Google NLP API used
+     */
     APIClient apiClient;
 
+    /**
+     * Constructor that initializes the API client
+     */
     public SyntaxAnalyzer() {
         this.apiClient = new APIClient();
     }
 
+    /**
+     * Method that analyzes the syntax of a sentence and returns its syntax tree
+     * 
+     * @param sentence the sentence to analyze
+     * @return The syntax tree of the sentence
+     * @throws IllegalArgumentException If the sentence is null or empty
+     * @throws RuntimeException If the API response is invalid or empty
+     * @throws IllegalStateException If no root node is found in the response or if the head token index is out of range
+     */
     public SyntaxTree analyzeSyntax(Sentence sentence) {
         if (sentence == null || sentence.getText() == null || sentence.getText().isEmpty()) {
             throw new IllegalArgumentException("Sentence cannot be null or empty");
