@@ -15,7 +15,7 @@ public class SyntaxAnalyzer {
      */
     static final String GOOGLE_NLP_API_URL = "https://language.googleapis.com/v1/documents:analyzeSyntax";
     /**
-     * URL of the Google NLP API used
+     * API client used for making requests to the Google NLP API
      */
     APIClient apiClient;
 

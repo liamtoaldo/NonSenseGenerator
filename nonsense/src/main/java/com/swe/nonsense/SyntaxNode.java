@@ -15,7 +15,8 @@ public class SyntaxNode {
      */
     private ArrayList<SyntaxNode> children;
     /**
-     * String that indicates the syntactic dependency relation between this node and its parent
+     * String that represents the syntactic dependency relation of this node
+     * e.g. "subject", "object", "verb", etc.
      */
     private String dependencyLabel;
 
