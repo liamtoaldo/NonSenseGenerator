@@ -14,12 +14,12 @@ let selectedTense = "PRESENT";
 
 const selectTemplate = (template) => {
     selectedTemplate = template;
-    selectedTemplatePg.removeClass('d-none').html('<span class="text-secondary">Selected template: </span>' + template);
+    selectedTemplatePg.removeClass('d-none').html('<span class="text-secondary"><i class="bi bi-layout-text-sidebar-reverse"></i> Selected template: </span>' + template);
 }
 
 const selectTense = (tense) => {
     selectedTense = tense;
-    selectedTensePg.removeClass('d-none').html('<span class="text-secondary">Selected tense: </span>' + tense);
+    selectedTensePg.removeClass('d-none').html('<span class="text-secondary"><i class="bi bi-clock"></i> Selected tense: </span>' + tense);
     console.log(`Selected tense: ${tense}`);
 }
 
@@ -41,7 +41,8 @@ const initializeTemplates = () => {
                     selectTemplate(template);
                 });
             }
-            selectedTemplatePg.removeClass('d-none').html('<span class="text-secondary">Selected template: </span>' + "Random Template");
+            //selectedTemplatePg.removeClass('d-none').html('<span class="text-secondary">Selected template: </span>' + "Random Template");
+            selectTemplate("Random Template");
 
             console.log("Templates loaded successfully:", data);
         },
@@ -64,7 +65,8 @@ const initializeTenses = () => {
             const tense = $(this).html();
             selectTense(tense);
         });
-        selectedTensePg.removeClass('d-none').html('<span class="text-secondary">Selected tense: </span>' + "Present");
+        //selectedTensePg.removeClass('d-none').html('<span class="text-secondary">Selected tense: </span>' + "Present");
+        selectTense("PRESENT");
     }
     console.log("Tenses loaded successfully:", tenses);
 }
@@ -106,12 +108,17 @@ $(document).ready(function () {
 
     // Buttons variables
     const analyzeSyntaxButton = $('#analyzeSyntaxButton');
+    const analyzeToxicityButton = $('#analyzeToxicityButton')
     const generateButton = $('#generateButton');
     const inputText = $('#inputText');
     // Action buttons
-    if (analyzeSyntaxButton && inputText) {
+    if (inputText && analyzeSyntaxButton && analyzeToxicityButton && generateButton) {
         analyzeSyntaxButton.on('click', function () {
             analyzesyntax(inputText);
+        });
+        analyzeToxicityButton.on('click', function () {
+            const sentence = $('#outputText').val();
+            analyzeToxicity(sentence);
         });
         generateButton.on('click', function () {
             console.log(inputText.val());

@@ -127,7 +127,12 @@
                             <!-- Toxicity Analysis Section -->
                             <h5 class="section-title"><i class="bi bi-shield-check"></i> TOXICITY ANALYSIS</h5>
                             <div class="section-box fill-height-box">
-                                <div id="toxicityAnalysisResult"></div>
+                                <div class="h-100 w-100 d-flex flex-column justify-content-center align-items-center position-relative">
+                                    <canvas id="toxicityChart"></canvas>
+                                    <div id="toxicitySpinner" class="spinner-border position-absolute top-50 start-50"
+                                        role="status" style="z-index: 2; display: none;">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -152,6 +157,7 @@
 <!-- Page specific Javascript-->
 <script th:src="@{/js/index.js}"></script>
 <script th:src="@{/js/analysis_syntax.js}"></script>
+<script th:src="@{/js/analysis_toxicity.js}"></script>
 <script th:src="@{/js/generation_sentence.js}"></script>
 
 </html>

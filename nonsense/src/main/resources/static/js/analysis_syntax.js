@@ -1,6 +1,3 @@
-const ctx = $('#syntaxTreeChart');
-let chart = null;
-
 // Funzione che usa la ricerca ricorsiva per ottenere dati da un syntaxtree
 const flattenTree = (node, parentIndex = null, arr = [], labels = []) => {
     if (!node) {
@@ -45,6 +42,10 @@ const analyzesyntax = (inputText) => {
 
     // Mostra spinner
     $('#syntaxTreeSpinner').show();
+
+    // Variabili per il grafico
+    const ctx = $('#syntaxTreeChart');
+    let chart = null;
 
     $.ajax({
         url: '/api/v1/nonsense/sentence/syntax?sentenceText=' + encodeURIComponent(sentence),
