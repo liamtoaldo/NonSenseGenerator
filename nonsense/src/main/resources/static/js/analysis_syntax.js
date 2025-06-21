@@ -43,17 +43,20 @@ const analyzesyntax = (inputText) => {
     // Mostra spinner
     $('#syntaxTreeSpinner').show();
 
-    // Variabili per il grafico
     const ctx = $('#syntaxTreeChart');
+    if (window.syntaxTreeChartInstance) {
+        window.syntaxTreeChartInstance.destroy();
+        window.syntaxTreeChartInstance = null;
+    }
     let chart = null;
 
     $.ajax({
         url: '/api/v1/nonsense/sentence/syntax?sentenceText=' + encodeURIComponent(sentence),
         type: 'GET',
         success: function (data) {
-            // Elimina il vecchio grafico se esiste
-            if (chart) {
-                chart.destroy();
+            if (window.syntaxTreeChartInstance) {
+                window.syntaxTreeChartInstance.destroy();
+                window.syntaxTreeChartInstance = null;
             }
 
             if (!data.roots || data.roots.length === 0) {
@@ -63,7 +66,6 @@ const analyzesyntax = (inputText) => {
             }
 
             let rootNode;
-            // Se c'è più di una radice, crea una radice fittizia
             if (data.roots.length > 1) {
                 rootNode = {
                     word: { text: "Multiple Roots", wordClassType: "Root" },
@@ -72,7 +74,6 @@ const analyzesyntax = (inputText) => {
                 };
                 showAlert("Multiple roots detected. A synthetic root has been created to visualize the tree.", "warning");
             } else {
-                // Altrimenti, usa l'unica radice disponibile
                 rootNode = data.roots[0];
             }
 
@@ -89,14 +90,14 @@ const analyzesyntax = (inputText) => {
                         pointBackgroundColor: function (context) {
                             if (context.dataIndex >= nodesFlattened.length || context.dataIndex < 0) {
                                 console.warn(`Index ${context.dataIndex} is out of bounds for nodesFlattened. Length: ${nodesFlattened.length}. Returning steelblue.`);
-                                return 'steelblue'; // Indice non valido
+                                return 'steelblue';
                             }
 
                             const nodeDataFromScope = nodesFlattened[context.dataIndex];
 
                             console.log(`Processing node at index ${context.dataIndex}:`, nodeDataFromScope);
                             if(nodeDataFromScope.root) {
-                                return 'red'; // Colore rosso per la radice
+                                return 'red';
                             }
 
                             if (!nodeDataFromScope || !nodeDataFromScope.wordClassType) {
@@ -106,13 +107,13 @@ const analyzesyntax = (inputText) => {
 
                             switch (wordType) {
                                 case 'Noun':
-                                    return 'purple'; //Nomi in viola
+                                    return 'purple';
                                 case 'Verb':
-                                    return 'green'; //Verbi in verde
+                                    return 'green';
                                 case 'Adjective':
-                                    return 'orange'; //Aggettivi in arancione
+                                    return 'orange';
                                 default:
-                                    return 'steelblue'; // Colore predefinito per altri tipi
+                                    return 'steelblue';
                             }
                         },
                         pointRadius: 8,
@@ -150,7 +151,8 @@ const analyzesyntax = (inputText) => {
                 }
             });
 
-            // Nascondi spinner
+            window.syntaxTreeChartInstance = chart;
+
             $('#syntaxTreeSpinner').hide();
         },
         error: function (xhr, status, error) {
