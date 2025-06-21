@@ -17,12 +17,12 @@ public class ApplicationRestController {
         this.app = app;
     }
 
-    @GetMapping("/syntax-tree")
+    @GetMapping("/sentence/syntax")
     public SyntaxTree getSyntaxTree(@RequestParam String sentenceText) {
         return app.getSyntaxTreeFromString(sentenceText);
     }
 
-    @GetMapping("/generate-sentence")
+    @GetMapping("/sentence/generate")
     public String generateSentenceInput(
         @RequestParam String text,
         @RequestParam(required = false) Template template,

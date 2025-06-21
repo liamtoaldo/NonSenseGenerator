@@ -7,7 +7,7 @@ const generateSentence = (text, template, tense) => {
     $('#outputSpinner').show();
 
     $.ajax({
-        url: `/api/v1/nonsense/generate-sentence?text=${encodeURIComponent(text)}&template=${encodeURIComponent(template)}&tense=${encodeURIComponent(tense)}`,
+        url: `/api/v1/nonsense/sentence/generate?text=${encodeURIComponent(text)}&template=${encodeURIComponent(template)}&tense=${encodeURIComponent(tense)}`,
         type: 'GET',
         success: function (data) {
             $('#outputSpinner').hide();

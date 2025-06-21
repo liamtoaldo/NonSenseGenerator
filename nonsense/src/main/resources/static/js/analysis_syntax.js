@@ -47,7 +47,7 @@ const analyzesyntax = (inputText) => {
     $('#syntaxTreeSpinner').show();
 
     $.ajax({
-        url: '/api/v1/nonsense/syntax-tree?sentenceText=' + encodeURIComponent(sentence),
+        url: '/api/v1/nonsense/sentence/syntax?sentenceText=' + encodeURIComponent(sentence),
         type: 'GET',
         success: function (data) {
             // Elimina il vecchio grafico se esiste
