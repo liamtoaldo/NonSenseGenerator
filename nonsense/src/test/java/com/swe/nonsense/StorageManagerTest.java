@@ -1,16 +1,22 @@
 package com.swe.nonsense;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 public class StorageManagerTest {
 
@@ -18,139 +24,138 @@ public class StorageManagerTest {
     private WordsDictionary wordsDictionary;
     private SentenceHistory sentenceHistory;
 
-    private File nounsFilePath;
-    private File adjectivesFilePath;
-    private File verbsFilePath;
-    private File templatesFilePath;
-    private File sentencesFilePath;
+    // JUnit gestirà la creazione e la pulizia di questa cartella temporanea
+    @TempDir
+    Path tempDir;
+
+    private String nounsFilePath;
+    private String adjectivesFilePath;
+    private String verbsFilePath;
+    private String templatesFilePath;
+    private String sentencesFilePath;
     
     //Inizializza i file temporanei per i test
     @BeforeEach
-    public void setUp() {
-        nounsFilePath = new File("nouns_temp.json");
-        adjectivesFilePath = new File("adjectives_temp.json");
-        verbsFilePath = new File("verbs_temp.json");
-        templatesFilePath = new File("templates_temp.json");
-        sentencesFilePath = new File("sentences_temp.json");
+    public void setUp() throws IOException {
+        // JSON corretto: doppi apici e nomi delle proprietà ("text", "template") corretti.
+        String nounsFileContent = "[{\"text\":\"cat\"},{\"text\":\"dog\"}]";
+        String adjectivesFileContent = "[{\"text\":\"big\"},{\"text\":\"small\"}]";
+        String verbsFileContent = "[{\"text\":\"jumps\"},{\"text\":\"runs\"}]";
+        String templatesFileContent = "[{\"template\":\"The {adjective} {noun} {verb} quickly.\"}]";
+        // Per Sentence, la proprietà "text" deve essere una lista di oggetti Word.
+        String sentencesFileContent = "[{\"text\":[{\"text\":\"The\"},{\"text\":\"small\"},{\"text\":\"cat\"},{\"text\":\"jumps\"},{\"text\":\"quickly\"}],\"timestamp\":\"2025-06-21T12:30:00\"}]";
 
-        String nounsFileContent = "[{\"value\":\"cat\"},{\"value\":\"dog\"}]";
-        String adjectivesFileContent = "[{\"value\":\"big\"},{\"value\":\"small\"}]";
-        String verbsFileContent = "[{\"value\":\"jumps\"},{\"value\":\"runs\"}]";
-        String templatesFileContent = "[{\"value\":\"The {adjective} {noun} {verb} quickly.\"}]";
-        String sentencesFileContent = "[{\"value\":\"The small cat jumps quickly.\"}]";
+        nounsFilePath = tempDir.resolve("nouns_temp.json").toString();
+        adjectivesFilePath = tempDir.resolve("adjectives_temp.json").toString();
+        verbsFilePath = tempDir.resolve("verbs_temp.json").toString();
+        templatesFilePath = tempDir.resolve("templates_temp.json").toString();
+        sentencesFilePath = tempDir.resolve("sentences_temp.json").toString();
 
-        try {
-            Files.writeString(nounsFilePath.toPath(), nounsFileContent);
-            Files.writeString(adjectivesFilePath.toPath(), adjectivesFileContent);
-            Files.writeString(verbsFilePath.toPath(), verbsFileContent);
-            Files.writeString(templatesFilePath.toPath(), templatesFileContent);
-            Files.writeString(sentencesFilePath.toPath(), sentencesFileContent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Files.writeString(Path.of(nounsFilePath), nounsFileContent);
+        Files.writeString(Path.of(adjectivesFilePath), adjectivesFileContent);
+        Files.writeString(Path.of(verbsFilePath), verbsFileContent);
+        Files.writeString(Path.of(templatesFilePath), templatesFileContent);
+        Files.writeString(Path.of(sentencesFilePath), sentencesFileContent);
 
-        storageManager = new StorageManager(nounsFilePath.getAbsolutePath(), adjectivesFilePath.getAbsolutePath(), verbsFilePath.getAbsolutePath(), templatesFilePath.getAbsolutePath(), sentencesFilePath.getAbsolutePath());
+        storageManager = new StorageManager(nounsFilePath, adjectivesFilePath, verbsFilePath, templatesFilePath, sentencesFilePath);
+        
+        // Pulisce i dati dai singleton prima di ogni test per garantire l'isolamento
         wordsDictionary = WordsDictionary.getInstance();
+        wordsDictionary.clearAllData();
         sentenceHistory = SentenceHistory.getInstance();
+        sentenceHistory.clearData();
     }
     
     //Rimuove i file temporanei dopo il test
     @AfterEach
     public void cleanUp() {
-        if (nounsFilePath.exists()) {
-            nounsFilePath.delete();
+        File nounsFile = new File(nounsFilePath);
+        File adjectivesFile = new File(adjectivesFilePath);
+        File verbsFile = new File(verbsFilePath);
+        File templatesFile = new File(templatesFilePath);
+        File sentencesFile = new File(sentencesFilePath);
+
+        if (nounsFile.exists()) {
+            nounsFile.delete();
         }
-        if (adjectivesFilePath.exists()) {
-            adjectivesFilePath.delete();
+        if (adjectivesFile.exists()) {
+            adjectivesFile.delete();
         }
-        if (verbsFilePath.exists()) {
-            verbsFilePath.delete();
+        if (verbsFile.exists()) {
+            verbsFile.delete();
         }
-        if (templatesFilePath.exists()) {
-            templatesFilePath.delete();
+        if (templatesFile.exists()) {
+            templatesFile.delete();
         }
-        if (sentencesFilePath.exists()) {
-            sentencesFilePath.delete();
+        if (sentencesFile.exists()) {
+            sentencesFile.delete();
         }
     }
 
     @Test
     void testLoadDictionary() {
-        //This method should return a new instance of WordsDictionary
-        //For the sake of this example, we will return a new instance directly.
-        wordsDictionary.clearAllData();
-        wordsDictionary = storageManager.loadDictionary();
-        assertNotNull(wordsDictionary.getNouns(), "loadDictionary should contain nouns");
-        assertNotNull(wordsDictionary.getAdjectives(), "loadDictionary should contain adjectives");
-        assertNotNull(wordsDictionary.getVerbs(), "loadDictionary should contain verbs");
-        assertNotNull(wordsDictionary.getTemplates(), "loadDictionary should contain templates");
+        // Azione
+        storageManager.loadDictionary();
+
+        // Asserzioni
+        assertEquals(2, wordsDictionary.getNouns().size(), "Dovrebbero essere caricati 2 sostantivi");
+        assertEquals("cat", wordsDictionary.getNouns().get(0).getText());
+
+        assertEquals(2, wordsDictionary.getAdjectives().size(), "Dovrebbero essere caricati 2 aggettivi");
+        assertEquals("big", wordsDictionary.getAdjectives().get(0).getText());
+
+        assertEquals(2, wordsDictionary.getVerbs().size(), "Dovrebbero essere caricati 2 verbi");
+        assertEquals("jumps", wordsDictionary.getVerbs().get(0).getText());
+
+        assertEquals(1, wordsDictionary.getTemplates().size(), "Dovrebbe essere caricato 1 template");
+        assertEquals("The {adjective} {noun} {verb} quickly.", wordsDictionary.getTemplates().get(0).getTemplate());
     }
 
     @Test
-    void testSaveDictionary() {
-        try {
-            Files.writeString(nounsFilePath.toPath(), "[]");
-            Files.writeString(adjectivesFilePath.toPath(), "[]");
-            Files.writeString(verbsFilePath.toPath(), "[]");
-            Files.writeString(templatesFilePath.toPath(), "[]");
-            Files.writeString(sentencesFilePath.toPath(), "[]");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    void testSaveDictionary() throws IOException {
+        // Preparazione: Carica i dati iniziali nel dizionario
+        storageManager.loadDictionary();
         
+        // Azione: Salva il dizionario
         storageManager.saveDictionary(wordsDictionary);
 
+        // Asserzione: Rilegge i file e verifica il contenuto
         ObjectMapper mapper = new ObjectMapper();
-        ArrayList<Noun> nouns;
-        ArrayList<Adjective> adjectives;
-        ArrayList<Verb> verbs;
-        ArrayList<Template> templates;
+        mapper.configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        List<Noun> nouns = mapper.readValue(new File(nounsFilePath), new TypeReference<ArrayList<Noun>>(){});
+        assertEquals(2, nouns.size());
+        assertEquals("cat", nouns.get(0).getText());
 
-        try {
-            nouns = mapper.readValue(nounsFilePath, new TypeReference<ArrayList<Noun>>(){});
-            adjectives = mapper.readValue(adjectivesFilePath, new TypeReference<ArrayList<Adjective>>(){});
-            verbs = mapper.readValue(verbsFilePath, new TypeReference<ArrayList<Verb>>(){});
-            templates = mapper.readValue(templatesFilePath, new TypeReference<ArrayList<Template>>(){});
-        } catch (Exception e) {
-            e.printStackTrace();
-            nouns = new ArrayList<>();
-            adjectives = new ArrayList<>();
-            verbs = new ArrayList<>();
-            templates = new ArrayList<>();
-        }
-        assert wordsDictionary.getNouns().equals(nouns) : "Nouns in file should match nouns in dictionary";
-        assert wordsDictionary.getAdjectives().equals(adjectives) : "Adjectives in file should match adjectives in dictionary";
-        assert wordsDictionary.getVerbs().equals(verbs) : "Verbs in file should match verbs in dictionary";
-        assert wordsDictionary.getTemplates().equals(templates) : "Templates in file should match templates in dictionary";
+        List<Adjective> adjectives = mapper.readValue(new File(adjectivesFilePath), new TypeReference<ArrayList<Adjective>>(){});
+        assertEquals(2, adjectives.size());
+        assertEquals("big", adjectives.get(0).getText());
     }
 
     @Test
     void testLoadHistory() {
-        sentenceHistory = storageManager.loadHistory();
-        assert sentenceHistory.getSentences() != null : "loadSentences should contain sentences";
+        // Azione
+        storageManager.loadHistory();
+
+        // Asserzione
+        assertEquals(1, sentenceHistory.getSentences().size(), "Dovrebbe essere caricata 1 frase");
+        assertEquals("The small cat jumps quickly", sentenceHistory.getSentences().get(0).toString());
     }
 
     @Test
-    void testSaveHistory() {
+    void testSaveHistory() throws IOException {
+        // Preparazione: Carica la cronologia iniziale
+        storageManager.loadHistory();
 
-        storageManager.loadDictionary();
-        try {
-            Files.writeString(sentencesFilePath.toPath(), "[]");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
+        // Azione: Salva la cronologia
         storageManager.saveHistory(sentenceHistory);
 
+        // Asserzione: Rilegge il file e verifica il contenuto
         ObjectMapper mapper = new ObjectMapper();
-        ArrayList<Sentence> sentences;
-
-        try {
-            sentences = mapper.readValue(sentencesFilePath, new TypeReference<ArrayList<Sentence>>(){});
-        } catch (Exception e) {
-            e.printStackTrace();
-            sentences = new ArrayList<>();
-        }
-        assert sentenceHistory.getSentences().equals(sentences) : "Sentences in file should match sentences in history";
+        mapper.registerModule(new JavaTimeModule()); // Necessario per leggere LocalDateTime
+        mapper.configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        List<Sentence> sentences = mapper.readValue(new File(sentencesFilePath), new TypeReference<ArrayList<Sentence>>(){});
+        
+        assertEquals(1, sentences.size());
+        assertEquals("The small cat jumps quickly", sentences.get(0).toString());
     }
 }

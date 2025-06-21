@@ -100,6 +100,7 @@ public class StorageManager {
         WordsDictionary dictionary = WordsDictionary.getInstance();
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
+        mapper.configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         ArrayList<Noun> nouns = new ArrayList<>();
         ArrayList<Adjective> adjectives = new ArrayList<>();
@@ -123,8 +124,8 @@ public class StorageManager {
             if (templatesFilePath != null && new File(templatesFilePath).exists()) {
                 templates = mapper.readValue(new File(templatesFilePath), new TypeReference<ArrayList<Template>>(){});
             }         
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load dictionary files. Check JSON format.", e);
         }
 
         for (Noun noun : nouns) {
@@ -182,6 +183,7 @@ public class StorageManager {
         SentenceHistory history = SentenceHistory.getInstance();
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
+        mapper.configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         ArrayList<Sentence> sentences = new ArrayList<>();
 
@@ -189,8 +191,8 @@ public class StorageManager {
             if (sentencesFilePath != null && new File(sentencesFilePath).exists()) {
                 sentences = mapper.readValue(new File(sentencesFilePath), new TypeReference<ArrayList<Sentence>>(){});
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load history file. Check JSON format.", e);
         }
 
         //Salva le sentences

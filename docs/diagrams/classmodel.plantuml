@@ -88,6 +88,7 @@ class SentenceGenerator {
 
 ' StorageManager agisce come un Data Access Object (DAO) / Repository
 class StorageManager {
+    -Path storageDir
     -String nounsFilePath
     -String adjectivesFilePath
     -String verbsFilePath
