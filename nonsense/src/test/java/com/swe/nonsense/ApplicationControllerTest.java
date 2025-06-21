@@ -22,7 +22,8 @@ public class ApplicationControllerTest {
         SyntaxTree syntaxTree = applicationController.getSyntaxTreeFromString(sentenceText);
 
         assertNotNull(syntaxTree, "Syntax tree should not be null");
-        assertNotNull(syntaxTree.getRoot(), "Syntax tree root should not be null");
+        assertNotNull(syntaxTree.getRoots(), "Syntax tree roots should not be null");
+        assertFalse(syntaxTree.getRoots().isEmpty(), "Syntax tree roots should not be empty");
         assertNotNull(syntaxTree.getAllNodes(), "Syntax tree nodes should not be null");
         assertFalse(syntaxTree.getAllNodes().isEmpty(), "Syntax tree nodes should not be empty");
         for (SyntaxNode node : syntaxTree.getAllNodes()) {

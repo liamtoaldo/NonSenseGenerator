@@ -3,13 +3,20 @@ let chart = null;
 
 // Funzione che usa la ricerca ricorsiva per ottenere dati da un syntaxtree
 const flattenTree = (node, parentIndex = null, arr = [], labels = []) => {
+    if (!node) {
+        return {
+            data: arr,
+            labels: labels
+        };
+    }
     const idx = arr.length;
     arr.push({
         name: node.word.text,
         parent: parentIndex,
         wordClassType: node.word.wordClassType,
+        root: node.dependencyLabel === 'ROOT',
     });
-    text = node.word.text;
+    let text = node.word.text;
     if (node.word.tense) {
         text += ` (${node.word.tense})`;
     }
@@ -26,6 +33,7 @@ const flattenTree = (node, parentIndex = null, arr = [], labels = []) => {
         labels: labels
     };
 }
+
 
 // Funzione per creare l'albero sintattico
 const analyzesyntax = (inputText) => {
@@ -47,7 +55,27 @@ const analyzesyntax = (inputText) => {
                 chart.destroy();
             }
 
-            const flattenedResult = flattenTree(data.root);
+            if (!data.roots || data.roots.length === 0) {
+                $('#syntaxTreeSpinner').hide();
+                showAlert("The syntax tree is empty or not available.", "danger");
+                return;
+            }
+
+            let rootNode;
+            // Se c'è più di una radice, crea una radice fittizia
+            if (data.roots.length > 1) {
+                rootNode = {
+                    word: { text: "Multiple Roots", wordClassType: "Root" },
+                    dependencyLabel: "ROOT",
+                    children: data.roots
+                };
+                showAlert("Multiple roots detected. A synthetic root has been created to visualize the tree.", "warning");
+            } else {
+                // Altrimenti, usa l'unica radice disponibile
+                rootNode = data.roots[0];
+            }
+
+            const flattenedResult = flattenTree(rootNode);
             const nodesFlattened = flattenedResult.data;
             const labels = flattenedResult.labels;
 
@@ -63,11 +91,12 @@ const analyzesyntax = (inputText) => {
                                 return 'steelblue'; // Indice non valido
                             }
 
-                            if (context.dataIndex === 0) {
-                                return 'red'; // La radice è sempre rossa
-                            }
-
                             const nodeDataFromScope = nodesFlattened[context.dataIndex];
+
+                            console.log(`Processing node at index ${context.dataIndex}:`, nodeDataFromScope);
+                            if(nodeDataFromScope.root) {
+                                return 'red'; // Colore rosso per la radice
+                            }
 
                             if (!nodeDataFromScope || !nodeDataFromScope.wordClassType) {
                                 return 'steelblue';
@@ -133,7 +162,7 @@ const analyzesyntax = (inputText) => {
             } else if (status === 'error') {
                 errorMessage = "API call failed. Check network connection.";
             }
-            
+
             showAlert(errorMessage, "danger");
         }
     })

@@ -109,10 +109,11 @@ class APIClient {
 
 ' SyntaxTree e SyntaxNode formano un pattern Composite
 class SyntaxTree {
-    -SyntaxNode root
+    -ArrayList<SyntaxNode> roots
     -void collectNodesPreOrder(SyntaxNode, ArrayList<SyntaxNode>)
-    +SyntaxNode getRoot()
-    +void setRoot(SyntaxNode)
+    +ArrayList<SyntaxNode> getRoots()
+    +void setRoots(ArrayList<SyntaxNode>)
+    +void addRoot(SyntaxNode)
     +ArrayList<SyntaxNode> getAllNodesInOrder()
 }
 

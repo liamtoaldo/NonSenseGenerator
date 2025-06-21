@@ -21,6 +21,9 @@ else sentence is empty or null
 else API call failed or timeout
     System --> User : displays error for API failure
 
+else Empty syntax tree returned
+    System --> User : displays error for empty syntax tree
+
 else unexpected error
     System --> User : displays generic error message
 end

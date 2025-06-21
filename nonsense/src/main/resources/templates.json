@@ -81,7 +81,7 @@
     "template": "The [ADJECTIVE] [NOUN] [VERB], so the [NOUN] [VERB] too."
   },
   {
-    "template": "Unless the [NOUN] [VERB], the [ADJECTIVE] [NOUN] will not [VERB]."
+    "template": "Unless the [NOUN] [VERB], the [ADJECTIVE] [NOUN] [VERB]."
   },
   {
     "template": "The [NOUN] [VERB] behind the [ADJECTIVE] [NOUN]."
@@ -123,10 +123,10 @@
     "template": "The [NOUN] [VERB] across the [ADJECTIVE] [NOUN]."
   },
   {
-    "template": "As soon as the [NOUN] [VERB], the [ADJECTIVE] [NOUN] will [VERB]."
+    "template": "As soon as the [NOUN] [VERB], the [ADJECTIVE] [NOUN] [VERB]."
   },
   {
-    "template": "Until the [NOUN] [VERB], nothing will [VERB] [ADJECTIVE]."
+    "template": "Until the [NOUN] [VERB], nothing [VERB] [ADJECTIVE]."
   },
   {
     "template": "The [ADJECTIVE] [NOUN] [VERB] beneath the [NOUN]."
@@ -138,7 +138,7 @@
     "template": "The [NOUN] [VERB] within the [ADJECTIVE] [NOUN]."
   },
   {
-    "template": "Either the [NOUN] [VERB], or the [ADJECTIVE] [NOUN] will [VERB]."
+    "template": "Either the [NOUN] [VERB], or the [ADJECTIVE] [NOUN] [VERB]."
   },
   {
     "template": "The [NOUN] [VERB] beside the [ADJECTIVE] [NOUN]."

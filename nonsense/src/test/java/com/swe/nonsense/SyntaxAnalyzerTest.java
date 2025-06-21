@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -42,7 +43,12 @@ public class SyntaxAnalyzerTest {
          */
         syntaxTree = analyzer.analyzeSyntax(sentence);
         assertNotNull(syntaxTree, "Syntax tree should not be null (setUp).");
-        root = syntaxTree.getRoot();
+        assertNotNull(syntaxTree.getRoots(), "Roots of syntax tree should not be null (setUp).");
+        assertFalse(syntaxTree.getRoots().isEmpty(),
+                "Roots of syntax tree should not be empty (setUp).");
+        // For this test, we assume the first root is the main one
+        assertEquals(1, syntaxTree.getRoots().size(), "There should be exactly one root node (setUp).");
+        root = syntaxTree.getRoots().get(0); // Assuming the first root is the main one
         assertNotNull(root, "Root node should not be null (setUp).");
     }
 

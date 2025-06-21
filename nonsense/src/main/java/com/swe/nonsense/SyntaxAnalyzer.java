@@ -31,12 +31,13 @@ public class SyntaxAnalyzer {
         JSONObject responseObject = new JSONObject(response);
         JSONArray tokensArray = responseObject.getJSONArray("tokens");
 
-        SyntaxTree syntaxTree = new SyntaxTree();
+        if(tokensArray == null || tokensArray.length() == 0) {
+            return new SyntaxTree(); // Restituisce un albero vuoto se non ci sono token
+        }
 
-        SyntaxNode rootNode = null;
         ArrayList<SyntaxNode> tempNodes = new ArrayList<>();
 
-        // Salva prima tutti i token in una lista
+        // Crea un SyntaxNode per ogni token e lo aggiunge a una lista temporanea.
         for (int i = 0; i < tokensArray.length(); i++) {
             JSONObject currentToken = tokensArray.getJSONObject(i);
             String wordText = currentToken.getJSONObject("text").getString("content");
@@ -45,14 +46,13 @@ public class SyntaxAnalyzer {
             String depLabel = dependencyEdge.getString("label");
 
             Word word;
-            // Separa i casi di words
             switch (partOfSpeech.getString("tag")) {
                 case "NOUN":
                     word = new Noun(wordText);
                     break;
                 case "VERB":
-                    // Ottieni il tense
-                    String tense = partOfSpeech.getString("tense");
+                    // Usa optString per gestire in sicurezza il caso in cui "tense" non sia presente.
+                    String tense = partOfSpeech.optString("tense", "UNKNOWN");
                     switch (tense) {
                         case "PAST":
                             word = new Verb(wordText, Tense.PAST);
@@ -64,7 +64,7 @@ public class SyntaxAnalyzer {
                             word = new Verb(wordText, Tense.FUTURE);
                             break;
                         default:
-                            word = new Verb(wordText, Tense.UNKNOWN); // Gestione di casi sconosciuti
+                            word = new Verb(wordText, Tense.UNKNOWN);
                             break;
                     }
                     break;
@@ -80,35 +80,37 @@ public class SyntaxAnalyzer {
             tempNodes.add(currentNode);
         }
 
-        // Poi Itera sui token per trovare quello radice.
-        // Il token radice ha l'etichetta "ROOT" nella sua dependencyEdge
+        // Costruisce le dipendenze tra i nodi e identifica tutte le radici.
+        ArrayList<SyntaxNode> rootNodes = new ArrayList<>();
         for (int i = 0; i < tokensArray.length(); i++) {
-            JSONObject currentToken = tokensArray.getJSONObject(i);
-            JSONObject dependencyEdge = currentToken.getJSONObject("dependencyEdge");
-            int headTokenIndex = dependencyEdge.getInt("headTokenIndex");
+            JSONObject dependencyEdge = tokensArray.getJSONObject(i).getJSONObject("dependencyEdge");
             String label = dependencyEdge.getString("label");
 
-            SyntaxNode currentNode = tempNodes.get(i);
-
-            // Caso speciale root
+            // I nodi con etichetta "ROOT" vengono aggiunti alla lista delle radici.
             if (label.equals("ROOT")) {
-                rootNode = currentNode;
+                rootNodes.add(tempNodes.get(i));
             } else {
-                // Caso base per tutti gli altri nodi
+                // Altrimenti, il nodo è un figlio di un altro nodo.
+                int headTokenIndex = dependencyEdge.getInt("headTokenIndex");
                 if (headTokenIndex >= 0 && headTokenIndex < tempNodes.size()) {
                     SyntaxNode parentNode = tempNodes.get(headTokenIndex);
-                    parentNode.addChild(currentNode);
+                    SyntaxNode childNode = tempNodes.get(i);
+                    parentNode.addChild(childNode);
                 } else {
                     throw new IllegalStateException("Token head Index is out of range: " + headTokenIndex);
                 }
             }
         }
 
-        if (rootNode == null) {
-            throw new IllegalStateException("No ROOT node found in the JSON response.");
+        if (rootNodes.isEmpty()) {
+            throw new IllegalStateException("No root nodes found in the syntax analysis response.");
         }
 
-        syntaxTree.setRoot(rootNode);
+        // Crea un SyntaxTree con i nodi radice trovati.
+        SyntaxTree syntaxTree = new SyntaxTree(rootNodes);
+        // Imposta le radici nell'albero di sintassi.
+        syntaxTree.setRoots(rootNodes);
+
         return syntaxTree;
     }
 }
