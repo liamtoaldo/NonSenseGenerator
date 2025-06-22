@@ -184,8 +184,8 @@ public class WordsDictionary {
     //Metodi per salvare e cancellare i dati
 
     /**
-     * Method that saves a list of words in the dictionary. It checks the type of each word and adds it to the corresponding list (nouns, adjectives, or verbs)
-     * 
+     * Method that saves a list of words in the dictionary. It checks the type of each word and adds it to the corresponding list (nouns, adjectives, or verbs).
+     * It avoids adding duplicates by checking if the word is already present in the respective list
      * @param words The ArryList of words to be saved in the dictionary
      */
     public void saveTerms(ArrayList<Word> words) {

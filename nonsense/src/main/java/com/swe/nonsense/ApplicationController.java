@@ -103,7 +103,7 @@ public class ApplicationController {
     }
 
     /**
-     * Method that generates a nonsense sentence based on the given input
+     * Method that generates a nonsense sentence based on the given input and saves the terms from the input and the generated sentence in the dictionary.
      *  
      * @param input The input sentence text to be used as a base for generating the nonsense sentence
      * @param template The template to be used for generating the nonsense sentence (it can be empty)
