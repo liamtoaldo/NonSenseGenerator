@@ -16,20 +16,18 @@
 <body class="d-flex">
 
     <!-- Sidebar -->
-    <div id="sidebar" class="d-flex flex-column collapsed">
+    <div id="sidebar" class="d-flex flex-column collapsed h-100">
         <div class="sidebar-header">
             <button id="sidebarToggle" class="btn">
                 <i class="bi bi-list fs-5"></i>
             </button>
         </div>
-        <div id="sidebarContent">
+        <div id="sidebarContent" class="d-flex flex-column flex-grow-1 h-100 position-relative pb-5">
             <button id="globalHistoryButton" type="button" class="btn btn-light w-100 mb-2 mt-4 p-2" data-bs-toggle="modal" data-bs-target="#globalHistoryModal">
                 <strong><i class="bi bi-globe-europe-africa"></i> GLOBAL GENERATIONS</strong>
             </button>
-            <small class="mb-2 mt-4 d-block text-secondary">
-                <strong><i class="bi bi-clock-history"></i> PRIVATE HISTORY</strong>
-            </small>
-            <div id="historyContainer" class="offcanvas-body flex-grow-1"></div>
+            <span class="section-title mb-2 mt-4 d-block"><i class="bi bi-clock-history"></i> PRIVATE HISTORY</span>
+            <div id="historyContainer" class="flex-grow-1 overflow-y-scroll"></div>
         </div>
     </div>
 
