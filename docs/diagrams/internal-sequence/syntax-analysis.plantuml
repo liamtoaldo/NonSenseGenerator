@@ -1,0 +1,130 @@
+@startuml
+title Internal Sequence Diagram for Syntax Analysis
+actor User
+participant "ApplicationRestController"
+participant "ApplicationController"
+participant "Sentence"
+participant "SyntaxAnalyzer"
+participant "APIClient"
+participant "Google API"
+participant "SyntaxTree"
+participant "Noun"
+participant "Adjective"
+participant "Verb"
+participant "Word"
+
+User -> ApplicationRestController: getSyntaxTree(String)
+activate ApplicationRestController
+ApplicationRestController -> ApplicationController: getSyntaxTreeFromString(String)
+activate ApplicationController
+ApplicationController -> Sentence: create(String)
+activate Sentence
+Sentence --> ApplicationController: sentence
+deactivate Sentence
+ApplicationController -> SyntaxAnalyzer: analyzeSyntax(Sentence)
+activate SyntaxAnalyzer
+alt sentence is null or empty
+    SyntaxAnalyzer --> ApplicationController: throw IllegalArgumentException("Sentence cannot be null or empty")
+    ApplicationController --> ApplicationRestController: exception
+else sentence is valid
+    ApplicationController -> APIClient: post(String, Map<String, String>, JSONObject)
+    activate APIClient
+    APIClient -> "Google API": POST /v1/documents:analyzeSyntax
+    "Google API" -> APIClient: JSON Response
+    deactivate "Google API"
+    APIClient -> SyntaxAnalyzer: response
+    deactivate APIClient
+    alt response is null or empty or does not contain the tokens field
+        SyntaxAnalyzer -> ApplicationController: throw RuntimeException("Failed to get a valid response from the API")
+        ApplicationController --> ApplicationRestController: exception
+    else response is valid
+        alt tokens field is present but empty
+            SyntaxAnalyzer -> SyntaxTree: new SyntaxTree()
+            activate SyntaxTree
+            SyntaxTree --> SyntaxAnalyzer: syntaxTree
+            deactivate SyntaxTree
+            SyntaxAnalyzer -> ApplicationController: syntaxTree
+        else tokens field is present and contains tokens
+            note over SyntaxAnalyzer: Create a ArrayList to hold SyntaxNode objects for temporary usage
+            loop for each token in response.tokens
+                note over SyntaxAnalyzer: Convert each token to a Word object based on its part of speech tag
+                alt token part of speech is NOUN
+                    SyntaxAnalyzer -> Noun: new Noun(String)
+                    activate Noun
+                    Noun --> SyntaxAnalyzer: noun
+                    deactivate Noun
+                else token part of speech is ADJECTIVE
+                    SyntaxAnalyzer -> Adjective: new Adjective(String)
+                    activate Adjective
+                    Adjective --> SyntaxAnalyzer: adjective
+                    deactivate Adjective
+                else token part of speech is VERB
+                    alt token has a tense
+                        SyntaxAnalyzer -> Verb: new Verb(String, Tense)
+                        activate Verb
+                        Verb --> SyntaxAnalyzer: verb
+                        deactivate Verb
+                    else no tense provided
+                        SyntaxAnalyzer -> Verb: new Verb(String, Tense.UKNOWN)
+                        activate Verb
+                        Verb --> SyntaxAnalyzer: verb
+                        deactivate Verb
+                    end
+                else token part of speech is neither NOUN, ADJECTIVE, nor VERB
+                    SyntaxAnalyzer -> Word: new Word(String)
+                    activate Word
+                    Word --> SyntaxAnalyzer: otherWord
+                    deactivate Word
+                end
+                SyntaxAnalyzer -> SyntaxNode: new SyntaxNode(Word, String)
+                activate SyntaxNode
+                SyntaxNode --> SyntaxAnalyzer: syntaxNode
+                deactivate SyntaxNode
+                note over SyntaxAnalyzer: Add the SyntaxNode to the temporary ArrayList
+            end
+            note over SyntaxAnalyzer: Create a ArrayList to hold SyntaxNode roots
+            loop for each node in the temporary ArrayList
+                alt token dependency edge label is ROOT
+                    note over SyntaxAnalyzer: Add the SyntaxNode to the roots ArrayList
+                else
+                    note over SyntaxAnalyzer: Based on the headTokenIndex of the current node, find its parent node
+                    alt headTokenIndex >= 0 and headTokenIndex < temporary ArrayList size
+                        note over SyntaxAnalyzer: Find the parent node in the temporary ArrayList
+                        SyntaxAnalyzer -> SyntaxNode: temporaryArrayList.get(headTokenIndex)
+                        activate SyntaxNode
+                        SyntaxNode --> SyntaxAnalyzer: parentNode
+                        deactivate SyntaxNode
+                        SyntaxAnalyzer -> SyntaxNode: temporaryArrayList.get(currentNodeIndex)
+                        activate SyntaxNode
+                        SyntaxNode --> SyntaxAnalyzer: childNode
+                        deactivate SyntaxNode
+                        SyntaxAnalyzer -> SyntaxNode: addChild(childNode)
+                        activate SyntaxNode
+                        SyntaxNode --> SyntaxAnalyzer
+                        deactivate SyntaxNode
+                    else headTokenIndex is invalid
+                        SyntaxAnalyzer -> ApplicationController: throw IllegalStateException("Token head Index is out of range: " + headTokenIndex)
+                    end
+                end
+            end
+            opt roots ArrayList is empty
+                SyntaxAnalyzer -> ApplicationController: throw IllegalStateException("No root nodes found in the syntax analysis response")
+            end
+            SyntaxAnalyzer -> SyntaxTree: new SyntaxTree(roots)
+            activate SyntaxTree
+            SyntaxTree --> SyntaxAnalyzer: syntaxTree
+            deactivate SyntaxTree
+            SyntaxAnalyzer -> ApplicationController: syntaxTree
+            deactivate SyntaxAnalyzer
+            ApplicationController --> ApplicationRestController: syntaxTree
+            deactivate ApplicationController
+        end
+    end
+end
+alt Error in analysis
+    ApplicationRestController -> User: error
+else syntax tree is valid
+    ApplicationRestController -> User: syntaxTree
+end
+deactivate ApplicationRestController
+@enduml

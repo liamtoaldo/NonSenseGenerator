@@ -130,9 +130,6 @@ public class SyntaxAnalyzer {
 
         // Crea un SyntaxTree con i nodi radice trovati.
         SyntaxTree syntaxTree = new SyntaxTree(rootNodes);
-        // Imposta le radici nell'albero di sintassi.
-        syntaxTree.setRoots(rootNodes);
-
         return syntaxTree;
     }
 }
