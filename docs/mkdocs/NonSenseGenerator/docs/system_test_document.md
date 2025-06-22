@@ -36,7 +36,7 @@ Then the system applies the correct tense consistently in the generated sentence
 ### User story 5.2
 Given the user does not select any tense<br>
 When the user generates the sentence<br>
-Then the system uses a random tense<br>
+Then the system uses the present tense<br>
 ### User story 6.1
 Given a nonsense sentence has been generated<br>
 When the user decides to save the generated sentence<br>
@@ -46,3 +46,22 @@ Given users have previously saved sentences<br>
 When they access the public history log<br>
 Then a chronological list of saved sentences is displayed with relevant details
 ## System Test Report
+
+| Acceptance Criteria | Date | Status | Notes |
+|---------------------|------|--------|-------|
+| User story 1.1 | 22/06/2025 | Pass |  |
+| User story 1.2 | 22/06/2025 | Pass |  |
+| User story 2 | 22/06/2025 | Pass |  |
+| User story 3 | 22/06/2025 | Pass |  |
+<!-- TODO: choose or not? -->
+<!--
+| User story 4.1 | 22/06/2025 | Pass |  |
+| User story 4.2 | 22/06/2025 | Pass |  |
+-->
+| User story 5.1 | 22/06/2025 | Pass |  |
+| User story 5.2 | 22/06/2025 | Pass |  |
+<!-- TODO: choose or not? -->
+<!--
+| User story 6.1 | 22/06/2025 | Pass |  |
+-->
+| User story 6.2 | 22/06/2025 | Pass |  |

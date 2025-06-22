@@ -33,7 +33,7 @@ For more information, please consult the [project on Jira](https://i4fb.atlassia
 ### Description
 - Display a menu where the user can select a specific tense for the generated sentence
 - Use his choice for the generation process
-- Use random tenses if the user didn’t select one
+- Use present tense if the user didn’t select one
 ## US 6
 6. As a user I want to save the sentences that I created so that I can review or reuse them later from a public history log.
 ### Description
