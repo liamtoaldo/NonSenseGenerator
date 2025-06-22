@@ -191,11 +191,17 @@ public class WordsDictionary {
     public void saveTerms(ArrayList<Word> words) {
         for (Word word : words) {
             if (word instanceof Noun) {
-                nouns.add((Noun) word);
+                if (!nouns.contains(word)) {
+                    nouns.add((Noun) word);
+                }
             } else if (word instanceof Adjective) {
-                adjectives.add((Adjective) word);
+                if (!adjectives.contains(word)) {
+                    adjectives.add((Adjective) word);
+                }
             } else if (word instanceof Verb) {
-                verbs.add((Verb) word);
+                if (!verbs.contains(word)) {
+                    verbs.add((Verb) word);
+                }
             }
         }
     }

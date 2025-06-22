@@ -131,6 +131,7 @@ public class ApplicationController {
             throw new IllegalStateException("Generated sentence cannot be null or empty");
         }
         saveGeneratedSentence(generatedSentence);
+        addTermsToDictionaryFromInput(inputSentence);
         return generatedSentence;
     }
 

@@ -1,0 +1,25 @@
+@startuml
+
+title System Sequence Diagram for Saving Sentence to History
+actor User
+participant System
+
+User -> System: requests to see sentence history
+
+activate System
+
+alt history found
+    note right of System
+        1. Retrieve public sentence history from the storage.
+        2. Format the history for display.
+    end note
+    System --> User: displays sentence history
+else no history found
+    System --> User: displays message "No sentence history available"
+else unexpected error
+    System --> User: displays generic error message
+end
+
+deactivate System
+
+@enduml

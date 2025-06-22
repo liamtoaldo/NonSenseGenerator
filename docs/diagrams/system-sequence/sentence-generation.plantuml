@@ -15,7 +15,8 @@ alt generation successful
         2. Analyze input sentence to identify terms.
         3. If no template is provided, select a random one from the dictionary.
         4. Build sentence by filling template with terms from input sentence and dictionary.
-        5. Save the generated sentence to the history log.
+        5. Save new terms from the input sentence to the dictionary.
+        6. Save the generated sentence to the history log.
     end note
     System --> User: displays generated sentence
 
