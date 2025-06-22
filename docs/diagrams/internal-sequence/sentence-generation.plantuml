@@ -1,0 +1,69 @@
+@startuml 
+title Internal Sequence Diagram for Sentence Generation
+actor User
+participant "ApplicationRestController"
+participant "ApplicationController"
+participant "Sentence"
+participant "Template"
+participant "Tense"
+participant "Noun"
+participant "Adjective"
+participant "Verb"
+participant "Word"
+participant "WordsDictionary"
+participant "SentenceGenerator"
+participant "APIClient"
+participant "Google API"
+
+User -> ApplicationRestController: generateSentenceInput(String, Template, Tense)
+activate ApplicationRestController
+ApplicationRestController -> ApplicationController: generateNonSenseSentence(String, Template, Tense)
+activate ApplicationController
+
+alt input is not null or empty
+    alt tense is not null 
+        ApplicationController -> Sentence: convertStringToSentence(String)
+        activate Sentence
+        alt template is not empty
+            ApplicationController -> SentenceGenerator: generateSentence(Sentence, Template, Tense)
+            activate SentenceGenerator
+            alt template is not null
+                SentenceGenerator -> Sentence: new Sentence(String)
+                activate Sentence
+                loop for each word in template
+                    alt word is a Noun
+                        alt system chose to use input noun
+                            SentenceGenerator -> Sentence: getRandomNoun()
+                            activate Sentence
+                        else system chose to use dictionary
+                            SentenceGenerator -> WordsDictionary: getRandomNoun()
+                            activate WordsDictionary
+                    else word is an Adjective
+                        alt system chose to use input adjective
+                            SentenceGenerator -> Sentence: getRandomAdjective()
+                            activate Sentence
+                        else system chose to use dictionary
+                            SentenceGenerator -> WordsDictionary: getRandomAdjective()
+                            activate WordsDictionary
+                    else word is a Verb
+                        alt system chose to use input verb
+                            SentenceGenerator -> Sentence: getRandomVerb()
+                            activate Sentence
+                        else system chose to use dictionary
+                            SentenceGenerator -> WordsDictionary: getRandomVerb()
+                            activate WordsDictionary
+                    else word is neither Noun, Adjective, nor Verb
+                        SentenceGenerator -> Word: new Word(String)
+                        activate Word
+                    end
+                end
+                SentenceGenerator --> ApplicationController: Sentence
+                deactivate SentenceGenerator
+            else template is null
+                SentenceGenerator -> ApplicationController: throw IllegalArgumentException("Template cannot be null")
+                deactivate SentenceGenerator 
+            end
+
+
+
+@enduml 

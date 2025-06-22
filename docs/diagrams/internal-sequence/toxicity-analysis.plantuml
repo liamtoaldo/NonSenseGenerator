@@ -1,0 +1,61 @@
+@startuml
+title Internal Sequence Diagram for Toxicity Analysis
+actor User
+participant "ApplicationRestController"
+participant "ApplicationController"
+participant "Sentence"
+participant "ToxicityAnalyzer"
+participant "APIClient"
+participant "Google API"
+participant "ModerationResult"
+participant "ModerationCategory"
+
+User -> ApplicationRestController: getSentenceToxicity(String)
+activate ApplicationRestController
+ApplicationRestController -> ApplicationController: convertStringToSentence(String)
+activate ApplicationController
+ApplicationController -> Sentence: create(String)
+activate Sentence
+Sentence --> ApplicationController: sentence
+ApplicationController -> ApplicationRestController: Sentence
+deactivate Sentence
+ApplicationRestController -> ApplicationController: getSentenceToxicity(Sentence)
+alt sentence is not null or empty
+    ApplicationController -> ToxicityAnalyzer: analyzeToxicity(Sentence)
+    activate ToxicityAnalyzer
+
+    ToxicityAnalyzer -> APIClient: post(String, Map<String, String>, JSONObject)
+    activate APIClient
+    APIClient -> "Google API": POST /v1/documents:moderateText
+    activate "Google API"
+    "Google API" --> APIClient: JSON Response
+    deactivate "Google API"
+    alt API response is valid and contains categories
+        APIClient -> ToxicityAnalyzer: response
+        deactivate APIClient
+        ToxicityAnalyzer -> ModerationResult: new ModerationResult(response)
+        activate ModerationResult
+        loop for each category in response
+            ToxicityAnalyzer -> ModerationCategory: new ModerationCategory(category)
+            activate ModerationCategory
+            ModerationCategory --> ToxicityAnalyzer: category
+            deactivate ModerationCategory
+            ToxicityAnalyzer -> ModerationResult: addCategory(ModerationCategory)
+        end
+        ToxicityAnalyzer --> ApplicationController: ModerationResult
+        deactivate ToxicityAnalyzer
+        ApplicationController --> ApplicationRestController: ModerationResult
+        deactivate ApplicationController
+    else API response is invalid or categories not found
+        ToxicityAnalyzer --> ApplicationController: throw RuntimeException("Failed to get a valid response from the API")
+        deactivate ToxicityAnalyzer
+        ApplicationController --> ApplicationRestController: exception
+        deactivate ApplicationController
+    end
+else sentence is null or empty
+    ApplicationController --> ApplicationRestController: throw IllegalArgumentException("Sentence cannot be null or empty")
+    deactivate ApplicationController
+    ApplicationRestController --> User: exception
+    deactivate ApplicationRestController
+end
+@enduml
