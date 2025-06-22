@@ -59,3 +59,44 @@ const initializeHistory = () => {
     }
     updateHistory();
 }
+
+/** Global NonSense Generations */
+
+const CLIPBOARD_CHECK = '<i class="bi bi-clipboard-check"></i>';
+
+const updateGlobalHistory = (amount) => {
+    const container = $('#globalHistoryContainer');
+    container.empty();
+    $.ajax({
+        url: '/api/v1/nonsense/history/generated/' + amount,
+        type: 'GET',
+        dataType: 'json',
+        success: (data) => {
+            let history = data;
+            if (history.length === 0) {
+                container.append('<p class="text-warning">No global sentences available.</p>');
+                return;
+            }
+            let html = '<ul class="list-group">';
+            history.forEach((item, index) => {
+                html += `<li class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-column justify-content-between">
+                            <strong>${item.text}</strong>
+                            <small class="text-secondary">${item.date}</small>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button class="btn" onclick="copyToClipboard('${item.text}'); this.innerHTML = CLIPBOARD_CHECK;" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copy to clipboard"><i class="bi bi-clipboard"></i></button>
+                        </div>
+                    </div>
+                </li>`;
+            });
+            html += '</ul>';
+            container.append(html);
+            initializeTooltips();
+        },
+        error: (error) => {
+            console.error('Error fetching global history:', error);
+        }
+    });
+}
