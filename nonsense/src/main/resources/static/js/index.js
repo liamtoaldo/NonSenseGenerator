@@ -19,7 +19,7 @@ const selectTemplate = (template) => {
 
 const selectTense = (tense) => {
     selectedTense = tense;
-    selectedTensePg.removeClass('d-none').html('<span class="text-secondary"><i class="bi bi-clock"></i> Selected tense: </span>' + tense);
+    selectedTensePg.removeClass('d-none').html('<span class="text-secondary"><i class="bi bi-clock-history"></i> Selected tense: </span>' + tense);
     console.log(`Selected tense: ${tense}`);
 }
 

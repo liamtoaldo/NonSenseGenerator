@@ -77,15 +77,6 @@ body {
     padding-left: 0;
 }
 
-#sidebarTitle {
-    color: var(--dark-text-secondary);
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
-    font-weight: 600;
-    transition: opacity 0.3s ease;
-}
-
 /* Main Content */
 #main-content {
     overflow-y: auto;
