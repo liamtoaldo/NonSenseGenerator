@@ -64,12 +64,16 @@ public class SentenceHistory {
      * 
      * @param numberOfSentences
      * @return A number of sentences saved in the history equal to numberOfSentences parameter
-     * @throws IllegalArgumentException If numberOfSentences is less than or equal to 0 or greater than the number of saved sentences
+     * @throws IllegalArgumentException If numberOfSentences is less than or equal to 0
      */
     public ArrayList<Sentence> getLastSentences(int numberOfSentences) {
         ArrayList<Sentence> lastSentences = new ArrayList<>();
-        if ((numberOfSentences <= 0) || (savedSentences.size() < numberOfSentences)) {
-            throw new IllegalArgumentException("Number of sentences visualized must be greater than 0 and less than or equal to the number of saved sentences.");
+        if ((numberOfSentences <= 0)) {
+            throw new IllegalArgumentException("Number of sentences visualized must be greater than 0.");
+        }
+        //  If the number of sentences requested is greater than the number of saved sentences, we limit it to the number of saved sentences
+        if (savedSentences.size() < numberOfSentences) {
+            numberOfSentences = savedSentences.size();
         }
         for (int i = 0; i < numberOfSentences; i++) {
             lastSentences.add(savedSentences.get((savedSentences.size() - 1) - i));
