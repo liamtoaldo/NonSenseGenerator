@@ -5,15 +5,70 @@ participant "ApplicationRestController"
 participant "ApplicationController"
 participant "Sentence"
 participant "Template"
-participant "Tense"
+participant "SentenceGenerator"
 participant "Noun"
 participant "Adjective"
 participant "Verb"
 participant "Word"
 participant "WordsDictionary"
-participant "SentenceGenerator"
-participant "APIClient"
-participant "Google API"
+
+!procedure fillTemplateLogic()
+    loop for each word in template
+        alt word is a Noun
+            alt system chooses to use input noun
+                SentenceGenerator -> Sentence: getRandomNoun()
+                activate Sentence
+                Sentence --> SentenceGenerator: noun
+                deactivate Sentence
+            else system chooses to use dictionary or no input noun present
+                alt noun found in the dictionary
+                    SentenceGenerator -> WordsDictionary: getRandomNoun()
+                    activate WordsDictionary
+                    WordsDictionary --> SentenceGenerator: noun
+                    deactivate WordsDictionary
+                else noun not found in the dictionary
+                    SentenceGenerator -> ApplicationController: throw IllegalStateException("No nouns available in the dictionary or sentence")
+                end
+            end
+        else word is an Adjective
+            alt system chooses to use input adjective
+                SentenceGenerator -> Sentence: getRandomAdjective()
+                activate Sentence
+                Sentence --> SentenceGenerator: adjective
+                deactivate Sentence
+            else system chooses to use dictionary or no input adjective present
+                alt adjective found in the dictionary
+                    SentenceGenerator -> WordsDictionary: getRandomAdjective()
+                    activate WordsDictionary
+                    WordsDictionary --> SentenceGenerator: adjective
+                    deactivate WordsDictionary
+                else noun not found in the dictionary
+                    SentenceGenerator -> ApplicationController: throw IllegalStateException("No adjectives available in the dictionary or sentence")
+                end
+            end
+        else word is a Verb
+            alt tense was provided
+                SentenceGenerator -> WordsDictionary: getRandomVerb(Tense)
+                activate WordsDictionary
+                WordsDictionary --> SentenceGenerator: verb
+                deactivate WordsDictionary
+            else no tense provided
+                SentenceGenerator -> WordsDictionary: getRandomVerb()
+                activate WordsDictionary
+                WordsDictionary --> SentenceGenerator: verb
+                deactivate WordsDictionary
+            end
+            opt verb is null
+                SentenceGenerator -> ApplicationController: throw IllegalStateException("No verbs available in the dictionary or sentence")
+            end
+        else word is neither Noun, Adjective, nor Verb
+            SentenceGenerator -> Word: new Word(String)
+            activate Word
+            Word --> SentenceGenerator: word
+            deactivate Word
+        end
+    end
+!endprocedure
 
 User -> ApplicationRestController: generateSentenceInput(String, Template, Tense)
 activate ApplicationRestController
@@ -22,48 +77,54 @@ activate ApplicationController
 
 alt input is not null or empty
     alt tense is not null 
-        ApplicationController -> Sentence: convertStringToSentence(String)
+        note over ApplicationController, Sentence: Convert the input string to a Sentence object
+        ApplicationController -> ApplicationController: convertStringToSentence(String)
+        ApplicationController -> Sentence: new Sentence(String)
         activate Sentence
+        Sentence --> ApplicationController: inputSentence
+        deactivate Sentence
         alt template is not empty
+            note over ApplicationController, SentenceGenerator: Use the provided template to generate a sentence
             ApplicationController -> SentenceGenerator: generateSentence(Sentence, Template, Tense)
             activate SentenceGenerator
             alt template is not null
-                SentenceGenerator -> Sentence: new Sentence(String)
+                SentenceGenerator -> Sentence: new Sentence(Template as String)
                 activate Sentence
-                loop for each word in template
-                    alt word is a Noun
-                        alt system chose to use input noun
-                            SentenceGenerator -> Sentence: getRandomNoun()
-                            activate Sentence
-                        else system chose to use dictionary
-                            SentenceGenerator -> WordsDictionary: getRandomNoun()
-                            activate WordsDictionary
-                    else word is an Adjective
-                        alt system chose to use input adjective
-                            SentenceGenerator -> Sentence: getRandomAdjective()
-                            activate Sentence
-                        else system chose to use dictionary
-                            SentenceGenerator -> WordsDictionary: getRandomAdjective()
-                            activate WordsDictionary
-                    else word is a Verb
-                        alt system chose to use input verb
-                            SentenceGenerator -> Sentence: getRandomVerb()
-                            activate Sentence
-                        else system chose to use dictionary
-                            SentenceGenerator -> WordsDictionary: getRandomVerb()
-                            activate WordsDictionary
-                    else word is neither Noun, Adjective, nor Verb
-                        SentenceGenerator -> Word: new Word(String)
-                        activate Word
-                    end
-                end
-                SentenceGenerator --> ApplicationController: Sentence
-                deactivate SentenceGenerator
+                Sentence --> SentenceGenerator: templateSentence
+                deactivate Sentence
+                fillTemplateLogic()
+                SentenceGenerator --> ApplicationController: generatedSentence
+                deactivate SentenceGenerator 
             else template is null
                 SentenceGenerator -> ApplicationController: throw IllegalArgumentException("Template cannot be null")
-                deactivate SentenceGenerator 
             end
-
-
-
+        else template is empty
+            note over ApplicationController, SentenceGenerator: Use a random template to generate a sentence
+            alt templates found in dictionary
+                ApplicationController -> SentenceGenerator: generateRandomSentence(Sentence, Tense)
+                activate SentenceGenerator
+                SentenceGenerator -> WordsDictionary: getRandomTemplate()
+                activate WordsDictionary
+                WordsDictionary --> SentenceGenerator: template
+                deactivate WordsDictionary
+                fillTemplateLogic()
+                SentenceGenerator --> ApplicationController: generatedSentence
+                deactivate SentenceGenerator
+            else templates not found in dictionary
+                ApplicationController -> ApplicationRestController: throw IllegalStateException("No templates available in the dictionary")
+            end 
+        end
+        alt generatedSentence is null or empty
+            ApplicationController -> ApplicationRestController: throw IllegalStateException("Generated sentence cannot be null or empty")
+        else generatedSentence is valid
+            ApplicationController -> ApplicationController: saveGeneratedSentence(Sentence)
+            ApplicationController -> ApplicationController: addTermsToDictionaryFromInput(Sentence)
+            ApplicationController -> ApplicationRestController: generatedSentence
+        end
+    else tense is null
+        ApplicationController -> ApplicationRestController: throw IllegalArgumentException("Tense cannot be null")
+    end
+else input is null or empty
+    ApplicationController -> ApplicationRestController: throw IllegalArgumentException("Input cannot be null or empty")
+end
 @enduml 
