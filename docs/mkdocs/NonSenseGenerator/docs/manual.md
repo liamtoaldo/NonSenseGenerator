@@ -27,9 +27,9 @@ The NonSenseGenerator application is built using a combination of frontend and b
 ### External APIs
 The application integrates with the following external APIs:
 
-| API Name                | Provider     | Purpose                                                                                                   |
-| ----------------------- | ------------ | --------------------------------------------------------------------------------------------------------- |
-| documents.analyzeSyntax | Google Cloud | Analyzes the syntax of sentences by providing<br> a syntax tree and part-of-speech tags.                      |
+| API Name                | Provider     | Purpose                                                                                           |
+| ----------------------- | ------------ | ------------------------------------------------------------------------------------------------- |
+| documents.analyzeSyntax | Google Cloud | Analyzes the syntax of sentences by providing<br> a syntax tree and part-of-speech tags.          |
 | documents.moderateText  | Google Cloud | Analyzes the toxicity of sentences to determine<br> if they contain harmful or offensive content. |
 
 ### The project APIs
@@ -37,13 +37,13 @@ The NonSenseGenerator application provides its own API for generating nonsensica
 The following table summarizes the available APIs, which are used by the frontend to interact with the backend.
 
 
-| API Name                          | Method | Parameters                                                                 | Purpose                                                                                                   |
-| --------------------------------- | ------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| /api/v1/nonsense/sentence/syntax  | GET    | `sentence` (string)                                                   | Analyzes the syntax of a sentence by providing<br> a syntax tree and part-of-speech tags.                  |
-| /api/v1/nonsense/sentence/generate| GET    | `sentence` (string)<br>`template` (string, optional)<br>`tense` (string, optional) | Generates a nonsensical sentence based on the provided input.<br> It can use a pre-defined template or let the system choose one. |
-| /api/v1/nonsense/sentence/toxicity| GET    | `sentence` (string)                                                   | Analyzes the toxicity of a generated sentence to determine<br> if it contains haGrmful or offensive content. |
-| /api/v1/nonsense/dictionary/templates | GET    | None                                                                  | Retrieves a list of pre-defined templates for sentence generation.                                         |
-<!-- TODO: Add the public history API -->
+| API Name                              | Method | Parameters                                                                         | Purpose                                                                                                                           |
+| ------------------------------------- | ------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| /api/v1/nonsense/sentence/syntax      | GET    | `sentence` (string)                                                                | Analyzes the syntax of a sentence by providing<br> a syntax tree and part-of-speech tags.                                         |
+| /api/v1/nonsense/sentence/generate    | GET    | `sentence` (string)<br>`template` (string, optional)<br>`tense` (string, optional) | Generates a nonsensical sentence based on the provided input.<br> It can use a pre-defined template or let the system choose one. |
+| /api/v1/nonsense/sentence/toxicity    | GET    | `sentence` (string)                                                                | Analyzes the toxicity of a generated sentence to determine<br> if it contains harmful or offensive content.                      |
+| /api/v1/nonsense/dictionary/templates | GET    | None                                                                               | Retrieves a list of pre-defined templates for sentence generation.                                                                |
+| /api/v1/nonsense/history/generated    | GET    | `amount` (integer)                                                                 | Retrieves a list of previously generated sentences.<br> The `amount` parameter specifies how many sentences to retrieve.          |
 
 ## Installation
 To install and run the NonSenseGenerator application, follow these steps:
@@ -161,7 +161,21 @@ The categories include:
 
 ![Toxicity Analysis Tutorial](images/tutorial/toxicity-analysis.png)
 
+### Visualizing the Private History
+To visualize the private history of generated sentences, click the three horizontal lines in the top left corner of the page.<br>
+You will see a list of all generated sentences, click on one's green button to see its details and open it on the page so you can analyze the syntax of the input sentence, view the generated sentence, and analyze its toxicity.<br>
+
+![Private History Tutorial 1](images/tutorial/private-history1.png)
+<hr>
+![Private History Tutorial 2](images/tutorial/private-history2.png)
+
 ### Visualizing the Public History
 To visualize the public history of generated sentences, click the three horizontal lines in the top left corner of the page.<br>
-You will see a list of all generated sentences, click on one to see its details, like the syntax tree, toxicity analysis, and the sentence itself.<br>
-<!-- TODO -->
+You will see a big button labeled "Global Generations" in the menu.<br>
+Click it to see a list of all generated sentences by all users along with the generation date and a button to copy it.<br>
+
+![Public History Tutorial 1](images/tutorial/private-history1.png)
+<hr>
+![Public History Tutorial 2](images/tutorial/public-history1.png)
+<hr>
+![Public History Tutorial 3](images/tutorial/public-history2.png)

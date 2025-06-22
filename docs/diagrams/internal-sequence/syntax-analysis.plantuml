@@ -30,6 +30,7 @@ else sentence is valid
     ApplicationController -> APIClient: post(String, Map<String, String>, JSONObject)
     activate APIClient
     APIClient -> "Google API": POST /v1/documents:analyzeSyntax
+    activate "Google API"
     "Google API" -> APIClient: JSON Response
     deactivate "Google API"
     APIClient -> SyntaxAnalyzer: response
@@ -116,9 +117,9 @@ else sentence is valid
             deactivate SyntaxTree
             SyntaxAnalyzer -> ApplicationController: syntaxTree
             deactivate SyntaxAnalyzer
-            ApplicationController --> ApplicationRestController: syntaxTree
-            deactivate ApplicationController
         end
+        ApplicationController --> ApplicationRestController: syntaxTree
+        deactivate ApplicationController
     end
 end
 alt Error in analysis
