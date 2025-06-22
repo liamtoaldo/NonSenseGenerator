@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 /**
- * REST controller that handles errors in the application based on the ErrorController interface
+ * REST controller that handles errors in the application controller
  */
 public class ErrorRestController implements ErrorController {
 

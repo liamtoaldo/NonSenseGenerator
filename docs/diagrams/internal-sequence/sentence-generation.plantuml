@@ -1,4 +1,4 @@
-@startuml 
+@startuml
 title Internal Sequence Diagram for Sentence Generation
 actor User
 participant "ApplicationRestController"
@@ -27,7 +27,7 @@ participant "WordsDictionary"
                     WordsDictionary --> SentenceGenerator: noun
                     deactivate WordsDictionary
                 else noun not found in the dictionary
-                    SentenceGenerator -> ApplicationController: throw IllegalStateException("No nouns available in the dictionary or sentence")
+                    SentenceGenerator --> ApplicationController: throw IllegalStateException("No nouns available in the dictionary or sentence")
                 end
             end
         else word is an Adjective
@@ -43,7 +43,7 @@ participant "WordsDictionary"
                     WordsDictionary --> SentenceGenerator: adjective
                     deactivate WordsDictionary
                 else noun not found in the dictionary
-                    SentenceGenerator -> ApplicationController: throw IllegalStateException("No adjectives available in the dictionary or sentence")
+                    SentenceGenerator --> ApplicationController: throw IllegalStateException("No adjectives available in the dictionary or sentence")
                 end
             end
         else word is a Verb
@@ -59,7 +59,7 @@ participant "WordsDictionary"
                 deactivate WordsDictionary
             end
             opt verb is null
-                SentenceGenerator -> ApplicationController: throw IllegalStateException("No verbs available in the dictionary or sentence")
+                SentenceGenerator --> ApplicationController: throw IllegalStateException("No verbs available in the dictionary or sentence")
             end
         else word is neither Noun, Adjective, nor Verb
             SentenceGenerator -> Word: new Word(String)
@@ -76,7 +76,7 @@ ApplicationRestController -> ApplicationController: generateNonSenseSentence(Str
 activate ApplicationController
 
 alt input is not null or empty
-    alt tense is not null 
+    alt tense is not null
         note over ApplicationController, Sentence: Convert the input string to a Sentence object
         ApplicationController -> ApplicationController: convertStringToSentence(String)
         ApplicationController -> Sentence: new Sentence(String)
@@ -94,7 +94,7 @@ alt input is not null or empty
                 deactivate Sentence
                 fillTemplateLogic()
                 SentenceGenerator --> ApplicationController: generatedSentence
-                deactivate SentenceGenerator 
+                deactivate SentenceGenerator
             else template is null
                 SentenceGenerator -> ApplicationController: throw IllegalArgumentException("Template cannot be null")
             end
@@ -112,14 +112,14 @@ alt input is not null or empty
                 deactivate SentenceGenerator
             else templates not found in dictionary
                 ApplicationController -> ApplicationRestController: throw IllegalStateException("No templates available in the dictionary")
-            end 
+            end
         end
         alt generatedSentence is null or empty
             ApplicationController -> ApplicationRestController: throw IllegalStateException("Generated sentence cannot be null or empty")
         else generatedSentence is valid
             ApplicationController -> ApplicationController: saveGeneratedSentence(Sentence)
             ApplicationController -> ApplicationController: addTermsToDictionaryFromInput(Sentence)
-            ApplicationController -> ApplicationRestController: generatedSentence
+            ApplicationController --> ApplicationRestController: generatedSentence
         end
     else tense is null
         ApplicationController -> ApplicationRestController: throw IllegalArgumentException("Tense cannot be null")
@@ -127,4 +127,12 @@ alt input is not null or empty
 else input is null or empty
     ApplicationController -> ApplicationRestController: throw IllegalArgumentException("Input cannot be null or empty")
 end
-@enduml 
+deactivate ApplicationController
+
+alt Error in generation
+    ApplicationRestController --> User: error
+else generated sentence is valid
+    ApplicationRestController --> User: generatedSentence
+end
+deactivate ApplicationRestController
+@enduml

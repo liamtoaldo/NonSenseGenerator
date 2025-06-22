@@ -12,13 +12,14 @@ participant "ModerationCategory"
 
 User -> ApplicationRestController: getSentenceToxicity(String)
 activate ApplicationRestController
+note over ApplicationController, Sentence: Convert the input string to a Sentence object
 ApplicationRestController -> ApplicationController: convertStringToSentence(String)
 activate ApplicationController
 ApplicationController -> Sentence: create(String)
 activate Sentence
 Sentence --> ApplicationController: sentence
-ApplicationController -> ApplicationRestController: Sentence
 deactivate Sentence
+ApplicationController -> ApplicationRestController: sentence
 ApplicationRestController -> ApplicationController: getSentenceToxicity(Sentence)
 alt sentence is not null or empty
     ApplicationController -> ToxicityAnalyzer: analyzeToxicity(Sentence)
@@ -36,26 +37,46 @@ alt sentence is not null or empty
         ToxicityAnalyzer -> ModerationResult: new ModerationResult(response)
         activate ModerationResult
         loop for each category in response
-            ToxicityAnalyzer -> ModerationCategory: new ModerationCategory(category)
+            ToxicityAnalyzer -> ModerationCategory: new ModerationCategory(String, double)
             activate ModerationCategory
-            ModerationCategory --> ToxicityAnalyzer: category
+            alt category name is not null and not empty
+                alt category confidence is greater than or equal to 0 and less than or equal to 1
+                    ModerationCategory --> ToxicityAnalyzer: category
+                else category confidence is invalid
+                    ModerationCategory --> ToxicityAnalyzer: throw IllegalArgumentException("Confidence must be between 0 and 1")
+                    deactivate ModerationCategory
+                    ToxicityAnalyzer --> ApplicationController: exception
+                    deactivate ToxicityAnalyzer
+                    ApplicationController --> ApplicationRestController: exception
+                end
+            else category name is null or empty
+                ModerationCategory --> ToxicityAnalyzer: throw IllegalArgumentException("Name cannot be null or empty")
+                deactivate ModerationCategory
+                ToxicityAnalyzer --> ApplicationController: exception
+                deactivate ToxicityAnalyzer
+                ApplicationController --> ApplicationRestController: exception
+            end
             deactivate ModerationCategory
-            ToxicityAnalyzer -> ModerationResult: addCategory(ModerationCategory)
         end
-        ToxicityAnalyzer --> ApplicationController: ModerationResult
-        deactivate ToxicityAnalyzer
-        ApplicationController --> ApplicationRestController: ModerationResult
-        deactivate ApplicationController
+        ModerationResult --> ToxicityAnalyzer: result
+        deactivate ModerationResult
+        ToxicityAnalyzer --> ApplicationController: result
+        ApplicationController --> ApplicationRestController: result
     else API response is invalid or categories not found
         ToxicityAnalyzer --> ApplicationController: throw RuntimeException("Failed to get a valid response from the API")
         deactivate ToxicityAnalyzer
         ApplicationController --> ApplicationRestController: exception
-        deactivate ApplicationController
     end
+    deactivate ToxicityAnalyzer
 else sentence is null or empty
     ApplicationController --> ApplicationRestController: throw IllegalArgumentException("Sentence cannot be null or empty")
-    deactivate ApplicationController
-    ApplicationRestController --> User: exception
-    deactivate ApplicationRestController
 end
+deactivate ApplicationController
+
+alt Error in analysis
+    ApplicationRestController --> User: error
+else moderation result is valid
+    ApplicationRestController --> User: moderation result
+end
+deactivate ApplicationRestController
 @enduml
