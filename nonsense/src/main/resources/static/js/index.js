@@ -73,6 +73,13 @@ const initializeTenses = () => {
 
 // Miscellaneous functions
 
+const initializeTooltips = () => {
+    $('[data-bs-toggle="tooltip"]').tooltip();
+    $('[data-bs-toggle="tooltip"]').on('click', function () {
+        $(this).blur();
+    });
+}
+
 const showAlert = (message, type = 'success') => {
     const alert = `<div class="alert alert-${type} alert-dismissible fade show position-fixed bottom-0 end-0 m-3" role="alert">
         <strong>${type.charAt(0).toUpperCase() + type.slice(1)}!</strong> ${message}
@@ -84,6 +91,15 @@ const showAlert = (message, type = 'success') => {
     }, 5000);
 }
 
+const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+        showAlert("Text copied to clipboard!", "success");
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        showAlert("Failed to copy text to clipboard.", "danger");
+    });
+}
+
 // Main functions
 
 $(document).ready(function () {
@@ -91,12 +107,7 @@ $(document).ready(function () {
     initializeTemplates();
     initializeTenses();
     initializeHistory();
-
-    // Tooltips initialization
-    $('[data-bs-toggle="tooltip"]').tooltip();
-    $('[data-bs-toggle="tooltip"]').on('click', function () {
-        $(this).blur();
-    });
+    initializeTooltips();
 
     // Sidebar toggle functionality
     const sidebarToggle = $('#sidebarToggle');
@@ -111,6 +122,8 @@ $(document).ready(function () {
     const analyzeSyntaxButton = $('#analyzeSyntaxButton');
     const analyzeToxicityButton = $('#analyzeToxicityButton')
     const generateButton = $('#generateButton');
+    const globalHistoryButton = $('#globalHistoryButton');
+    const globalHistoryTitle = $('#globalHistoryTitle');
     const inputText = $('#inputText');
     // Action buttons
     if (inputText && analyzeSyntaxButton && analyzeToxicityButton && generateButton) {
@@ -129,6 +142,11 @@ $(document).ready(function () {
             console.log(`Selected template: ${selectedTemplate}`);
             generateSentence(inputText.val(), selectedTemplate, selectedTense);
         });
+        const GLOBAL_HISTORY_AMOUNT = 10;
+        globalHistoryButton.on('click', function () {
+            updateGlobalHistory(GLOBAL_HISTORY_AMOUNT);
+        });
+        globalHistoryTitle.html('Last Global ' + GLOBAL_HISTORY_AMOUNT + ' NonSense Generations');
     }
 
 });

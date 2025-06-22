@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
@@ -71,6 +72,39 @@ public class ApplicationRestController {
         com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
         try {
             return mapper.writeValueAsString(result);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to convert ModerationResult to JSON", e);
+        }
+    }
+
+    @GetMapping("/history/generated/{amount}")
+    /**
+     * Method that retrieves a specified amount of sentences from history
+     * 
+     * @param amount The amount of sentences to be retrieved from history
+     * @return A JSON representation of the ArrayList<Sentence> object containing the requested amount of sentences from history
+     * @throws RuntimeException If the retrieval or the conversion of ModerationResult to JSON fail
+     */
+    public String getLastGeneratedSentences(@PathVariable int amount) {
+        ArrayList<Sentence> sentences = new ArrayList<Sentence>();
+        try {
+            sentences = app.getLastSentences(amount);
+        }
+        catch (IllegalArgumentException e) {
+            throw new RuntimeException("Invalid amount specified: " + amount, e);
+        }
+        ArrayList<Object> sentenceObjects = new ArrayList<>();
+        for (Sentence sentence : sentences) {
+            java.util.HashMap<String, Object> map = new java.util.HashMap<>();
+            map.put("text", sentence.toString());
+            java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            map.put("date", sentence.getGenerationDate().format(formatter));
+            sentenceObjects.add(map);
+        }
+        // JSON conversion
+        com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+        try {
+            return mapper.writeValueAsString(sentenceObjects);
         } catch (Exception e) {
             throw new RuntimeException("Failed to convert ModerationResult to JSON", e);
         }

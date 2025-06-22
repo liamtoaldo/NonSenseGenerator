@@ -30,11 +30,12 @@ body {
     border-right: 1px solid var(--dark-border);
     flex-shrink: 0;
     position: relative;
+    text-wrap-style:  nowrap;
 }
 
 @media (min-width: 768px) {
     #sidebar {
-        width: 13%;
+        width: 20%;
     }
 }
 
@@ -42,7 +43,7 @@ body {
     width: 60px;
 }
 
-#sidebar.collapsed #sidebarTitle,
+#sidebar.collapsed #sidebarContent,
 #sidebar.collapsed .offcanvas-body {
     opacity: 0;
     visibility: hidden;
