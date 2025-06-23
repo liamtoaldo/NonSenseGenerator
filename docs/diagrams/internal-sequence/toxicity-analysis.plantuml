@@ -34,7 +34,8 @@ alt sentence is not null or empty
     alt API response is valid and contains categories
         APIClient -> ToxicityAnalyzer: response
         deactivate APIClient
-        ToxicityAnalyzer -> ModerationResult: new ModerationResult(response)
+        ToxicityAnalyzer -> ModerationResult: new ModerationResult()
+        note over ToxicityAnalyzer: Populate ModerationResult with categories from API response
         activate ModerationResult
         loop for each category in response
             ToxicityAnalyzer -> ModerationCategory: new ModerationCategory(String, double)
@@ -44,17 +45,10 @@ alt sentence is not null or empty
                     ModerationCategory --> ToxicityAnalyzer: category
                 else category confidence is invalid
                     ModerationCategory --> ToxicityAnalyzer: throw IllegalArgumentException("Confidence must be between 0 and 1")
-                    deactivate ModerationCategory
-                    ToxicityAnalyzer --> ApplicationController: exception
-                    deactivate ToxicityAnalyzer
-                    ApplicationController --> ApplicationRestController: exception
                 end
             else category name is null or empty
                 ModerationCategory --> ToxicityAnalyzer: throw IllegalArgumentException("Name cannot be null or empty")
                 deactivate ModerationCategory
-                ToxicityAnalyzer --> ApplicationController: exception
-                deactivate ToxicityAnalyzer
-                ApplicationController --> ApplicationRestController: exception
             end
             deactivate ModerationCategory
         end
@@ -65,13 +59,11 @@ alt sentence is not null or empty
     else API response is invalid or categories not found
         ToxicityAnalyzer --> ApplicationController: throw RuntimeException("Failed to get a valid response from the API")
         deactivate ToxicityAnalyzer
-        ApplicationController --> ApplicationRestController: exception
     end
-    deactivate ToxicityAnalyzer
 else sentence is null or empty
     ApplicationController --> ApplicationRestController: throw IllegalArgumentException("Sentence cannot be null or empty")
+    deactivate ApplicationController
 end
-deactivate ApplicationController
 
 alt Error in analysis
     ApplicationRestController --> User: error
