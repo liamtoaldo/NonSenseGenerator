@@ -301,8 +301,14 @@ The following table summarizes the available APIs, which are used by the fronten
 <p>A <strong>Google Cloud account</strong> with the Natural Language API enabled</p>
 <ul>
 <li>Follow the instructions in the <a href="https://cloud.google.com/natural-language/docs/setup">Google Cloud documentation</a> to set up your account and enable the API.</li>
-<li>IMPORTANT: Create the <code>nonsense/.env</code> file in the <code>nonsense</code> directory to store your API key.</li>
-<li>Obtain your API key and set it as an environment variable inside <code>nonsense/.env</code>:
+<li>IMPORTANT: Create the <code>.env</code> file</li>
+<li>Obtain your API key and set it as an environment variable inside <code>.env</code>:</li>
+<li>Store the file in both of the following directories:<ul>
+<li>the <code>nonsense</code> directory</li>
+<li>the <code>nonsense/src/main/resources</code> directory</li>
+</ul>
+</li>
+<li>The <code>.env</code> file should contain the following line, replacing <code>your_api_key_here</code> with your actual API key:
 <div class="highlight"><pre><span></span><code><span class="nv">GOOGLE_NLP_API_KEY</span><span class="o">=</span><span class="s2">&quot;your_api_key_here&quot;</span>
 </code></pre></div></li>
 </ul>
