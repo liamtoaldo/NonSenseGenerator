@@ -69,6 +69,10 @@ public class StorageManager {
         this.verbsFilePath = verbsFilePath;
         this.templatesFilePath = templatesFilePath;
         this.sentencesFilePath = sentencesFilePath;
+
+        // Load data into memory right after initialization
+        loadDictionary();
+        loadHistory();
     }
 
     /**

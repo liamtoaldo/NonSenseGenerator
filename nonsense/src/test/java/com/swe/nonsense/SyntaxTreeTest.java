@@ -47,5 +47,25 @@ public class SyntaxTreeTest {
         assertEquals(2, tree.getRoots().size());
         assertTrue(tree.getRoots().containsAll(Arrays.asList(root1, root2)), "Tree should contain all added roots");
     }
+
+    @Test
+    void testGetAllNodes() {
+        SyntaxNode root1 = new SyntaxNode(new Word("root1"));
+        SyntaxNode child1 = new SyntaxNode(new Word("child1"));
+        root1.addChild(child1);
+        
+        SyntaxNode root2 = new SyntaxNode(new Word("root2"));
+        SyntaxNode child2 = new SyntaxNode(new Word("child2"));
+        root2.addChild(child2);
+        
+        ArrayList<SyntaxNode> roots = new ArrayList<>(Arrays.asList(root1, root2));
+        SyntaxTree tree = new SyntaxTree(roots);
+        
+        ArrayList<SyntaxNode> allNodes = tree.getAllNodes();
+        
+        assertNotNull(allNodes, "getAllNodes should not return null");
+        assertEquals(4, allNodes.size(), "There should be four nodes in total (two roots and two children)");
+        assertTrue(allNodes.containsAll(Arrays.asList(root1, child1, root2, child2)), "All nodes should be present in the list");
+    }
     
 }

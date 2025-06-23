@@ -86,4 +86,21 @@ public class SentenceTest {
         assert sentence.toString().equals(expectedString)
                 : "toString should return the correct string representation of the sentence from setUp";
     }
+
+    @Test
+    void testGetRandomVerb() {
+        sentence.getText().add(new Verb("run", Tense.PRESENT));
+        Verb randomVerb = sentence.getRandomVerb(Tense.PRESENT);
+        assert randomVerb != null : "getRandomVerb should return a non-null Verb from the sentence";
+        assert words.contains(randomVerb) : "getRandomVerb should return a verb that is part of the sentence's words";
+    }
+
+    @Test
+    void testEquals() {
+        Sentence anotherSentence = new Sentence(new ArrayList<>(words));
+        assert sentence.equals(anotherSentence) : "equals should return true for sentences with the same words";
+        
+        Sentence differentSentence = new Sentence("Different sentence");
+        assert !sentence.equals(differentSentence) : "equals should return false for sentences with different words";
+    }
 }

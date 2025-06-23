@@ -53,4 +53,18 @@ public class SyntaxNodeTest {
         assert node.getChildren().get(0).getWord().equals(new Word("figlio1")) : "First child should be figlio1";
         assert node.getChildren().get(1).getWord().equals(new Word("figlio2")) : "Second child should be figlio2";
     }
+
+    @Test
+    void testGetDependencyLabel() {
+        SyntaxNode node = new SyntaxNode();
+        assert node.getDependencyLabel() == "" : "getDependencyLabel should return null by default";
+    }
+
+    @Test
+    void testSetDependencyLabel() {
+        SyntaxNode node = new SyntaxNode();
+        String label = "dependency";
+        node.setDependencyLabel(label);
+        assert node.getDependencyLabel().equals(label) : "setDependencyLabel should set the dependency label correctly";
+    }
 }

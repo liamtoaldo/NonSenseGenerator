@@ -1,7 +1,7 @@
 package com.swe.nonsense;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -16,23 +16,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ApplicationControllerTest {
-    static ApplicationController applicationController;
-    static String sentenceText;
+    ApplicationController applicationController;
+    String sentenceText;
 
     // JUnit gestirà la creazione e la pulizia di questa cartella temporanea
     @TempDir
     static Path tempDir;
 
-    private static String nounsFilePath;
-    private static String adjectivesFilePath;
-    private static String verbsFilePath;
-    private static String templatesFilePath;
-    private static String sentencesFilePath;
+    private String nounsFilePath;
+    private String adjectivesFilePath;
+    private String verbsFilePath;
+    private String templatesFilePath;
+    private String sentencesFilePath;
     
 
     //Inizializza i file temporanei per i test
-    @BeforeAll
-    public static void setUp() throws IOException {
+    @BeforeEach
+    public void setUp() throws IOException {
         // JSON corretto: doppi apici e nomi delle proprietà ("text", "template") corretti.
         String nounsFileContent = "[{\"text\":\"cat\"},{\"text\":\"dog\"}]";
         String adjectivesFileContent = "[{\"text\":\"big\"},{\"text\":\"small\"}]";
@@ -54,10 +54,6 @@ public class ApplicationControllerTest {
         Files.writeString(Path.of(sentencesFilePath), sentencesFileContent);
 
         applicationController = new ApplicationController(nounsFilePath, adjectivesFilePath, verbsFilePath, templatesFilePath, sentencesFilePath);
-
-        // Pulisce i dati dai singleton prima di ogni test per garantire l'isolamento
-        WordsDictionary.getInstance().clearAllData();
-        SentenceHistory.getInstance().clearData();
 
         sentenceText = "This is a test sentence.";
     }
@@ -171,8 +167,18 @@ public class ApplicationControllerTest {
                 () -> applicationController.addTermsToDictionaryFromInput(new Sentence("")));
     }
 
-    @AfterAll
-    public static void cleanUp() {
+    @Test
+    void testGetTemplates() {
+        List<Template> templates = applicationController.getTemplates();
+        assertNotNull(templates, "Templates list should not be null");
+        assertFalse(templates.isEmpty(), "Templates list should not be empty");
+        assertEquals(1, templates.size(), "Should contain one template");
+        assertEquals("The [ADJECTIVE] [NOUN] [VERB] quickly.", templates.get(0).getTemplate(),
+                "Template text should match the expected value");
+    }
+
+    @AfterEach
+    public void cleanUp() {
         File nounsFile = new File(nounsFilePath);
         File adjectivesFile = new File(adjectivesFilePath);
         File verbsFile = new File(verbsFilePath);

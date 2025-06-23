@@ -72,7 +72,6 @@ public class SyntaxNode {
 
     /**
      * Method that returns the syntactic dependency relation label between this node and its parent
-     * 
      * @return The syntactic dependency relation label between this node and its parent
      */
     public String getDependencyLabel() {

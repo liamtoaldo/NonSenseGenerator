@@ -47,4 +47,13 @@ public class WordTest {
         assert noun.getText().equals("dog") : "Noun should be created with the correct text";
     }
 
+    @Test
+    void testEquals() {
+        Word anotherWord = new Word("test");
+        assert word.equals(anotherWord) : "Two words with the same text should be equal";
+
+        Word differentWord = new Word("different");
+        assert !word.equals(differentWord) : "Two words with different text should not be equal";
+    }
+
 }
