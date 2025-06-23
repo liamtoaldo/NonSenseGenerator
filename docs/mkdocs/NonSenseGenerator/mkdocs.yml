@@ -11,7 +11,7 @@ nav:
   - User Stories: user_stories.md
   - Design Document: design_document.md
   - System Test Document: system_test_document.md
-  - Unit Test Report: unit_test_report.md
+  - Unit Test Report: surefire-report/surefire-report.html
 markdown_extensions:
   - pymdownx.superfences
 extra_css:
