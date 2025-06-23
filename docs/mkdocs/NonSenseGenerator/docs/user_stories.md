@@ -11,7 +11,7 @@ For more information, please consult the [project on Jira](https://i4fb.atlassia
 2. As a user I want the application to extract terms from my input and use them to generate a nonsense sentence, either randomly or by selecting a predefined template, so that I can reuse it in other contexts.
 ### Description
 - Display input form where the user can input a sentence
-- Extract terms and save them upon request
+- Extract terms and save them
 - Show a menu where the user can select a template or generate one randomly
 - Use the template and all the terms saved in the application (which can include the ones inputted by the user) to generate a nonsense sentence with correct grammar
 - Show the generated sentence to the user
@@ -25,8 +25,7 @@ For more information, please consult the [project on Jira](https://i4fb.atlassia
 ## US 4
 4. As a user I want to add terms from my input sentence to the available terms so that they will be re-used in the future.
 ### Description
-- Display a menu to the user to select whether or not his input terms will be saved
-- Upon confirmation, validate the selection
+- Upon generation of nonsense sentence, validate the selection and extract terms from the input sentence
 - Save the terms in the application
 ## US 5
 5. As a user I want to select a time for the sentence to be produced so that I can generate phrases that fit specific temporal contexts.
