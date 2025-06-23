@@ -33,7 +33,6 @@ public class ApplicationController {
      */
     public ApplicationController() {
         this.storageManager = new StorageManager();
-        storageManager.loadDictionary(); // Carica il dizionario all'avvio dell'applicazione
         this.sentenceGenerator = new SentenceGenerator(WordsDictionary.getInstance());
         this.syntaxAnalyzer = new SyntaxAnalyzer();
         this.toxicityAnalyzer = new ToxicityAnalyzer();
@@ -41,7 +40,6 @@ public class ApplicationController {
 
     public ApplicationController(String nounsFilePath, String adjectivesFilePath, String verbsFilePath, String templatesFilePath, String sentencesFilePath) {
         this.storageManager = new StorageManager(nounsFilePath, adjectivesFilePath, verbsFilePath, templatesFilePath, sentencesFilePath);
-        storageManager.loadDictionary(); // Carica il dizionario all'avvio dell'applicazione
         this.sentenceGenerator = new SentenceGenerator(WordsDictionary.getInstance());
         this.syntaxAnalyzer = new SyntaxAnalyzer();
         this.toxicityAnalyzer = new ToxicityAnalyzer();

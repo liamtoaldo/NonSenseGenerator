@@ -212,7 +212,11 @@ public class WordsDictionary {
      * @param templates The ArrayList of templates to be saved in the dictionary
      */
     public void saveTemplates(ArrayList<Template> templates) {
-        this.templates.addAll(templates);
+        for (Template template : templates) {
+            if (!this.templates.contains(template)) {
+                this.templates.add(template);
+            }
+        }
     }
 
     /**
