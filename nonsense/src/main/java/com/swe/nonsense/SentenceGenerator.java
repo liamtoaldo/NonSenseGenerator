@@ -74,11 +74,22 @@ public class SentenceGenerator {
                         actualReplacement = adjective;
                         break;
                     case "verb":
-                        Verb verb = (tense != null) ? dictionary.getRandomVerb(tense) : dictionary.getRandomVerb();
-                        if (verb == null) {
-                            throw new IllegalStateException("No verbs available in the dictionary");
+                        if(tense == null) {
+                            Verb verb = dictionary.getRandomVerb();
+                            if (verb == null) {
+                                throw new IllegalStateException("No verbs available in the dictionary");
+                            }
+                            actualReplacement = verb;
+                        } else {
+                            Verb verb = (choice == 2 && input != null) ? input.getRandomVerb(tense)
+                                    : dictionary.getRandomVerb(tense);
+                            if (verb == null)
+                                verb = dictionary.getRandomVerb(tense);
+                            if (verb == null) {
+                                throw new IllegalStateException("No verbs available in the dictionary");
+                            }
+                            actualReplacement = verb;
                         }
-                        actualReplacement = verb;
                         break;
                     default:
                         actualReplacement = new Word(wordText);

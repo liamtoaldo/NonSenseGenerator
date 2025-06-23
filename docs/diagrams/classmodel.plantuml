@@ -10,6 +10,7 @@ class Sentence {
     +LocalDateTime getGenerationDate()
     +Noun getRandomNoun()
     +Adjective getRandomAdjective()
+    +Verb getRandomVerb(Tense)
     +void setGenerationDate(LocalDateTime)
     +boolean equals(Object)
     +String toString()

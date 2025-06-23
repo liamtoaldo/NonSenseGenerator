@@ -47,19 +47,26 @@ participant "WordsDictionary"
                 end
             end
         else word is a Verb
-            alt tense was provided
-                SentenceGenerator -> WordsDictionary: getRandomVerb(Tense)
-                activate WordsDictionary
-                WordsDictionary --> SentenceGenerator: verb
-                deactivate WordsDictionary
-            else no tense provided
+            alt no tense provided
                 SentenceGenerator -> WordsDictionary: getRandomVerb()
                 activate WordsDictionary
                 WordsDictionary --> SentenceGenerator: verb
                 deactivate WordsDictionary
-            end
-            opt verb is null
-                SentenceGenerator --> ApplicationController: throw IllegalStateException("No verbs available in the dictionary or sentence")
+            else tense provided
+                alt system chooses to use input tense
+                    SentenceGenerator -> Sentence: getRandomVerb(Tense)
+                    activate Sentence
+                    Sentence --> SentenceGenerator: verb
+                    deactivate Sentence
+                else system chooses to use dictionary or no input tense present
+                    alt verb found in the dictionary
+                        SentenceGenerator -> WordsDictionary: getRandomVerb(Tense)
+                        activate WordsDictionary
+                        WordsDictionary --> SentenceGenerator: verb
+                        deactivate WordsDictionary
+                    else verb not found in the dictionary
+                        SentenceGenerator --> ApplicationController: throw IllegalStateException("No verbs available in the dictionary or sentence")
+                end
             end
         else word is neither Noun, Adjective, nor Verb
             SentenceGenerator -> Word: new Word(String)

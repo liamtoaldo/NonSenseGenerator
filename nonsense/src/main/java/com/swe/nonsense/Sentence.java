@@ -130,6 +130,25 @@ public class Sentence {
         return null;
     }
 
+    /**
+     * Method that returns a random Verb from the Sentence that matches the specified tense
+     * @param tense The tense to match
+     * @return A random Verb from the Sentence that matches the specified tense, or null if there are no Verbs
+     */
+    public Verb getRandomVerb(Tense tense) {
+        ArrayList<Word> wordsTmp = new ArrayList<>();
+        for (Word word : words) {
+            if (word instanceof Verb && ((Verb) word).getTense() == tense) {
+                wordsTmp.add(word);
+            }
+        }
+        if (!wordsTmp.isEmpty()) {
+            int randomIndex = (int) (Math.random() * wordsTmp.size());
+            return (Verb) wordsTmp.get(randomIndex);
+        }
+        return null;
+    }
+
     /*
      * 
      * METODI
