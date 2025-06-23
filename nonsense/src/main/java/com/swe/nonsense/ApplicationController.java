@@ -122,7 +122,7 @@ public class ApplicationController {
         }
         Sentence inputSentence = convertStringToSentence(input);
         Sentence generatedSentence = null;
-        if (template.getTemplate() == "") {
+        if (template == null || template.getTemplate() == "") {
             generatedSentence = sentenceGenerator.generateRandomSentence(inputSentence, tense);
 
         } else
