@@ -89,7 +89,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../unit_test_report/">Unit Test Report</a>
+                <li class="toctree-l1"><a class="reference internal" href="../surefire-report/surefire-report.html">Unit Test Report</a>
                 </li>
               </ul>
       </div>
@@ -140,12 +140,11 @@ When the sentence is analyzed for toxicity using Google's <code>moderateText</co
 Then the toxicity result for the sentence is displayed to the user<br></p>
 <h3 id="user-story-41">User story 4.1</h3>
 <p>Given a sentence has been input and terms have been extracted<br>
-And the user choose to save the terms for future use<br>
-When the user confirms it through analisys<br>
-Then the selected terms are saved in the public dictionary for future use and the user is notified<br></p>
+When the user confirms it through generation<br>
+Then the selected terms are saved in the public dictionary for future use<br></p>
 <h3 id="user-story-42">User story 4.2</h3>
 <p>Given a term from the input is already present in the dictionary<br>
-When the user attempts to add it again<br>
+When the system attempts to add it again<br>
 Then the system ignores the duplicate<br></p>
 <h3 id="user-story-51">User story 5.1</h3>
 <p>Given a user has selected the tense (past, present, future)<br>
@@ -154,22 +153,94 @@ Then the system applies the correct tense consistently in the generated sentence
 <h3 id="user-story-52">User story 5.2</h3>
 <p>Given the user does not select any tense<br>
 When the user generates the sentence<br>
-Then the system uses a random tense<br></p>
+Then the system uses the present tense<br></p>
 <h3 id="user-story-61">User story 6.1</h3>
 <p>Given a nonsense sentence has been generated<br>
-When the user decides to save the generated sentence<br>
-Then the sentence is stored with metadata (time, toxicity level, tense)<br></p>
+When the system decides to save the generated sentence<br>
+Then the sentence is stored with metadata (time, output)<br></p>
 <h3 id="user-story-62">User story 6.2</h3>
 <p>Given users have previously saved sentences<br>
 When they access the public history log<br>
 Then a chronological list of saved sentences is displayed with relevant details</p>
 <h2 id="system-test-report">System Test Report</h2>
+<table>
+<thead>
+<tr>
+<th>Acceptance Criteria</th>
+<th>Date</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User story 1.1</td>
+<td>22/06/2025</td>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>User story 1.2</td>
+<td>22/06/2025</td>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>User story 2</td>
+<td>22/06/2025</td>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>User story 3</td>
+<td>22/06/2025</td>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>User story 4.1</td>
+<td>22/06/2025</td>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>User story 4.2</td>
+<td>22/06/2025</td>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>User story 5.1</td>
+<td>22/06/2025</td>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>User story 5.2</td>
+<td>22/06/2025</td>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>User story 6.1</td>
+<td>22/06/2025</td>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>User story 6.2</td>
+<td>22/06/2025</td>
+<td>Pass</td>
+<td></td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../design_document/" class="btn btn-neutral float-left" title="Design Document"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../unit_test_report/" class="btn btn-neutral float-right" title="Unit Test Report">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../surefire-report/surefire-report.html" class="btn btn-neutral float-right" title="Unit Test Report">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -199,7 +270,7 @@ Then a chronological list of saved sentences is displayed with relevant details<
       <span><a href="../design_document/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../unit_test_report/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../surefire-report/surefire-report.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
