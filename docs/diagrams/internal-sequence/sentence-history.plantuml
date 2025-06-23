@@ -1,0 +1,35 @@
+@startuml
+title Internal Sequence Diagram for Sentence History
+actor User
+participant "ApplicationRestController"
+participant "ApplicationController"
+participant "SentenceHistory"
+
+User -> ApplicationRestController: getLastGeneratedSentences(int)
+activate ApplicationRestController
+ApplicationRestController -> ApplicationController: getLastSentences(int)
+activate ApplicationController
+opt amount of sentences is lower or equal to 0
+    ApplicationController -> ApplicationRestController: throw IllegalArgumentException("Number of sentences must be greater than zero")
+    ApplicationRestController --> User: Error
+end
+ApplicationController -> SentenceHistory: getLastSentences(int)
+activate SentenceHistory
+note over SentenceHistory: Create a ArrayList<Sentence> to hold the last generated sentences
+alt saved sentences are less than the requested amount
+    loop for each sentence in SentenceHistory
+        note over SentenceHistory: Add each saved sentence to the ArrayList
+    end
+else saved sentences are greater than or equal to the requested amount
+    loop for each last "requested amount" sentences in SentenceHistory
+        note over SentenceHistory: Add each sentence to the ArrayList
+    end
+end
+SentenceHistory --> ApplicationController: lastSentences
+deactivate SentenceHistory
+ApplicationController --> ApplicationRestController: lastSentences
+deactivate ApplicationController
+ApplicationRestController --> User: lastSentences
+deactivate ApplicationRestController
+
+@enduml

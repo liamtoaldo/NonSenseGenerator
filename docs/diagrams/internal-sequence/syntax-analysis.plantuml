@@ -17,7 +17,7 @@ User -> ApplicationRestController: getSyntaxTree(String)
 activate ApplicationRestController
 ApplicationRestController -> ApplicationController: getSyntaxTreeFromString(String)
 activate ApplicationController
-ApplicationController -> Sentence: create(String)
+ApplicationController -> Sentence: new Sentence(String)
 activate Sentence
 Sentence --> ApplicationController: sentence
 deactivate Sentence
