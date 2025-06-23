@@ -36,7 +36,7 @@ public class SentenceGenerator {
      * @throws IllegalArgumentException If the template is null
      * @throws IllegalStateException If no nouns, adjectives, or verbs are available in the dictionary or input sentence
      */
-    Sentence generateSentence(Sentence input, Template template, Tense tense) {
+    public Sentence generateSentence(Sentence input, Template template, Tense tense) {
         if (template == null) {
             throw new IllegalArgumentException("Template cannot be null");
         }
@@ -103,7 +103,7 @@ public class SentenceGenerator {
      * @return A Sentence object randomly generated based on the input sentence and tense
      * @throws IllegalStateException If no templates are available in the dictionary
      */
-    Sentence generateRandomSentence(Sentence sentence, Tense tense) {
+    public Sentence generateRandomSentence(Sentence sentence, Tense tense) {
         if (dictionary.getTemplates().isEmpty()) {
             throw new IllegalStateException("No templates available in the dictionary");
         }

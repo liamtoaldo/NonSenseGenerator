@@ -4,21 +4,22 @@ title Class Model
 class Sentence {
     -ArrayList<Word> words
     -LocalDateTime generationDate
-    +String getText()
+    -boolean isOpeningPunctuation()
+    -boolean isClosingPunctuation()
+    +ArrayList<Word> getText()
     +LocalDateTime getGenerationDate()
     +Noun getRandomNoun()
     +Adjective getRandomAdjective()
     +void setGenerationDate(LocalDateTime)
     +boolean equals(Object)
     +String toString()
-    +boolean isOpeningPunctuation()
-    +boolean isClosingPunctuation()
 }
 
 enum Tense {
     PAST
     PRESENT
     FUTURE
+    UNKNOWN
 }
 
 class Word {
@@ -26,6 +27,7 @@ class Word {
     +String getText()
     +void setText(String)
     +boolean equals(Object)
+    +String getWordClassType()
 }
 
 class Noun extends Word {
@@ -114,7 +116,7 @@ class SyntaxTree {
     +ArrayList<SyntaxNode> getRoots()
     +void setRoots(ArrayList<SyntaxNode>)
     +void addRoot(SyntaxNode)
-    +ArrayList<SyntaxNode> getAllNodesInOrder()
+    +ArrayList<SyntaxNode> getAllNodes()
 }
 
 class SyntaxNode {
@@ -127,10 +129,11 @@ class SyntaxNode {
     +void setDependencyLabel(String)
     +ArrayList<SyntaxNode> getChildren()
     +void addChild(SyntaxNode)
+    +void setChildren(ArrayList<SyntaxNode>)
 }
 
 class SyntaxAnalyzer {
-    -static String GOOGLE_NLP_API_URL
+    -{static} String GOOGLE_NLP_API_URL
     -APIClient apiClient
     +SyntaxTree analyzeSyntax(Sentence)
 }
@@ -147,15 +150,14 @@ class ModerationCategory {
 class ModerationResult {
     -ArrayList<ModerationCategory> categories
     +ArrayList<ModerationCategory> getCategories()
-    +void setCategories(List<ModerationCategory>)
+    +void setCategories(ArrayList<ModerationCategory>)
     +ModerationCategory getCategoryByName(String)
 }
 
 class ToxicityAnalyzer {
-    -static String GOOGLE_NLP_API_URL
+    -{static} String GOOGLE_MODERATION_API_URL
     -APIClient apiClient
     +ModerationResult analyzeToxicity(Sentence)
-    +boolean isToxic(ModerationResult)
 }
 
 ' ApplicationController implementa il pattern Controller e il pattern Facade
@@ -198,7 +200,7 @@ StorageManager ..> SentenceHistory : manages persistence
 
 ModerationResult "1" o-- "n" ModerationCategory : contains
 
-SyntaxTree "1" o-- "1" SyntaxNode : has root
+SyntaxTree "1" o-- "1" SyntaxNode : has roots
 SyntaxNode "1" o-- "1" Word : represents
 SyntaxNode "1" o-- "n" SyntaxNode : has children
 
