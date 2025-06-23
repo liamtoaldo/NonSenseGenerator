@@ -93,9 +93,8 @@ public class SentenceHistory {
     }
 
     /**
-     * Method that removes a sentence from the history
+     * Method that removes all sentences from the history.
      *
-     * @param sentence The sentence to be removed
      */
     public void clearData() {
         savedSentences.clear();

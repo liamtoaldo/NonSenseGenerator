@@ -3,8 +3,15 @@ package com.swe.nonsense;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,9 +19,46 @@ public class ApplicationControllerTest {
     static ApplicationController applicationController;
     static String sentenceText;
 
+    // JUnit gestirà la creazione e la pulizia di questa cartella temporanea
+    @TempDir
+    static Path tempDir;
+
+    private static String nounsFilePath;
+    private static String adjectivesFilePath;
+    private static String verbsFilePath;
+    private static String templatesFilePath;
+    private static String sentencesFilePath;
+    
+
+    //Inizializza i file temporanei per i test
     @BeforeAll
-    static void setUp() {
-        applicationController = new ApplicationController();
+    public static void setUp() throws IOException {
+        // JSON corretto: doppi apici e nomi delle proprietà ("text", "template") corretti.
+        String nounsFileContent = "[{\"text\":\"cat\"},{\"text\":\"dog\"}]";
+        String adjectivesFileContent = "[{\"text\":\"big\"},{\"text\":\"small\"}]";
+        String verbsFileContent = "[{\"text\":\"jumps\"},{\"text\":\"runs\"}]";
+        String templatesFileContent = "[{\"template\":\"The [ADJECTIVE] [NOUN] [VERB] quickly.\"}]";
+        // Per Sentence, la proprietà "text" deve essere una lista di oggetti Word.
+        String sentencesFileContent = "[{\"text\":[{\"text\":\"The\"},{\"text\":\"small\"},{\"text\":\"cat\"},{\"text\":\"jumps\"},{\"text\":\"quickly\"}],\"timestamp\":\"2025-06-21T12:30:00\"}]";
+
+        nounsFilePath = tempDir.resolve("nouns_temp.json").toString();
+        adjectivesFilePath = tempDir.resolve("adjectives_temp.json").toString();
+        verbsFilePath = tempDir.resolve("verbs_temp.json").toString();
+        templatesFilePath = tempDir.resolve("templates_temp.json").toString();
+        sentencesFilePath = tempDir.resolve("sentences_temp.json").toString();
+
+        Files.writeString(Path.of(nounsFilePath), nounsFileContent);
+        Files.writeString(Path.of(adjectivesFilePath), adjectivesFileContent);
+        Files.writeString(Path.of(verbsFilePath), verbsFileContent);
+        Files.writeString(Path.of(templatesFilePath), templatesFileContent);
+        Files.writeString(Path.of(sentencesFilePath), sentencesFileContent);
+
+        applicationController = new ApplicationController(nounsFilePath, adjectivesFilePath, verbsFilePath, templatesFilePath, sentencesFilePath);
+
+        // Pulisce i dati dai singleton prima di ogni test per garantire l'isolamento
+        WordsDictionary.getInstance().clearAllData();
+        SentenceHistory.getInstance().clearData();
+
         sentenceText = "This is a test sentence.";
     }
 
@@ -128,8 +172,30 @@ public class ApplicationControllerTest {
     }
 
     @AfterAll
-    static void tearDown() {
-        // Clear the dictionary and history after tests
+    public static void cleanUp() {
+        File nounsFile = new File(nounsFilePath);
+        File adjectivesFile = new File(adjectivesFilePath);
+        File verbsFile = new File(verbsFilePath);
+        File templatesFile = new File(templatesFilePath);
+        File sentencesFile = new File(sentencesFilePath);
+
+        if (nounsFile.exists()) {
+            nounsFile.delete();
+        }
+        if (adjectivesFile.exists()) {
+            adjectivesFile.delete();
+        }
+        if (verbsFile.exists()) {
+            verbsFile.delete();
+        }
+        if (templatesFile.exists()) {
+            templatesFile.delete();
+        }
+        if (sentencesFile.exists()) {
+            sentencesFile.delete();
+        }
+
+        // Pulisce i dati dai singleton dopo ogni test per garantire l'isolamento
         WordsDictionary.getInstance().clearAllData();
         SentenceHistory.getInstance().clearData();
     }

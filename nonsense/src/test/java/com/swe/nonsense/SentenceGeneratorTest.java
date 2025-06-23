@@ -3,24 +3,61 @@ package com.swe.nonsense;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SentenceGeneratorTest {
 
-    private StorageManager storageManager;
     private WordsDictionary wordsDictionary;
     private SentenceGenerator sentenceGenerator;
     private ApplicationController applicationController;
 
+    // JUnit gestirà la creazione e la pulizia di questa cartella temporanea
+    @TempDir
+    Path tempDir;
+
+    private String nounsFilePath;
+    private String adjectivesFilePath;
+    private String verbsFilePath;
+    private String templatesFilePath;
+    private String sentencesFilePath;
+
     @BeforeEach
-    void setUp() {
-        storageManager = new StorageManager();
-        applicationController = new ApplicationController();
-        wordsDictionary = storageManager.loadDictionary();
+    public void setUp() throws IOException {
+        // JSON corretto: doppi apici e nomi delle proprietà ("text", "template") corretti.
+        String nounsFileContent = "[{\"text\":\"cat\"},{\"text\":\"dog\"}]";
+        String adjectivesFileContent = "[{\"text\":\"big\"},{\"text\":\"small\"}]";
+        String verbsFileContent = "[{\"text\":\"jumps\"},{\"text\":\"runs\"}]";
+        String templatesFileContent = "[{\"template\":\"The [ADJECTIVE] [NOUN] [VERB] quickly.\"}]";
+        // Per Sentence, la proprietà "text" deve essere una lista di oggetti Word.
+        String sentencesFileContent = "[{\"text\":[{\"text\":\"The\"},{\"text\":\"small\"},{\"text\":\"cat\"},{\"text\":\"jumps\"},{\"text\":\"quickly\"}],\"timestamp\":\"2025-06-21T12:30:00\"}]";
+
+        nounsFilePath = tempDir.resolve("nouns_temp.json").toString();
+        adjectivesFilePath = tempDir.resolve("adjectives_temp.json").toString();
+        verbsFilePath = tempDir.resolve("verbs_temp.json").toString();
+        templatesFilePath = tempDir.resolve("templates_temp.json").toString();
+        sentencesFilePath = tempDir.resolve("sentences_temp.json").toString();
+
+        Files.writeString(Path.of(nounsFilePath), nounsFileContent);
+        Files.writeString(Path.of(adjectivesFilePath), adjectivesFileContent);
+        Files.writeString(Path.of(verbsFilePath), verbsFileContent);
+        Files.writeString(Path.of(templatesFilePath), templatesFileContent);
+        Files.writeString(Path.of(sentencesFilePath), sentencesFileContent);
+
+        applicationController = new ApplicationController(nounsFilePath, adjectivesFilePath, verbsFilePath, templatesFilePath, sentencesFilePath);
+        
+        // Pulisce i dati dai singleton prima di ogni test per garantire l'isolamento
+        wordsDictionary = WordsDictionary.getInstance();
         wordsDictionary.clearAllData();
+        SentenceHistory.getInstance().clearData();
+
         sentenceGenerator = new SentenceGenerator(wordsDictionary);
     }
 
@@ -120,6 +157,28 @@ public class SentenceGeneratorTest {
 
     @AfterEach
     void tearDown() {
+        File nounsFile = new File(nounsFilePath);
+        File adjectivesFile = new File(adjectivesFilePath);
+        File verbsFile = new File(verbsFilePath);
+        File templatesFile = new File(templatesFilePath);
+        File sentencesFile = new File(sentencesFilePath);
+
+        if (nounsFile.exists()) {
+            nounsFile.delete();
+        }
+        if (adjectivesFile.exists()) {
+            adjectivesFile.delete();
+        }
+        if (verbsFile.exists()) {
+            verbsFile.delete();
+        }
+        if (templatesFile.exists()) {
+            templatesFile.delete();
+        }
+        if (sentencesFile.exists()) {
+            sentencesFile.delete();
+        }
+
         // Clear the dictionary after each test to avoid side effects
         wordsDictionary.clearAllData();
     }
