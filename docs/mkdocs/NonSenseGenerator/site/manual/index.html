@@ -51,7 +51,9 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#technology-stack-used">Technology Stack Used</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#external-apis-used">External APIs Used</a>
+    <li class="toctree-l3"><a class="reference internal" href="#external-apis">External APIs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-project-apis">The project APIs</a>
     </li>
         </ul>
     </li>
@@ -77,6 +79,10 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#toxicity-analysis">Toxicity Analysis</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#visualizing-the-private-history">Visualizing the Private History</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#visualizing-the-public-history">Visualizing the Public History</a>
+    </li>
         </ul>
     </li>
     </ul>
@@ -95,7 +101,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../unit_test_report/">Unit Test Report</a>
+                <li class="toctree-l1"><a class="reference internal" href="../surefire-report/surefire-report.html">Unit Test Report</a>
                 </li>
               </ul>
       </div>
@@ -207,7 +213,7 @@ The application is designed to be intuitive and user-friendly.<br></p>
 </tr>
 </tbody>
 </table>
-<h3 id="external-apis-used">External APIs Used</h3>
+<h3 id="external-apis">External APIs</h3>
 <p>The application integrates with the following external APIs:</p>
 <table>
 <thead>
@@ -227,6 +233,51 @@ The application is designed to be intuitive and user-friendly.<br></p>
 <td>documents.moderateText</td>
 <td>Google Cloud</td>
 <td>Analyzes the toxicity of sentences to determine<br> if they contain harmful or offensive content.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-project-apis">The project APIs</h3>
+<p>The NonSenseGenerator application provides its own API for generating nonsensical sentences and analyzing syntax under the <code>/api/v1/nonsense</code> path.<br>
+The following table summarizes the available APIs, which are used by the frontend to interact with the backend.</p>
+<table>
+<thead>
+<tr>
+<th>API Name</th>
+<th>Method</th>
+<th>Parameters</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/api/v1/nonsense/sentence/syntax</td>
+<td>GET</td>
+<td><code>sentence</code> (string)</td>
+<td>Analyzes the syntax of a sentence by providing<br> a syntax tree and part-of-speech tags.</td>
+</tr>
+<tr>
+<td>/api/v1/nonsense/sentence/generate</td>
+<td>GET</td>
+<td><code>sentence</code> (string)<br><code>template</code> (string, optional)<br><code>tense</code> (string, optional)</td>
+<td>Generates a nonsensical sentence based on the provided input.<br> It can use a pre-defined template or let the system choose one.</td>
+</tr>
+<tr>
+<td>/api/v1/nonsense/sentence/toxicity</td>
+<td>GET</td>
+<td><code>sentence</code> (string)</td>
+<td>Analyzes the toxicity of a generated sentence to determine<br> if it contains harmful or offensive content.</td>
+</tr>
+<tr>
+<td>/api/v1/nonsense/dictionary/templates</td>
+<td>GET</td>
+<td>None</td>
+<td>Retrieves a list of pre-defined templates for sentence generation.</td>
+</tr>
+<tr>
+<td>/api/v1/nonsense/history/generated</td>
+<td>GET</td>
+<td><code>amount</code> (integer)</td>
+<td>Retrieves a list of previously generated sentences.<br> The <code>amount</code> parameter specifies how many sentences to retrieve.</td>
 </tr>
 </tbody>
 </table>
@@ -332,8 +383,43 @@ The application will display the generated sentence in the output field.
 <hr>
 <p><img alt="Sentence Generation Tutorial 2" src="../images/tutorial/sentence-generation2.png" /></p>
 <h3 id="toxicity-analysis">Toxicity Analysis</h3>
-<p>To analyze the toxicity of a sentence after generating it, click the "Analyze Toxicity" button inside the generated sentence field.<br></p>
-<!--TODO: finish once ready -->
+<p>To analyze the toxicity of a sentence after generating it, click the "Analyze Toxicity" button inside the generated sentence field.<br>
+A list of toxicity categories will be displayed, along with their scores.<br>
+The categories include:</p>
+<ul>
+<li><strong>Toxic</strong> - Overall toxicity score</li>
+<li><strong>Insult</strong> - Score for insulting language</li>
+<li><strong>Profanity</strong> - Score for profanity</li>
+<li><strong>Derogatory</strong> - Score for derogatory language</li>
+<li><strong>Sexual</strong> - Score for sexual content</li>
+<li><strong>Death, Harm &amp; Tragedy</strong> - Score for content related to death, harm, or tragedy</li>
+<li><strong>Violent</strong> - Score for violent content</li>
+<li><strong>Firearms &amp; Weapons</strong> - Score for content related to firearms and weapons</li>
+<li><strong>Public Safety</strong> - Score for content that may affect public safety</li>
+<li><strong>Health</strong> - Score for content that may affect health</li>
+<li><strong>Religion &amp; Belief</strong> - Score for content related to religion and belief</li>
+<li><strong>Illicit Drugs</strong> - Score for content that contains illicit drugs terminology</li>
+<li><strong>War &amp; Conflict</strong> - Score for content related to war and conflict</li>
+<li><strong>Politics</strong> - Score for content related to politics</li>
+<li><strong>Finance</strong> - Score for content that contains financial terminology</li>
+<li><strong>Legal</strong> - Score for content related to legal terminology</li>
+</ul>
+<p><img alt="Toxicity Analysis Tutorial" src="../images/tutorial/toxicity-analysis.png" /></p>
+<h3 id="visualizing-the-private-history">Visualizing the Private History</h3>
+<p>To visualize the private history of generated sentences, click the three horizontal lines in the top left corner of the page.<br>
+You will see a list of all generated sentences, click on one's green button to see its details and open it on the page so you can analyze the syntax of the input sentence, view the generated sentence, and analyze its toxicity.<br></p>
+<p><img alt="Private History Tutorial 1" src="../images/tutorial/private-history1.png" /></p>
+<hr>
+<p><img alt="Private History Tutorial 2" src="../images/tutorial/private-history2.png" /></p>
+<h3 id="visualizing-the-public-history">Visualizing the Public History</h3>
+<p>To visualize the public history of generated sentences, click the three horizontal lines in the top left corner of the page.<br>
+You will see a big button labeled "Global Generations" in the menu.<br>
+Click it to see a list of all generated sentences by all users along with the generation date and a button to copy it.<br></p>
+<p><img alt="Public History Tutorial 1" src="../images/tutorial/private-history1.png" /></p>
+<hr>
+<p><img alt="Public History Tutorial 2" src="../images/tutorial/public-history1.png" /></p>
+<hr>
+<p><img alt="Public History Tutorial 3" src="../images/tutorial/public-history2.png" /></p>
               
             </div>
           </div><footer>
