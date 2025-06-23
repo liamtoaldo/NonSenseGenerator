@@ -3,6 +3,7 @@ package com.swe.nonsense;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 public class WordsDictionaryTest {
@@ -170,5 +171,10 @@ public class WordsDictionaryTest {
         assert wordsDictionary.getRandomAdjective() == null : "clearAllData should clear all Adjectives from the wordsDictionary";
         assert wordsDictionary.getRandomVerb() == null : "clearAllData should clear all Verbs from the wordsDictionary";
         assert wordsDictionary.getRandomTemplate() == null : "clearAllData should clear all Templates from the wordsDictionary";
+    }
+
+    @AfterEach
+    void tearDown() {
+        wordsDictionary.clearAllData();
     }
 }

@@ -41,7 +41,7 @@ public class StorageManagerTest {
         String nounsFileContent = "[{\"text\":\"cat\"},{\"text\":\"dog\"}]";
         String adjectivesFileContent = "[{\"text\":\"big\"},{\"text\":\"small\"}]";
         String verbsFileContent = "[{\"text\":\"jumps\"},{\"text\":\"runs\"}]";
-        String templatesFileContent = "[{\"template\":\"The {adjective} {noun} {verb} quickly.\"}]";
+        String templatesFileContent = "[{\"template\":\"The [ADJECTIVE] [NOUN] [VERB] quickly.\"}]";
         // Per Sentence, la proprietà "text" deve essere una lista di oggetti Word.
         String sentencesFileContent = "[{\"text\":[{\"text\":\"The\"},{\"text\":\"small\"},{\"text\":\"cat\"},{\"text\":\"jumps\"},{\"text\":\"quickly\"}],\"timestamp\":\"2025-06-21T12:30:00\"}]";
 
@@ -66,32 +66,6 @@ public class StorageManagerTest {
         sentenceHistory.clearData();
     }
     
-    //Rimuove i file temporanei dopo il test
-    @AfterEach
-    public void cleanUp() {
-        File nounsFile = new File(nounsFilePath);
-        File adjectivesFile = new File(adjectivesFilePath);
-        File verbsFile = new File(verbsFilePath);
-        File templatesFile = new File(templatesFilePath);
-        File sentencesFile = new File(sentencesFilePath);
-
-        if (nounsFile.exists()) {
-            nounsFile.delete();
-        }
-        if (adjectivesFile.exists()) {
-            adjectivesFile.delete();
-        }
-        if (verbsFile.exists()) {
-            verbsFile.delete();
-        }
-        if (templatesFile.exists()) {
-            templatesFile.delete();
-        }
-        if (sentencesFile.exists()) {
-            sentencesFile.delete();
-        }
-    }
-
     @Test
     void testLoadDictionary() {
         // Azione
@@ -108,7 +82,7 @@ public class StorageManagerTest {
         assertEquals("jumps", wordsDictionary.getVerbs().get(0).getText());
 
         assertEquals(1, wordsDictionary.getTemplates().size(), "Dovrebbe essere caricato 1 template");
-        assertEquals("The {adjective} {noun} {verb} quickly.", wordsDictionary.getTemplates().get(0).getTemplate());
+        assertEquals("The [ADJECTIVE] [NOUN] [VERB] quickly.", wordsDictionary.getTemplates().get(0).getTemplate());
     }
 
     @Test
@@ -158,4 +132,35 @@ public class StorageManagerTest {
         assertEquals(1, sentences.size());
         assertEquals("The small cat jumps quickly", sentences.get(0).toString());
     }
+
+    //Rimuove i file temporanei dopo il test e pulisce i singleton per garantire l'isolamento tra i test
+    @AfterEach
+    public void cleanUp() {
+        File nounsFile = new File(nounsFilePath);
+        File adjectivesFile = new File(adjectivesFilePath);
+        File verbsFile = new File(verbsFilePath);
+        File templatesFile = new File(templatesFilePath);
+        File sentencesFile = new File(sentencesFilePath);
+
+        if (nounsFile.exists()) {
+            nounsFile.delete();
+        }
+        if (adjectivesFile.exists()) {
+            adjectivesFile.delete();
+        }
+        if (verbsFile.exists()) {
+            verbsFile.delete();
+        }
+        if (templatesFile.exists()) {
+            templatesFile.delete();
+        }
+        if (sentencesFile.exists()) {
+            sentencesFile.delete();
+        }
+
+        // Pulisce i dati dai singleton dopo ogni test per garantire l'isolamento
+        wordsDictionary.clearAllData();
+        sentenceHistory.clearData();
+    }
+
 }

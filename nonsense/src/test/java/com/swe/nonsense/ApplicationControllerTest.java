@@ -1,5 +1,6 @@
 package com.swe.nonsense;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -124,5 +125,12 @@ public class ApplicationControllerTest {
         assertThrows(IllegalArgumentException.class, () -> applicationController.addTermsToDictionaryFromInput(null));
         assertThrows(IllegalArgumentException.class,
                 () -> applicationController.addTermsToDictionaryFromInput(new Sentence("")));
+    }
+
+    @AfterAll
+    static void tearDown() {
+        // Clear the dictionary and history after tests
+        WordsDictionary.getInstance().clearAllData();
+        SentenceHistory.getInstance().clearData();
     }
 }

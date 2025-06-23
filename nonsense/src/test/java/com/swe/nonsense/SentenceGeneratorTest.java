@@ -1,5 +1,6 @@
 package com.swe.nonsense;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -115,5 +116,11 @@ public class SentenceGeneratorTest {
         Sentence result = sentenceGenerator.generateRandomSentence(sentence, Tense.PRESENT);
         assertNotNull(result, "Generated sentence should not be null");
         assertEquals("A bird flies.", result.toString(), "Generated random sentence does not match expected output");
+    }
+
+    @AfterEach
+    void tearDown() {
+        // Clear the dictionary after each test to avoid side effects
+        wordsDictionary.clearAllData();
     }
 }

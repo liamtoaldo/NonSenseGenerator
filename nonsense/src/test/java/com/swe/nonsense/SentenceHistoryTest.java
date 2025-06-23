@@ -2,6 +2,7 @@ package com.swe.nonsense;
 
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -96,4 +97,9 @@ public class SentenceHistoryTest {
         assert newLastSentences.get(newLastSentences.size() - 2).equals(sentence2) : "getLastSentence should return the second most recent sentence second";
     }
 
+    @AfterEach
+    void tearDown() {
+        // Pulisce i dati dalla cronologia dopo ogni test per garantire l'isolamento
+        sentenceHistory.clearData();
+    }
 }
