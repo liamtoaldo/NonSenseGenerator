@@ -62,7 +62,7 @@ public class SentenceHistory {
      * Method that returns a number of saved sentences from the history.
      * This method returns the last sentences saved in the history, in reverse order.
      * 
-     * @param numberOfSentences
+     * @param numberOfSentences The number of sentences to be returned from the history
      * @return A number of sentences saved in the history equal to numberOfSentences parameter
      * @throws IllegalArgumentException If numberOfSentences is less than or equal to 0
      */

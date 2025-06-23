@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@RestController
-@RequestMapping("/api/v1/nonsense")
 /**
  * REST controller that provides endpoints for various functionalities of the application
  */
+@RestController
+@RequestMapping("/api/v1/nonsense")
 public class ApplicationRestController {
     /**
       * ApplicationController object that manages the logic of the application
@@ -29,18 +29,18 @@ public class ApplicationRestController {
         this.app = app;
     }
 
-    @GetMapping("/sentence/syntax")
     /**
      * Method that returns the SyntaxTree from a given sentence text
      * 
      * @param sentenceText The text of the sentence to be analyzed
      * @return SyntaxTree object representing the syntax structure of the sentence
      */
+    @GetMapping("/sentence/syntax")
+    
     public SyntaxTree getSyntaxTree(@RequestParam String sentenceText) {
         return app.getSyntaxTreeFromString(sentenceText);
     }
 
-    @GetMapping("/sentence/generate")
     /**
      * Method that generates a nonsense sentence based on the given input
      * 
@@ -50,6 +50,7 @@ public class ApplicationRestController {
      * @param tense The tense of the verbs that will be in the nonsense sentence
      * @return A String representation of the generated sentence
      */
+    @GetMapping("/sentence/generate")
     public String generateSentenceInput(
         @RequestParam String text,
         @RequestParam(required = false) Template template,
@@ -57,7 +58,7 @@ public class ApplicationRestController {
         return app.generateNonSenseSentence(text, template, tense).toString();
     }
 
-    @GetMapping("/sentence/toxicity")
+    
     /**
      * Method that analyzes the toxicity of a given sentence text
      * 
@@ -65,6 +66,7 @@ public class ApplicationRestController {
      * @return A JSON representation of the ModerationResult object containing the result of the toxicity analysis
      * @throws RuntimeException If the conversion of ModerationResult to JSON fails
      */
+    @GetMapping("/sentence/toxicity")
     public String getSentenceToxicity(@RequestParam String text) {
         Sentence sentence = app.convertStringToSentence(text);
         ModerationResult result = app.getSentenceToxicity(sentence);
@@ -77,7 +79,6 @@ public class ApplicationRestController {
         }
     }
 
-    @GetMapping("/history/generated/{amount}")
     /**
      * Method that retrieves a specified amount of sentences from history
      * 
@@ -85,6 +86,7 @@ public class ApplicationRestController {
      * @return A JSON representation of the ArrayList<Sentence> object containing the requested amount of sentences from history
      * @throws RuntimeException If the retrieval or the conversion of ModerationResult to JSON fail
      */
+    @GetMapping("/history/generated/{amount}")
     public String getLastGeneratedSentences(@PathVariable int amount) {
         ArrayList<Sentence> sentences = new ArrayList<Sentence>();
         try {
@@ -110,12 +112,12 @@ public class ApplicationRestController {
         }
     }
 
-    @GetMapping("/dictionary/templates")
     /**
      * Method that retrieves all templates from the application
      * 
      * @return An ArrayList of Template objects containing all templates in the application
      */
+    @GetMapping("/dictionary/templates")
     public ArrayList<Template> getTemplates() {
         return app.getTemplates();
     }

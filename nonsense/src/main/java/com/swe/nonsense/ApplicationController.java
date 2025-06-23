@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
-@Service
 /**
  * Class that manages the logic of the application, using various components 
  * such as the storage manager, sentence generator, syntax analyzer, and toxicity analyzer
  */
+@Service
 public class ApplicationController {
     /**
      * StorageManager is responsible for loading and saving the dictionary and sentence history
