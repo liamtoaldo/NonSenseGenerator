@@ -12,7 +12,7 @@ public class ToxicityAnalyzer {
   /**
    * URL of the Google Moderation API used
    */
-  static final String GOOGLE_MODERATION_API_URL = "https://language.googleapis.com/v1/documents:moderateText";
+  private static final String GOOGLE_MODERATION_API_URL = "https://language.googleapis.com/v1/documents:moderateText";
   
   /**
    * API client used for making requests to the Google Moderation API 
@@ -65,22 +65,6 @@ public class ToxicityAnalyzer {
     }
     result.setCategories(categories);
     return result;
-  }
-
-  /**
-   * Checks if a sentence is toxic.
-   *
-   * @param sentence The sentence to check.
-   * @return true if the sentence is toxic, false otherwise.
-   */
-  public boolean isToxic(Sentence sentence) {
-    ModerationResult result = analyzeToxicity(sentence);
-    for (ModerationCategory category : result.getCategories()) {
-      if (category.getConfidence() > 0.5) {
-        return true;
-      }
-    }
-    return false;
   }
 
 }

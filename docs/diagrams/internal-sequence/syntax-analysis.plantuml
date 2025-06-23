@@ -27,13 +27,13 @@ alt sentence is null or empty
     SyntaxAnalyzer --> ApplicationController: throw IllegalArgumentException("Sentence cannot be null or empty")
     ApplicationController --> ApplicationRestController: exception
 else sentence is valid
-    ApplicationController -> APIClient: post(String, Map<String, String>, JSONObject)
+    SyntaxAnalyzer -> APIClient: post(String, Map<String, String>, JSONObject)
     activate APIClient
     APIClient -> "Google API": POST /v1/documents:analyzeSyntax
     activate "Google API"
-    "Google API" -> APIClient: JSON Response
+    "Google API" --> APIClient: JSON Response
     deactivate "Google API"
-    APIClient -> SyntaxAnalyzer: response
+    APIClient --> SyntaxAnalyzer: response
     deactivate APIClient
     alt response is null or empty or does not contain the tokens field
         SyntaxAnalyzer -> ApplicationController: throw RuntimeException("Failed to get a valid response from the API")
