@@ -1,3 +1,12 @@
 div.highlight {
     border: none !important;
 }
+
+.wy-nav-content {
+    max-width: 80% !important;
+    /* margin auto to center the content */
+    margin: auto !important;
+}
+.wy-nav-content-wrap {
+    background-color: #FCFCFC !important;
+}

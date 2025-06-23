@@ -51,12 +51,12 @@ class Template {
 
 ' WordsDictionary usa Design Pattern: Singleton
 class WordsDictionary {
-    -static WordsDictionary instance
+    -{static} WordsDictionary instance
     -ArrayList<Noun> nouns
     -ArrayList<Adjective> adjectives
     -ArrayList<Verb> verbs
     -ArrayList<Template> templates
-    +static WordsDictionary getInstance()
+    +{static} WordsDictionary getInstance()
     +Noun getRandomNoun()
     +Adjective getRandomAdjective()
     +Verb getRandomVerb()
@@ -73,9 +73,9 @@ class WordsDictionary {
 
 ' SentenceHistory usa Design Pattern: Singleton
 class SentenceHistory {
-    -static SentenceHistory instance
+    -{static} SentenceHistory instance
     -ArrayList<Sentence> savedSentences
-    +static SentenceHistory getInstance()
+    +{static} SentenceHistory getInstance()
     +ArrayList<Sentence> getSentences()
     +ArrayList<Sentence> getLastSentences(int)
     +void save(Sentence)

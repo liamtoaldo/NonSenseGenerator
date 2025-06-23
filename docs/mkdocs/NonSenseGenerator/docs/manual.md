@@ -61,8 +61,12 @@ To install and run the NonSenseGenerator application, follow these steps:
 
 - A **Google Cloud account** with the Natural Language API enabled
     - Follow the instructions in the [Google Cloud documentation](https://cloud.google.com/natural-language/docs/setup) to set up your account and enable the API.
-    - IMPORTANT: Create the `nonsense/.env` file in the `nonsense` directory to store your API key.
-    - Obtain your API key and set it as an environment variable inside `nonsense/.env`:
+    - IMPORTANT: Create the `.env` file
+    - Obtain your API key and set it as an environment variable inside `.env`:
+    - Store the file in both of the following directories:
+        - the `nonsense` directory
+        - the `nonsense/src/main/resources` directory
+    - The `.env` file should contain the following line, replacing `your_api_key_here` with your actual API key:
     ```bash
     GOOGLE_NLP_API_KEY="your_api_key_here"
     ```
